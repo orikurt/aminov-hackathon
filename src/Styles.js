@@ -1,7 +1,7 @@
 export const playerStyle = {
     width: "70px",
     margin: "10px",
-    color: "green",
+    //color: "green",
     padding: "10px",
     border: "3px solid black",
     borderRadius: "20px",
