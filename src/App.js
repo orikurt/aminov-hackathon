@@ -11,7 +11,7 @@ class App extends Component {
     color: this.randomColor()
   }
 
-  playerNames = ["MJ", "Kobe", "Steph"]
+  playerNames = ["MJ", "Kobe", "Steph", "Kawhi"]
 
   render() {
     Object.assign(this.appTitle, Styles.appTitle);
