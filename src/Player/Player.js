@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Styles from './Player.style';
+import { connect } from 'react-redux';
 
-const player = (props)=>(
-    <div style={Styles.player}>
-        I am player {props.name}
-    </div>
-);
+class Player extends Component{
+    render() {
+        return(
+            <div style={Styles.player}>
+                I am player {this.props.players[this.props.index].name}
+            </div>
+        )};
+}
 
-export default player;
+const mapStateToProps = (state)=>{
+    return {
+        players: state.players
+    }
+}
+
+export default connect(mapStateToProps)(Player);

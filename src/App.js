@@ -25,7 +25,7 @@ class App extends Component {
         </header>
         {
           this.state.playerNames.map((name, i)=> ( 
-            <Player key={i} name={name} /> 
+            <Player key={i} index={i} name={name} /> 
           ))
         }
         <button onClick={this.clickHandler}>{this.state.newName} is better than MJ</button>
