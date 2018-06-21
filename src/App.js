@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Styles from './Styles';
 import Player from './Player/Player'
 
@@ -9,12 +10,8 @@ class App extends Component {
 
   appTitle = Object.assign({ color: this.randomColor()}, Styles.appTitle);
 
-  state = {
-    playerNames: ["MJ", "Kobe", "Steph", "Kawhi"],
-    teams: ["Bulls", "Lakers", "Jazz", "Warriors"],
-    newName: "LebRon"
-  }
-
+  state = {};
+  
   clickHandler = () => this.setState({playerNames: [this.state.newName, "Kobe", "Steph", "Kawhi"]})
 
   render() {    
@@ -24,8 +21,8 @@ class App extends Component {
           <h1 style={this.appTitle}>Stats Center</h1>
         </header>
         {
-          this.state.playerNames.map((name, i)=> ( 
-            <Player key={i} index={i} name={name} /> 
+          this.props.players.map((player, i)=> ( 
+            <Player key={i} player={player} /> 
           ))
         }
         <button onClick={this.clickHandler}>{this.state.newName} is better than MJ</button>
@@ -35,4 +32,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state)=>{
+  return {
+      players: state.players
+  }
+}
+
+export default connect(mapStateToProps)(App);
