@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Player from '../Player/Player';
-import { selectPlayer } from '../../actions/index';
+import Player from './Player';
+import { selectPlayer } from '../actions/index';
 import { Link, Route } from 'react-router-dom';
 
 class PlayersList extends Component {

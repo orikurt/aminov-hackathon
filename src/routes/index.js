@@ -1,5 +1,5 @@
 import Home from '../pages/Home/Home';
-import PlayersList from '../components/PlayersList/PlayersList';
+import PlayersList from '../components/PlayersList';
 
 const routes = [
     {
