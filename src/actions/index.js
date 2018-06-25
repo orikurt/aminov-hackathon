@@ -6,3 +6,10 @@ export const selectPlayer = (player) => {
         payload: player
     }
 }
+
+export const setLayout = (layout) => {
+    return {
+        type: actions.SET_LAYOUT,
+        payload: layout
+    }
+}

@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './Header';
 import Content from './Content';
+import { connect } from 'react-redux';
+import './App.css';
 
-const App = () => (
-  <div>
-    <Header />
-    <Content />
-  </div>
-)
+class App extends Component{
+  
+  render(){
+    return (
+    <div className={'App ' + this.props.layout}>
+      <div className="appHeader">
+        <Header layout={this.props.layout}/>
+      </div>
+      <div className="appContent">
+        <Content />
+      </div>
+    </div>
+  )}
+}
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    layout: state.layout
+  }
+}
+
+export default connect(mapStateToProps)(App);

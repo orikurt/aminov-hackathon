@@ -2,8 +2,8 @@ import React from 'react';
 
 const Home = () => (
     <div>
-        <h2>Welcome to the pleasure</h2>
-        <h3>dome</h3>
+        <h3>Welcome to the pleasure</h3>
+        <p>dome</p>
     </div>
 )
 
