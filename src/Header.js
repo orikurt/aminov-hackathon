@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Styles from './Styles';
+import { NavLink } from 'react-router-dom';
 
-class Header extends Component{   
+class Header extends Component{
     render(){
         return (
-            <div style={Styles.appTitle}>
+            <div>
                 <h1>Game Time</h1>
             </div>
         )
