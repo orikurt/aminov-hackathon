@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Styles from './Styles';
 import PlayersList from './PlayersList/PlayersList'
-import Player from './Player/Player';
+import { Route, Link } from 'react-router-dom';
 
 class App extends Component {
-  rand255 = ()=> (parseInt(Math.random() * 255));
+  rand255 = ()=> (parseInt(Math.random() * 255, 10));
 
   randomColor = ()=> `rgb(${this.rand255()}, ${this.rand255()}, ${this.rand255()})`
 
@@ -18,12 +18,14 @@ class App extends Component {
     return (
       <div style={Styles.app}>
         <header style={Styles.appHeader}>
-          <h1 style={this.appTitle}>Stats Center</h1>
+          <div style={this.appTitle}>Stats Center</div>
+          <div>
+            <nav>
+              <Link to="/players">Players</Link>
+            </nav>
+          </div>
         </header>
-        <div>
-          <PlayersList />
-        </div>
-        <Player />
+        <Route path="/players" component={PlayersList} />
       </div>
     );
   }

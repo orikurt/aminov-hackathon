@@ -10,7 +10,8 @@ const appHeader = {
   }
 
 const appTitle = {
-    fontSize: "1.5em"
+    fontSize: "1.5em",
+    width: '100px'
   }
 
 const playersList = {
