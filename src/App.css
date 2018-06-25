@@ -29,21 +29,28 @@
 }
 
 .appHeader h3{
-    margin-top: 0;
+    cursor: pointer;
     padding: 0 15px;
 }
 
 .appHeader .toggler{
-    width: 100px;
-}
-
-.appHeader .toggler i{
+    position: absolute;
+    top: 5px;
+    left: 5px;
     cursor: pointer;
-    padding: 1px;
 }
 
 .appHeader .toggler i:hover{
     color: #fff !important;
+}
+
+.appHeader .headerContainer{
+    width: 100%;
+}
+
+.HLO .appHeader .headerContainer{
+    display: flex;
+    align-items: center;
 }
 
 .appContent{

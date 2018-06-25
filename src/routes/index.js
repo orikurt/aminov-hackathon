@@ -1,4 +1,5 @@
-import Home from '../pages/Home/Home';
+import Home from '../pages/Home';
+import Notifications from '../pages/Notifications';
 import PlayersList from '../components/PlayersList';
 
 const routes = [
@@ -8,9 +9,29 @@ const routes = [
         component: Home
     },
     {
+        path: "/notifications",
+        component: Notifications,
+        icon: "notifications",
+        title: "notifications"
+    },
+    {
         path: "/players",
-        component: PlayersList
-    }    
+        component: PlayersList,
+        icon: "people",
+        title: "players"
+    },    
+    {
+        path: "/stats",
+        component: PlayersList,
+        icon: "assessment",
+        title: "stats"
+    },
+    {
+        path: "/account",
+        component: Home,
+        icon: "account_circle",
+        title: "account"
+    },        
 ]
 
 export default routes;

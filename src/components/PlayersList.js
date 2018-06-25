@@ -10,8 +10,8 @@ class PlayersList extends Component {
     state = {
         newName: "Lebron"
     }
+
     componentDidMount(){
-        console.log(this.props);
     }
 
     render() { 
@@ -20,7 +20,7 @@ class PlayersList extends Component {
             {
                 this.props.players.map((player, i)=> (
                     <div key={i} onClick={()=>this.props.selectPlayer(player)}>
-                        <Link to={`${this.props.match.url}/${player.name}`}>
+                        <Link to={this.props.match.url + "/" + player.name}>
                             <div> {player.name} </div>
                         </Link>
                     </div>
