@@ -39,6 +39,7 @@ const navUlStyle = {
 
 const navLiStyle = {
     width: '80%',
+    height: '72px',
     color: '#fff',
     listStyle: 'none',
     cursor: 'pointer',
