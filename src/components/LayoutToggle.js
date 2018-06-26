@@ -15,7 +15,7 @@ class layoutToggler extends Component {
     }
     
     state = {
-        spanStyle: spanStyle
+        spanStyle
     }
 
     render(){
