@@ -1,27 +1,9 @@
-const initialState = [
-    {
-        name: "MJ",
-        team: "Bulls",
-        number: "23"
-    },
-    {
-        name: "Kobe",
-        team: "Lakers",
-        number: "24"
-    },
-    {
-        name: "Steph",
-        team: "Warriors",
-        number: "30"
-    },
-    {
-        name: "Kawhi",
-        team: "Spurs",
-        number: "2"
-    }
-]
+import * as actions from '../actions/actionNames';
 
-const playersReducer = (state=initialState, action) => {
+const playersReducer = (state=[], action) => {
+    if (action.type === actions.SET_PLAYERS){
+        return action.payload;
+    }
     return state;
 }
 

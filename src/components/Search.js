@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import DownShift from 'downshift';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setPlayers } from '../actions/index';
+import { getPlayers } from '../utils/api';
 
 class Search extends Component{
 
     stateReducer = (state, changes) => {
         return changes;
+    }
+
+    componentDidMount(){
+        getPlayers().then(players => this.props.setPlayers(players));
     }
 
     render(){
@@ -24,22 +31,24 @@ class Search extends Component{
                 inputValue,
                 highlightedIndex,
                 selectedItem,
-              }) => (
-                <div {...this.props}>
-                    <div style={wrapperStyle}>
-                        <input 
-                            {...getInputProps({placeholder:'Find stocks, players...'})} 
-                            style={inputStyle} />
-                        <ul {...getMenuProps({style: uListStyle})}>
-                            {isOpen
-                            ? this.props.items
-                                .filter(item => !inputValue || item.name.toLowerCase().includes(inputValue))
-                                .map((item, index) => listItem(item, index, highlightedIndex, selectedItem, getItemProps)) 
-                                : null}
-                        </ul>
+              }) => {
+                    const { setPlayers, ...props} = this.props;
+                    return (
+                    <div {...props}>
+                        <div style={wrapperStyle}>
+                            <input 
+                                {...getInputProps({placeholder:'Find stocks, players...'})} 
+                                style={inputStyle} />
+                            <ul {...getMenuProps({style: uListStyle})}>
+                                {isOpen
+                                ? this.props.items
+                                    .filter(item => !inputValue || item.name.toLowerCase().includes(inputValue))
+                                    .map((item, index) => listItem(item, index, highlightedIndex, selectedItem, getItemProps)) 
+                                    : null}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-              )}
+              )}}
             </DownShift>
         )
 
@@ -60,12 +69,13 @@ const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => 
     return (
     <li
       {...getItemProps({
-        key: item.value,
+        key: item.name,
         index,
         item,
         style: listItemStyle,
       })}
     >
+        <img src={""} alt={item.number} />
       {item.name}
     </li>
 )}
@@ -91,4 +101,9 @@ const mapStateToProps = (state) => {
         items: state.players
     }
 }
-export default connect(mapStateToProps)(Search);
+
+const mapDispathToprops = (dispatch) => {
+    return bindActionCreators({ setPlayers }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispathToprops)(Search);

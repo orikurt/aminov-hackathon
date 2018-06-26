@@ -4,7 +4,10 @@ import Search from '../components/Search';
 const Home = () => (
     <div style={homeStyle}>
         <div style={bannerStyle}>
-            <img style={{width: '100%', height: '100%'}} src="banner.png" />
+            <img 
+                style={{width: '100%', height: '100%'}} 
+                src="banner.png"
+                alt="GameTime Market" />
         </div>
         <Search style={searchStyle}/>
     </div>
@@ -12,6 +15,7 @@ const Home = () => (
 
 const homeStyle = {
     textAlign: 'center',
+    padding: '15px 0'
 }
 
 const bannerStyle = {
