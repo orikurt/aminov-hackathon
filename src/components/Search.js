@@ -12,7 +12,7 @@ class Search extends Component{
     }
 
     componentDidMount(){
-        getPlayers().then(players => this.props.setPlayers(players));
+        getPlayers().then(players => this.props.setPlayers(players), console.warn);
     }
 
     render(){
@@ -62,20 +62,22 @@ const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => 
         fontWeight: selectedItem === item ? 'bold' : 'normal',
         listStyle: 'none',
         height: '50px',
-        lineHeight: '50px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         textAlign: 'left',
         padding: '0 10px',
     }                              
     return (
     <li
       {...getItemProps({
-        key: item.name,
+        key: item.uid,
         index,
         item,
         style: listItemStyle,
       })}
     >
-        <img src={""} alt={item.number} />
+        <img src={item.image_url} alt={item.number} style={imageStyle}/>
       {item.name}
     </li>
 )}
@@ -94,6 +96,13 @@ const inputStyle = {
 
 const uListStyle = {
     padding: 0
+}
+
+const imageStyle = {
+    width: '30px',
+    height: '45px',
+    borderRadius: '15px',
+    border: '1px solid #e1b12c'
 }
 
 const mapStateToProps = (state) => {
