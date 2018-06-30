@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { setSelectedPlayer } from '../actions/index';
 
 class Player extends Component {
+    componentDidMount(){
+        this.props.setSelectedPlayer(this.props.match.params.playerId);
+    }
+
     render(){
         if (this.props.player == null){
             return (<h3>No player selected</h3>)
@@ -17,8 +23,14 @@ class Player extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        player: state.selectedPlayer
+        player: state.selectedPlayer.player
     }
 }
 
-export default connect(mapStateToProps)(Player);
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        setSelectedPlayer
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

@@ -23,4 +23,9 @@ api.getPlayers = () => {
     .then(response=>response.players);
 }
 
+api.getPlayer = (playerId) => {
+    return fetch_local(`/api/players/${playerId}`)
+    .then(response=>response.player);
+}
+
 export default api;

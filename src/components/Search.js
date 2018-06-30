@@ -11,7 +11,7 @@ class Search extends Component{
     }
 
     componentDidMount(){
-        this.props.getPlayers();
+        this.props.getPlayers();        
     }
 
     render(){
@@ -31,7 +31,7 @@ class Search extends Component{
                 highlightedIndex,
                 selectedItem,
               }) => {
-                    const { setPlayers, ...props} = this.props;
+                    const { getPlayers, ...props} = this.props;
                     return (
                     <div {...props}>
                         <div style={wrapperStyle}>
@@ -107,7 +107,7 @@ const imageStyle = {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.players
+        items: state.players.data
     }
 }
 

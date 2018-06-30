@@ -2,32 +2,34 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Player from './Player';
-import { selectPlayer } from '../actions/index';
+import { getPlayers } from '../actions/index';
 import { Link, Route } from 'react-router-dom';
 
 class PlayersList extends Component {
-    clickHandler = ()=>{}
-    state = {
-        newName: "Lebron"
-    }
 
     componentDidMount(){
+        if (!this.props.match.params.playerId){
+            this.props.getPlayers();
+        }
     }
 
     render() { 
         return (
         <div>
-            {
-                this.props.players.map((player, i)=> (
-                    <div key={i} onClick={()=>this.props.selectPlayer(player)}>
-                        <Link to={this.props.match.url + "/" + player.uid}>
-                            <div> {player.name} </div>
-                        </Link>
-                    </div>
-                ))
-            }
-            <input type="text" onChange={(event)=>this.setState({newName: event.target.value})} value={ this.state.newName } />
-            <button onClick={this.clickHandler}> is better than MJ</button>
+            <Route path="/players" exact={true} render={(props) => (
+                <div>
+                    {
+                        Object.keys(this.props.players).map((playerId, i)=> {
+                            const player = this.props.players[playerId];
+                            return(
+                                <Link key={i} to={props.match.url + "/" + player.uid}>
+                                    <div> {player.name} </div>
+                                </Link>
+                            )
+                        })
+                    }
+                </div>
+                )} />
             <Route path="/players/:playerId" component={Player} />
         </div>
         )
@@ -36,13 +38,13 @@ class PlayersList extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-        players: state.players
+        players: state.players.data
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        selectPlayer: selectPlayer
+        getPlayers
     }, dispatch);
 }
   
