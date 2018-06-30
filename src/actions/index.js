@@ -1,5 +1,13 @@
 import * as actions from './actionNames';
 
+export const getPlayers = () => (_dispath, getState, api) => {
+    const { players } = getState();
+    if ( players.length ){
+        return setPlayers(players);
+    }
+    return api.getPlayers().then(players => setPlayers(players));
+}
+
 export const setPlayers = (players) => {
     return {
         type: actions.SET_PLAYERS,

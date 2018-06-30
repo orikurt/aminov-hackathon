@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import DownShift from 'downshift';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setPlayers } from '../actions/index';
-import { getPlayers } from '../utils/api';
+import { getPlayers } from '../actions/index';
 
 class Search extends Component{
 
@@ -12,7 +11,7 @@ class Search extends Component{
     }
 
     componentDidMount(){
-        getPlayers().then(players => this.props.setPlayers(players), console.warn);
+        this.props.getPlayers();
     }
 
     render(){
@@ -43,6 +42,7 @@ class Search extends Component{
                                 {isOpen
                                 ? this.props.items
                                     .filter(item => !inputValue || item.name.toLowerCase().includes(inputValue))
+                                    .slice(0, 7)
                                     .map((item, index) => listItem(item, index, highlightedIndex, selectedItem, getItemProps)) 
                                     : null}
                             </ul>
@@ -112,7 +112,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispathToprops = (dispatch) => {
-    return bindActionCreators({ setPlayers }, dispatch)
+    return bindActionCreators({ getPlayers }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispathToprops)(Search);

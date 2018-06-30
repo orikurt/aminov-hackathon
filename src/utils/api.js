@@ -1,8 +1,8 @@
 import fetch from 'cross-fetch';
 
-const headers = new Headers({
+const headers = {
     Authorization: "X"
-});
+};
 
 const fetch_local = (url) => {
     return fetch(url, {
@@ -15,7 +15,12 @@ const fetch_local = (url) => {
         return response.json();
     }).catch(err=>Promise.reject(err));
 }
-export function getPlayers(){
+
+const api = {};
+
+api.getPlayers = () => {
     return fetch_local('/api/players')
     .then(response=>response.players);
 }
+
+export default api;
