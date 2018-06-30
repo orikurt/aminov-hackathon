@@ -14,18 +14,14 @@ class NavBar extends Component{
         return(
             <div>
                 <ul style={navUlStyle}>
-                    { routes.map((route, index)=>{
-                        if (route.path === "/"){
-                            return null;
-                        }
-                        return (
+                    { routes.filter(route=>!route.navNo).map((route, index)=>(
                         <li style={LiStyle} key={index}>
                             <NavLink to={route.path} style={navAStyle}>
                                 <MaterialIcon icon={route.icon} color="#fff" size={32}/>
                                 <div style={navLabelStyle}>{ route.title }</div>
                             </NavLink>
                         </li>
-                    )})}
+                    ))}
                 </ul>
             </div>
         )

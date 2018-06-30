@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cross-fetch": "^2.2.1",
     "downshift": "^2.0.10",
     "material-icons-react": "^1.0.0",
     "react": "^16.4.1",

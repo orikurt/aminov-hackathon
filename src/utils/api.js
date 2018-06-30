@@ -1,3 +1,5 @@
+import fetch from 'cross-fetch';
+
 const headers = new Headers({
     Authorization: "X"
 });

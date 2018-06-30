@@ -6,6 +6,7 @@ const routes = [
     {
         path: "/",
         exact: true,
+        navNo: true,
         component: Home
     },
     {
@@ -21,14 +22,14 @@ const routes = [
         title: "exchange"
     },            
     {
-        path: "/portfolio",
+        path: "/players",
         component: PlayersList,
         icon: "assignment_ind",
         title: "portfolio"
     },
     {
         path: "/stats",
-        component: PlayersList,
+        component: Home,
         icon: "bar_chart",
         title: "stats"
     },    
