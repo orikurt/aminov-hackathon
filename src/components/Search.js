@@ -11,7 +11,7 @@ class Search extends Component{
     }
 
     componentDidMount(){
-        this.props.getPlayers();        
+        this.props.getPlayers();
     }
 
     render(){
@@ -40,10 +40,10 @@ class Search extends Component{
                                 style={inputStyle} />
                             <ul {...getMenuProps({style: uListStyle})}>
                                 {isOpen
-                                ? this.props.items
-                                    .filter(item => !inputValue || item.name.toLowerCase().includes(inputValue))
+                                ? Object.keys(this.props.items)
+                                    .filter(uid => !inputValue || this.props.items[uid].name.toLowerCase().includes(inputValue))
                                     .slice(0, 7)
-                                    .map((item, index) => listItem(item, index, highlightedIndex, selectedItem, getItemProps)) 
+                                    .map((uid, index) => listItem(this.props.items[uid], index, highlightedIndex, selectedItem, getItemProps)) 
                                     : null}
                             </ul>
                         </div>

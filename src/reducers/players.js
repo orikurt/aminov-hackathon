@@ -12,12 +12,14 @@ const playersReducer = (state=initialState, action) => {
             return {...state, isFetching: true};
         case actions.FETCH_PLAYERS_ERROR:
             console.warn(action.payload)
-            return {...state, isFetching: false};            
+            return {...state, isFetching: false};
         case actions.SET_PLAYERS:
-            return {isFetching: false, lastUpdated: Date.now(), data: action.payload.reduce((players, player)=>{
+            const newState = {isFetching: false, lastUpdated: Date.now(), data: action.payload.reduce((players, player) => {
                 players[player.uid] = player;
                 return players;
             }, {})};
+            console.log(newState);
+            return newState;
         default:
             return state;
     }
