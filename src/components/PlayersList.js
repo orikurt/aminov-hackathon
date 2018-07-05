@@ -23,7 +23,7 @@ class PlayersList extends Component {
                             const player = this.props.players[playerId];
                             return(
                                 <Link key={i} to={props.match.url + "/" + player.uid}>
-                                    <div> {player.name} </div>
+                                    <div style={{color: 'white'}}> {player.name} </div>
                                 </Link>
                             )
                         })

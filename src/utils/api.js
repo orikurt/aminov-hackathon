@@ -18,7 +18,7 @@ const fetch_local = (url) => {
 
 const api = {};
 
-api.getPlayers = () => {
+api.getPlayersList = () => {
     return fetch_local('/api/players')
     .then(response=>response.players);
 }

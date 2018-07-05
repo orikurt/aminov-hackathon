@@ -6,7 +6,7 @@ export const getPlayers = () => (dispatch, getState, api) => {
         return;
     }
     dispatch(fetchPlayers());
-    return api.getPlayers().then(players => dispatch(setPlayers(players)), (err)=>fetchPlayersError(err));
+    return api.getPlayersList().then(players => dispatch(setPlayers(players)), (err)=>fetchPlayersError(err));
 }
 
 export const fetchPlayers = () => {
@@ -37,24 +37,24 @@ export const setLayout = (layout) => {
 }
 
 export const setSelectedPlayer = (playerId) => (dispatch, getState, api) => {
-    const { selectedPlayer } = getState();
+    const { selectedPlayer, players } = getState();
     //Already fetched and selected
     if ( selectedPlayer.isFetching || (selectedPlayer.lastUpdated && selectedPlayer.uid === playerId)){
         return;
     }
     // We fetched players
-    else if ( getState().players.lastUpdated ){
-        dispatch(selectPlayer(getState().players.data[playerId]));
+    else if ( players.lastUpdated ){
+        dispatch(setPlayer(players.data[playerId]));
     }
     //Got to fetch
     else {
-        api.getPlayer(playerId).then(player => dispatch(selectPlayer(player)), (err)=>dispatch(fetchPlayerError(err)))
+        api.getPlayer(playerId).then(player => dispatch(setPlayer(player)), (err)=>dispatch(fetchPlayerError(err)))
     }
 }
 
-export const selectPlayer = (player) => {
+export const setPlayer = (player) => {
     return {
-        type: actions.SELECT_PLAYER,
+        type: actions.SET_PLAYER,
         payload: player
     }
 }

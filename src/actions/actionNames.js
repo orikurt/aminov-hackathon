@@ -2,6 +2,6 @@ export const FETCH_PLAYERS = "FETCH_PLAYERS";
 export const SET_PLAYERS = "SET_PLAYERS";
 export const SET_LAYOUT = "SET_LAYOUT";
 export const FETCH_PLAYERS_ERROR = "FETCH_PLAYERS_ERROR";
-export const SELECT_PLAYER = "SELECT_PLAYER";
+export const SET_PLAYER = "SET_PLAYER";
 export const FETCH_PLAYER = "FETCH_PLAYER";
 export const FETCH_PLAYER_ERROR = "FETCH_PLAYER_ERROR";

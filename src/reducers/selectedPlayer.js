@@ -8,7 +8,7 @@ const initialState = {
 
 const selectedPlayer = (state=initialState, action) => {
     switch (action.type){
-        case actions.SELECT_PLAYER:
+        case actions.SET_PLAYER:
             return {
                 player: action.payload,
                 lastUpdated: Date.now(),
@@ -16,10 +16,11 @@ const selectedPlayer = (state=initialState, action) => {
             }
         
         case actions.FETCH_PLAYER:
-            return {...state, isFetching: true}
+            return {...state, isFetching: true};
 
         case actions.FETCH_PLAYER_ERROR:
-            return {...state, isFetching: false}
+            return {...state, isFetching: false};
+        
         default:
             return state;
     }
