@@ -21,7 +21,8 @@ const columns = [
     {
         Header: '',
         accessor: 'image_url',
-        Cell: props => <img src={props.value} style={imageStyle}/>
+        Cell: props => <img src={props.value} style={imageStyle}/>,
+        maxWidth: 42
     },
     {
         Header: 'Name',
@@ -30,16 +31,19 @@ const columns = [
         filterable: true
     },
     {
+        Header: 'Price',
+        accessor: 'price',
+        Cell: TextCell,
+    },    
+    {
         Header: 'Height',
         accessor: 'height',
         Cell: TextCell,
-        filterable: true
     },
     {
         Header: 'Weight',
         accessor: 'weight',
         Cell: TextCell,
-        filterable: true
     },
     {
         Header: 'Team',
@@ -75,10 +79,6 @@ const filterMethod = (filter, row, _column) => {
 }
 
 const playersList = withRouter((props) => { 
-    const data = [];
-    for (let uid in props.players){
-        data.push(props.players[uid]);
-    }
 
     const extendTrProps = (_state, rowInfo) => {
         return {
@@ -91,7 +91,7 @@ const playersList = withRouter((props) => {
     
     return ( 
         <ReactTable 
-            data={data} 
+            data={props.players} 
             columns={columns}
             showPaginationTop={true}
             defaultFilterMethod={filterMethod}

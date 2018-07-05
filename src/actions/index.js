@@ -71,3 +71,23 @@ export const fetchPlayerError = (err) => {
         payload: err
     }
 }
+
+export const fetchStocks = () => {
+    return {
+        type: actions.FETCH_STOCKS
+    }
+}
+
+export const fetchStocksError = (err) => {
+    return {
+        type: actions.FETCH_STOCKS,
+        payload: err
+    }
+}
+
+export const setStocks = (stocks) => {
+    return {
+        type: actions.SET_STOCKS,
+        payload: stocks
+    }
+}

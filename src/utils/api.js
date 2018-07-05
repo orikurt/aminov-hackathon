@@ -28,4 +28,9 @@ api.getPlayer = (playerId) => {
     .then(response=>response.player);
 }
 
+api.getStocksList = () => {
+    return fetch_local('/api/stocks')
+    .then(response=>response.stocks);
+}
+
 export default api;
