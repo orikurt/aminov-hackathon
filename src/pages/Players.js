@@ -18,7 +18,10 @@ class Players extends Component {
         return (
         <div>
             <Route path="/players" exact={true} render={(props) => (
-                <PlayersList players={this.props.players} />
+                <div>
+                    <h2>Players</h2>
+                    <PlayersList players={this.props.players} />
+                </div>
             )} />
             <Route path="/players/:playerId" component={Player} />
         </div>

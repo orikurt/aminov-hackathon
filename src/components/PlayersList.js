@@ -6,8 +6,16 @@ const imageStyle = {
     width: '30px',
     height: '45px',
     borderRadius: '15px',
-    border: '1px solid #e1b12c'    
+    border: '1px solid #e1b12c',
+    margin: '0 auto'
 }
+
+const textStyle = {
+    textAlign: 'center',
+    margin: '0 auto'
+}
+
+const TextCell = props => <div style={textStyle} >{props.value}</div>
 
 const columns = [
     {
@@ -18,32 +26,53 @@ const columns = [
     {
         Header: 'Name',
         accessor: 'name',
+        Cell: TextCell,
         filterable: true
     },
     {
         Header: 'Height',
         accessor: 'height',
+        Cell: TextCell,
         filterable: true
     },
     {
         Header: 'Weight',
         accessor: 'weight',
+        Cell: TextCell,
         filterable: true
     },
     {
         Header: 'Team',
         accessor: 'team',
+        Cell: TextCell,
         filterable: true
     },
     {
         Header: 'Exp',
-        accessor: 'experience'
+        accessor: 'experience',
+        Cell: TextCell,
     },
     {
         Header: 'Number',
-        accessor: 'number'
+        accessor: 'number',
+        Cell: TextCell,
     },
 ];
+
+const extendTdProps = () => {
+    return {
+        style: {
+            display: 'flex',
+            alignItems: 'center',
+            textAlign: 'center'
+        }
+    }
+}
+
+const filterMethod = (filter, row, _column) => {
+    const id = filter.pivotId || filter.id
+    return row[id] !== undefined ? String(row[id].toLowerCase()).startsWith(filter.value) : true
+}
 
 const playersList = withRouter((props) => { 
     const data = [];
@@ -71,20 +100,5 @@ const playersList = withRouter((props) => {
             getTdProps={extendTdProps}
         /> )
 });
-
-const extendTdProps = () => {
-    return {
-        style: {
-            display: 'flex',
-            alignItems: 'center',
-            textAlign: 'center'
-        }
-    }
-}
-
-const filterMethod = (filter, row, _column) => {
-    const id = filter.pivotId || filter.id
-    return row[id] !== undefined ? String(row[id].toLowerCase()).startsWith(filter.value) : true
-}
 
 export default playersList;
