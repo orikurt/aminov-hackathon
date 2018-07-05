@@ -6,6 +6,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './index.css';
+import 'react-table/react-table.css'
 
 ReactDOM.render(
     <Provider store={store}>

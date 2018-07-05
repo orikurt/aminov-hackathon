@@ -1,6 +1,6 @@
 import Home from '../pages/Home';
 import Notifications from '../pages/Notifications';
-import PlayersList from '../components/PlayersList';
+import Players from '../pages/Players';
 
 const routes = [
     {
@@ -23,7 +23,7 @@ const routes = [
     },            
     {
         path: "/players",
-        component: PlayersList,
+        component: Players,
         icon: "assignment_ind",
         title: "portfolio"
     },
