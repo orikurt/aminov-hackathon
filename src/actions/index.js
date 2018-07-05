@@ -2,7 +2,7 @@ import * as actions from './actionNames';
 
 export const getPlayers = () => (dispatch, getState, api) => {
     const { players } = getState();
-    if (players.isFetching || players.data.length){
+    if (players.isFetching || players.lastUpdated){
         return;
     }
     dispatch(fetchPlayers());
