@@ -98,6 +98,13 @@ const playersList = withRouter((props) => {
             className='-striped -highlight'
             getTrProps={extendTrProps}
             getTdProps={extendTdProps}
+            sorted={[{
+                id: 'price',
+                desc: true
+              }, {
+                id: 'name',
+                desc: true
+            }]}
         /> )
 });
 

@@ -13,7 +13,7 @@ class Players extends Component {
         return (
         <div>
             
-            <Route path="/players" exact={true} render={(_props) => {
+            <Route path="/players" exact={true} component={(_props) => {
                 this.props.getPlayersList();
                 this.props.getStocksList();                
                 const data = [];
@@ -27,10 +27,10 @@ class Players extends Component {
                 </div>
             )}} />
 
-            <Route path="/players/:playerId" render={(props)=>{
-                this.props.setSelectedPlayer(props.match.params.playerId);
-                return ( <Player player={ this.props.selectedPlayer }/> )
-                }} />
+            <Route path="/players/:playerId" component={(props)=>{
+                this.props.setSelectedPlayer(props.match.params.playerId)
+                return ( <Player player={ this.props.selectedPlayer } /> )
+            }} />
         </div>
         )
     }
