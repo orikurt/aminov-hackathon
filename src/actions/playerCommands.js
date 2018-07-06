@@ -7,13 +7,13 @@ export const setSelectedPlayer = (playerId) => (dispatch, getState, api) => {
         return;
     }
     // We fetched players
-    else if ( players.lastUpdated ){
+    else if ( players.lastUpdated && players.data[playerId].stats){
         dispatch(actions.setPlayer(players.data[playerId]));
     }
     //Got to fetch
     else {
         dispatch(actions.fetchPlayer(playerId));
-        api.getPlayer(playerId).then(player => dispatch(actions.setPlayer(player)), (err)=>dispatch(actions.fetchPlayerError(err)))
+        api.getPlayer(playerId).then(player => dispatch(actions.setPlayer(player)), (err)=>dispatch(actions.fetchPlayerError(err)));
     }
 }
 

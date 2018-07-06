@@ -33,4 +33,9 @@ api.getStocksList = () => {
     .then(response=>response.stocks);
 }
 
+api.getStock = (stockId) => {
+    return fetch_local(`/api/stocks/${stockId}`)
+    .then(response=>response.stock);
+}
+
 export default api;

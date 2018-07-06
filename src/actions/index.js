@@ -55,7 +55,7 @@ export const fetchStocks = () => {
 
 export const fetchStocksError = (err) => {
     return {
-        type: actions.FETCH_STOCKS,
+        type: actions.FETCH_STOCKS_ERROR,
         payload: err
     }
 }
@@ -64,5 +64,26 @@ export const setStocks = (stocks) => {
     return {
         type: actions.SET_STOCKS,
         payload: stocks
+    }
+}
+
+export const fetchStock = (stockId) => {
+    return {
+        type: actions.FETCH_STOCK,
+        payload: stockId
+    }
+}
+
+export const fetchStockError = (err) => {
+    return {
+        type: actions.FETCH_STOCK_ERROR,
+        payload: err
+    }
+}
+
+export const setStock = (stock) => {
+    return {
+        type: actions.SET_STOCK,
+        payload: stock
     }
 }

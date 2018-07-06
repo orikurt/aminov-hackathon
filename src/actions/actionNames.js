@@ -11,3 +11,7 @@ export const FETCH_PLAYER_ERROR = "FETCH_PLAYER_ERROR";
 export const SET_STOCKS = "SET_STOCKS";
 export const FETCH_STOCKS = "FETCH_STOCKS";
 export const FETCH_STOCKS_ERROR = "FETCH_STOCKS_ERROR";
+
+export const SET_STOCK = "SET_STOCK";
+export const FETCH_STOCK = "FETCH_STOCK";
+export const FETCH_STOCK_ERROR = "FETCH_STOCK_ERROR";
