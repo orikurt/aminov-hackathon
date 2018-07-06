@@ -21,7 +21,7 @@ const columns = [
     {
         Header: '',
         accessor: 'image_url',
-        Cell: props => <img src={props.value} style={imageStyle}/>,
+        Cell: props => <img src={props.value} style={imageStyle} alt="..."/>,
         maxWidth: 42
     },
     {

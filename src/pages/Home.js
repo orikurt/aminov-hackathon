@@ -1,17 +1,23 @@
-import React from 'react';
+import React , { Component } from 'react';
 import Search from '../components/Search';
 
-const Home = () => (
-    <div style={homeStyle}>
-        <div style={bannerStyle}>
-            <img 
-                style={{width: '100%', height: '100%'}} 
-                src="banner.png"
-                alt="GameTime Market" />
-        </div>
-        <Search style={searchStyle}/>
-    </div>
-)
+class Home extends Component { 
+    navigateToSelected = (selected) => {
+        this.props.history.push(`players/${selected.uid}`);
+    };
+    render(){
+        return (
+            <div style={homeStyle}>
+                <div style={bannerStyle}>
+                    <img 
+                        style={{width: '100%', height: '100%'}} 
+                        src="banner.png"
+                        alt="GameTime Market" />
+                </div>
+                <Search style={searchStyle} onChange={this.navigateToSelected}/>
+            </div>
+        )}
+}
 
 const homeStyle = {
     textAlign: 'center',

@@ -3,6 +3,7 @@ import DownShift from 'downshift';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getPlayers } from '../actions/index';
+import { Link } from 'react-router-dom';
 
 class Search extends Component{
 
@@ -18,9 +19,9 @@ class Search extends Component{
         return (
             <DownShift 
                 itemToString={item => (item ? item.name : '')}
-                onChange={(selected, state)=>{ }}
                 stateReducer={this.stateReducer}
-                defaultHighlightedIndex={0} >
+                defaultHighlightedIndex={0}
+                {... this.props} >
             {({
                 getInputProps,
                 getItemProps,
@@ -31,7 +32,7 @@ class Search extends Component{
                 highlightedIndex,
                 selectedItem,
               }) => {
-                    const { getPlayers, ...props} = this.props;
+                    const { getPlayers, onChange, ...props} = this.props;
                     return (
                     <div {...props}>
                         <div style={wrapperStyle}>
@@ -66,19 +67,22 @@ const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => 
         alignItems: 'center',
         textAlign: 'left',
         padding: '0 10px',
+        textDecoration: 'none',
+        color: '#fff'
     }                              
     return (
-    <li
+    <Link
       {...getItemProps({
         key: item.uid,
         index,
         item,
         style: listItemStyle,
+        to: `players/${item.uid}`
       })}
     >
         <img src={item.image_url} alt={item.number} style={imageStyle}/>
       {item.name}
-    </li>
+    </Link>
 )}
 
 const wrapperStyle = {
