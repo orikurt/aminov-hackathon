@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DownShift from 'downshift';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getPlayers } from '../actions/index';
+import { getPlayersList } from '../actions/playerCommands';
 import { Link } from 'react-router-dom';
 
 class Search extends Component{
@@ -12,7 +12,7 @@ class Search extends Component{
     }
 
     componentDidMount(){
-        this.props.getPlayers();
+        this.props.getPlayersList();
     }
 
     render(){
@@ -32,7 +32,7 @@ class Search extends Component{
                 highlightedIndex,
                 selectedItem,
               }) => {
-                    const { getPlayers, onChange, ...props} = this.props;
+                    const { getPlayersList, onChange, ...props} = this.props;
                     return (
                     <div {...props}>
                         <div style={wrapperStyle}>
@@ -116,7 +116,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispathToprops = (dispatch) => {
-    return bindActionCreators({ getPlayers }, dispatch)
+    return bindActionCreators({ getPlayersList }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispathToprops)(Search);

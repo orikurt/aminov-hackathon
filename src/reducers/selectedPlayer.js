@@ -1,7 +1,7 @@
 import * as actions from '../actions/actionNames'
 
 const initialState = {
-    player: null,
+    data: null,
     lastUpdated: null,
     isFetching: false
 }
@@ -10,7 +10,8 @@ const selectedPlayer = (state=initialState, action) => {
     switch (action.type){
         case actions.SET_PLAYER:
             return {
-                player: action.payload,
+                ...state,
+                data: action.payload,
                 lastUpdated: Date.now(),
                 isFetching: false
             }
