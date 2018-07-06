@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import { withRouter } from 'react-router-dom';
+import { TextCell } from '../utils/tableCells';
 
 const imageStyle = {
     width: '30px',
@@ -9,13 +10,6 @@ const imageStyle = {
     border: '1px solid #e1b12c',
     margin: '0 auto'
 }
-
-const textStyle = {
-    textAlign: 'center',
-    margin: '0 auto'
-}
-
-const TextCell = props => <div style={textStyle} >{props.value}</div>
 
 const columns = [
     {
