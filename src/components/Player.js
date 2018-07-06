@@ -3,7 +3,6 @@ import PlayerCard from '../components/PlayerCard';
 
 class Player extends Component {
     componentDidMount(){
-        console.log(this.props);
     }
     render(){
         if (this.props.player == null){
@@ -11,7 +10,7 @@ class Player extends Component {
         }
         return (
         <div>
-            <PlayerCard player={this.props.player}/>
+            <PlayerCard {...this.props}/>
         </div>
     )}
 };

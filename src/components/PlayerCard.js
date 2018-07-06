@@ -1,7 +1,8 @@
 import React from 'react';
 
 const playerCardStyle = {
-    display: 'flex'
+    display: 'flex',
+    // flexDirection: 'column'
 }
 
 const imageStyle = {
@@ -14,7 +15,10 @@ const playerCard = (props) => {
     return (
         <div style={playerCardStyle}>
             <img src={`/${props.player.image_url}`} alt={props.player.name} style={imageStyle} />
-            <h3>{props.player.name}</h3>
+            <div style={{padding: '5px'}}>
+                <h3>{props.player.name}</h3>
+                {props.stock ? <h3>{props.stock.price}$</h3> : null}
+            </div>
         </div>
     )
 }
