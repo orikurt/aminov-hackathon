@@ -7,10 +7,6 @@ import { Link } from 'react-router-dom';
 
 class Search extends Component{
 
-    stateReducer = (state, changes) => {
-        return changes;
-    }
-
     componentDidMount(){
         this.props.getPlayersList();
     }
@@ -19,7 +15,6 @@ class Search extends Component{
         return (
             <DownShift 
                 itemToString={item => (item ? item.name : '')}
-                stateReducer={this.stateReducer}
                 defaultHighlightedIndex={0}
                 {... this.props} >
             {({

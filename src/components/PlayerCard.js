@@ -24,8 +24,12 @@ const playerCard = (props) => {
         <div style={playerCardStyle}>
             <img src={`/${props.player.image_url}`} alt={props.player.name} style={imageStyle} />
             <div style={ infoStyle }>
-                { props.player ? <label style={{fontSize: '140%'}}>{props.player.name}</label> : null }
-                { props.stock ? <label style={{fontSize: '120%'}}>${props.stock.price}</label> : null}
+                { props.player ? 
+                    <label style={{fontSize: '140%'}}>
+                        {props.player.name}
+                        { props.stock ? <span style={{color: '#aaa'}}> {props.stock.symbol} </span> : null }
+                    </label> : null }
+                { props.stock ? <label style={{fontSize: '120%'}}>${numberFormat.format(props.stock.price)}</label> : null}
                 { props.player ? <label>{props.player.team}</label> : null }
                 { props.player ? <label>#{props.player.number} {props.player.height} {props.player.weight}</label> : null }
                 { props.stock ? <label><span style={{color: '#aaa'}}>Total Shares </span>{numberFormat.format(props.stock.shares)}</label> : null }
