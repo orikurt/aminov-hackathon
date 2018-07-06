@@ -64,7 +64,6 @@ const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => 
         height: '50px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
         textAlign: 'left',
         padding: '0 10px',
     }                              
@@ -102,7 +101,8 @@ const imageStyle = {
     width: '30px',
     height: '45px',
     borderRadius: '15px',
-    border: '1px solid #e1b12c'
+    border: '1px solid #e1b12c',
+    marginRight: '10px'
 }
 
 const mapStateToProps = (state) => {
