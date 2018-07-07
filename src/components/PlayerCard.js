@@ -19,7 +19,6 @@ const infoStyle = {
 }
 
 const playerCard = (props) => {
-    console.log(props)
     return (
         <div style={playerCardStyle}>
             <img src={`/${props.player.image_url}`} alt={props.player.name} style={imageStyle} />

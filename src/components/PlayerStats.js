@@ -34,8 +34,7 @@ class PlayerStats extends Component{
                             {type.replace(/_/g, ' ')}
                         </MenuItem>)) }
                 </DropdownButton>
-                <StatsTable data={this.state.data} />
-
+                <StatsTable data={this.state.data} type={this.state.statsType}/>
             </div>
         );
     }

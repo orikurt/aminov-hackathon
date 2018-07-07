@@ -2,11 +2,16 @@ import React from 'react';
 import ReactTable from 'react-table';
 import { TextCell, PercentCell } from '../utils/tableCells';
 
+const getColumnsByType = (type) => {
+    const columns = (type && type.indexOf('advanced') > -1) ? columns_advanced : columns_regular;
+    return columns
+}
+
 const StatsTable = (props) => {
     return (
         <ReactTable 
             data={props.data}
-            columns={columns}
+            columns={ getColumnsByType( props.type ) }
             className="-striped"
             showPagination={false}
             defaultPageSize={props.data.length}
@@ -14,7 +19,7 @@ const StatsTable = (props) => {
     );
 }
 
-const columns = [
+const columns_regular = [
     {
         Header: 'Season',
         accessor: 'season',
@@ -85,6 +90,69 @@ const columns = [
         accessor: 'FT%',
         Cell: PercentCell,
     },        
+];
+
+const columns_advanced = [
+    {
+        Header: 'Season',
+        accessor: 'season',
+        Cell: TextCell
+    },
+    {
+        Header: 'Team',
+        accessor: 'Tm',
+        Cell: TextCell,
+    },    
+    {
+        Header: 'Games',
+        accessor: 'G',
+        Cell: TextCell,
+    },
+    {
+        Header: 'Minutes',
+        accessor: 'MP',
+        Cell: TextCell,
+    },
+    {
+        Header: 'Usage %',
+        accessor: 'USG%',
+        Cell: TextCell,
+    },
+    {
+        Header: 'True Shooting',
+        accessor: 'TS%',
+        Cell: PercentCell,
+    },
+    {
+        Header: 'Assist %',
+        accessor: 'AST%',
+        Cell: TextCell,
+    },
+    {
+        Header: 'Rebound %',
+        accessor: 'TRB%',
+        Cell: TextCell,
+    },
+    {
+        Header: 'Steal %',
+        accessor: 'STL%',
+        Cell: TextCell,
+    },
+    {
+        Header: 'Win Shares',
+        accessor: 'WS',
+        Cell: TextCell,
+    },        
+    {
+        Header: 'Box +/-',
+        accessor: 'BPM',
+        Cell: TextCell,
+    },
+    {
+        Header: 'PER',
+        accessor: 'PER',
+        Cell: TextCell,
+    },
 ];
 
 export default StatsTable;
