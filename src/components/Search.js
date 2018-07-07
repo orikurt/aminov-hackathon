@@ -33,7 +33,7 @@ class Search extends Component{
                     <div {...props}>
                         <div style={wrapperStyle}>
                             <input 
-                                {...getInputProps({placeholder:'Find stocks, players...'})} 
+                                {...getInputProps({placeholder:'Find stocks / players...'})} 
                                 style={inputStyle} />
                             <ul {...getMenuProps({style: uListStyle})}>
                                 {isOpen
@@ -88,10 +88,10 @@ const wrapperStyle = {
 
 const inputStyle = {
     borderRadius: '3px',
-    height: '25px',
+    height: '40px',
     padding: '5px',
-    fontSize: '14px',
-    color: colors.textLowlight
+    fontSize: '16px',
+    color: colors.secondary
 }
 
 const uListStyle = {
