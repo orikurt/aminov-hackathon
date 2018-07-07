@@ -2,12 +2,13 @@ import React from 'react';
 import ReactTable from 'react-table';
 import { withRouter } from 'react-router-dom';
 import { TextCell } from '../utils/tableCells';
+import { colors } from '../utils/uiScheme';
 
 const imageStyle = {
-    width: '30px',
+    width: '32px',
     height: '45px',
-    borderRadius: '15px',
-    border: '1px solid #e1b12c',
+    borderRadius: '5px',
+    border: `1px solid ${colors.third}`,
     margin: '0 auto'
 }
 

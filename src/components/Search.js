@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getPlayersList } from '../actions/playerCommands';
 import { Link } from 'react-router-dom';
+import { colors } from '../utils/uiScheme';
 
 class Search extends Component{
 
@@ -54,7 +55,7 @@ class Search extends Component{
 const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => {
     const listItemStyle = {
         cursor: 'pointer',
-        backgroundColor: highlightedIndex === index ? '#353b48' : '',
+        backgroundColor: highlightedIndex === index ? colors.secondary : '',
         fontWeight: selectedItem === item ? 'bold' : 'normal',
         listStyle: 'none',
         height: '50px',
@@ -63,7 +64,7 @@ const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => 
         textAlign: 'left',
         padding: '0 10px',
         textDecoration: 'none',
-        color: '#fff'
+        color: colors.text
     }                              
     return (
     <Link
@@ -90,6 +91,7 @@ const inputStyle = {
     height: '25px',
     padding: '5px',
     fontSize: '14px',
+    color: colors.textLowlight
 }
 
 const uListStyle = {
@@ -97,10 +99,10 @@ const uListStyle = {
 }
 
 const imageStyle = {
-    width: '30px',
+    width: '32px',
     height: '45px',
-    borderRadius: '15px',
-    border: '1px solid #e1b12c',
+    borderRadius: '5px',
+    border: `1px solid ${colors.third}`,
     marginRight: '10px'
 }
 

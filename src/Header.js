@@ -3,13 +3,14 @@ import { Route, Link } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import LayoutToggler from './components/LayoutToggle';
 import MiniAccount from './components/MiniAccount';
+import { colors } from './utils/uiScheme';
 
 class Header extends Component{
     render(){
         return (
             <div className="headerContainer">
                 <LayoutToggler /> 
-                <Link to="/" style={{textDecoration: 'none', color: '#fff'}}><h3>Game Time</h3></Link>
+                <Link to="/" style={{textDecoration: 'none', color: colors.text}}><h3>Game Time</h3></Link>
                 <MiniAccount />
                 <div className="NavBar">
                     <Route 

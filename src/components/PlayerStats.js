@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StatsTable from './StatsTable';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import { colors } from '../utils/uiScheme';
 
 class PlayerStats extends Component{
     state = {
@@ -25,6 +26,7 @@ class PlayerStats extends Component{
                 <DropdownButton 
                     title={this.state.statsType.replace(/_/g, ' ')}
                     bsStyle="default"
+                    style={ dropdownStyle }
                     id={`dropdown-stats`} >
                     { Object.keys(this.props.stats).map((type, i)=>(
                         <MenuItem
@@ -38,6 +40,12 @@ class PlayerStats extends Component{
             </div>
         );
     }
+}
+
+const dropdownStyle = {
+    backgroundColor: colors.secondary,
+    color: colors.text,
+    borderColor: colors.textLowlight
 }
 
 export default PlayerStats;

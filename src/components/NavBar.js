@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MaterialIcon from 'material-icons-react';
 import routes from '../routes';
+import { colors } from '../utils/uiScheme';
 
 class NavBar extends Component{
 
@@ -17,7 +18,7 @@ class NavBar extends Component{
                     { routes.filter(route=>!route.navNo).map((route, index)=>(
                         <li style={LiStyle} key={index}>
                             <NavLink to={route.path} style={navAStyle}>
-                                <MaterialIcon icon={route.icon} color="#fff" size={32}/>
+                                <MaterialIcon icon={route.icon} color={colors.text} size={32}/>
                                 <div style={navLabelStyle}>{ route.title }</div>
                             </NavLink>
                         </li>
@@ -36,7 +37,7 @@ const navUlStyle = {
 const navLiStyle = {
     width: '80%',
     height: '72px',
-    color: '#fff',
+    color: colors.text,
     listStyle: 'none',
     cursor: 'pointer',
     textAlign: 'center',
