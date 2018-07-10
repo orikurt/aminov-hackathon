@@ -5,4 +5,6 @@ export const colors = {
     text: '#fff',
     textLowlight: '#aaa',
     green: '#27ae60',
+    red: '#c23616',
+    purple: '#8c7ae6',
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import NavBar from './components/NavBar';
 import LayoutToggler from './components/LayoutToggle';
+import NavBar from './components/NavBar';
 import MiniAccount from './components/MiniAccount';
 import { colors } from './utils/uiScheme';
 

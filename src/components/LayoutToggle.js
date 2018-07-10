@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MaterialIcon from 'material-icons-react';
 import { setLayout } from '../actions';
+import Tooltip from './Tooltip';
 
 class layoutToggler extends Component {
     
@@ -21,20 +22,19 @@ class layoutToggler extends Component {
     render(){
         
         return(
-            <div
-                className="toggler" 
-                onClick={this.toggler}
-                onMouseEnter={()=>{ this.setState({ spanStyle: {...spanStyle, display: 'block'} }) }} 
-                onMouseLeave={()=>{ this.setState({ spanStyle: {...spanStyle, display: 'none'} }) }}>
-                <span 
-                    style={this.state.spanStyle} 
-                    onMouseEnter={()=>{ this.setState({ spanStyle: {...spanStyle, display: 'none'} }) }} >
-                    {this.isVLO() ? "Horiz" : "Verti"} Layout</span>
-                <MaterialIcon 
-                    icon={this.isVLO() ? "web" : "burst_mode"}
-                    size={30}
-                    color="rgba(149, 165, 166, 1)"/>
-            </div>
+            <Tooltip
+                value="toggle layout"
+                id="layoutTooltip"
+                placement="left">
+                <div 
+                    className="toggler" 
+                    onClick={this.toggler} >
+                    <MaterialIcon 
+                        icon={this.isVLO() ? "web" : "burst_mode"}
+                        size={30}
+                        color="rgba(149, 165, 166, 1)"/>
+                </div>
+            </Tooltip>
         )
     }
 }

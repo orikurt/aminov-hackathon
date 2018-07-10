@@ -45,7 +45,10 @@ class PlayerStats extends Component{
 const dropdownStyle = {
     backgroundColor: colors.secondary,
     color: colors.text,
-    borderColor: colors.textLowlight
+    borderColor: colors.main,
+    width: '300px',
+    height: '40px',
+    marginTop: '15px'
 }
 
 export default PlayerStats;
