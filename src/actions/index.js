@@ -87,3 +87,10 @@ export const setStock = (stock) => {
         payload: stock
     }
 }
+
+export const postOfferSuccess = (response) => {
+    return {
+        type: actions.POST_OFFER,
+        payload: response
+    }
+}

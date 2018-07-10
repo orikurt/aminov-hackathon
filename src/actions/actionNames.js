@@ -15,3 +15,5 @@ export const FETCH_STOCKS_ERROR = "FETCH_STOCKS_ERROR";
 export const SET_STOCK = "SET_STOCK";
 export const FETCH_STOCK = "FETCH_STOCK";
 export const FETCH_STOCK_ERROR = "FETCH_STOCK_ERROR";
+
+export const POST_OFFER = "POST_OFFER";

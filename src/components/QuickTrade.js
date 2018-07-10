@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { FormControl, Button } from 'react-bootstrap';
 import MaterialIcon from 'material-icons-react';
 import Tooltip from './Tooltip';
 import { colors } from '../utils/uiScheme';
 import { percentFormat, numberFormat } from '../utils/format';
+import { postOffer } from '../actions/offerCommands';
 
 class quickTrade extends Component {
     state = {
@@ -13,6 +16,14 @@ class quickTrade extends Component {
     setShares = (e) => {
         this.setState({
             shares: parseInt(e.target.value || 0, 10)
+        });
+    }
+
+    sendOffer = (type_ask) => {
+        this.props.postOffer({
+            type_ask,
+            price: this.props.stock.price,
+            shares: this.state.shares
         });
     }
 
@@ -51,9 +62,9 @@ class quickTrade extends Component {
                     onChange={this.setShares}/>                
             </div>            
             <div style={lineStyle}>
-                <Button style={{...buttonStyle, ...buyStyle}}>Buy</Button>
+                <Button onClick={() => this.sendOffer(false)} style={{...buttonStyle, ...buyStyle}}>Buy</Button>
                 <MaterialIcon icon="import_export" color={colors.text} size={50}/>
-                <Button style={{...buttonStyle, ...sellStyle}}>Sell</Button>
+                <Button onClick={() => this.sendOffer(false)} style={{...buttonStyle, ...sellStyle}}>Sell</Button>
             </div>
         </div>
         )
@@ -91,4 +102,12 @@ const sellStyle = {
 
 const tooltipValue = "buy or sell at best avaiable price at any giver time";
 
-export default quickTrade;
+const mapStateToProps = (state) => {
+    return {};
+}
+
+const mapDispathToProps = (dispatch) => {
+    return bindActionCreators({ postOffer }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(quickTrade);
