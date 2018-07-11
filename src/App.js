@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { ToastContainer } from "react-toastify";
 import Header from './Header';
 import Content from './Content';
-import { connect } from 'react-redux';
+
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component{
   
@@ -10,9 +13,10 @@ class App extends Component{
     return (
     <div className={'App ' + this.props.layout}>
       <div className="appHeader">
-      <Header />
+        <Header />
       </div>
       <div className="appContent">
+        <ToastContainer />
         <Content />
       </div>
     </div>

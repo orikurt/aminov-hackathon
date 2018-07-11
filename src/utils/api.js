@@ -10,12 +10,12 @@ const fetch_local = (url, options={}) => {
         headers
     })
     .then(response => {
-        if (!response.ok){
-            throw new Error(response.statusText);
+        if (response.ok){
+            return response.json();
         }
-        return response.json();
+        return response.json()
+            .then(data=>{ throw new Error(data.message) });
     }).catch(err=>{
-        console.warn(err); 
         return Promise.reject(err)}
     );
 }
@@ -43,8 +43,7 @@ api.getStock = (stockId) => {
 }
 
 api.postOffer = (offer) => {
-    return fetch_local(`/api/offers`, { method: 'POST', body: JSON.stringify({ offer })})
-    .then(response=>response);
+    return fetch_local(`/api/offers`, { method: 'POST', body: JSON.stringify({ offer })});
 }
 
 export default api;
