@@ -1,5 +1,5 @@
 import * as actions from './index';
 
 export const postOffer = (offer) => (dispatch, _getState, api) => {
-    api.postOffer(offer).then(response=>dispatch(actions.postOfferSuccess(response)))
+    api.postOffer(offer).then(response=>dispatch(actions.postOfferSuccess(response)), error=>console.warn)
 };
