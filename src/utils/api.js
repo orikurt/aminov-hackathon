@@ -1,7 +1,8 @@
 import fetch from 'cross-fetch';
 
 const headers = {
-    Authorization: "X"
+    Authorization: "X",
+    "Content-Type": "application/json"
 };
 
 const fetch_local = (url, options={}) => {
@@ -42,7 +43,7 @@ api.getStock = (stockId) => {
 }
 
 api.postOffer = (offer) => {
-    return fetch_local(`/api/offers`, { method: 'POST', body: JSON.stringify(offer)})
+    return fetch_local(`/api/offers`, { method: 'POST', body: JSON.stringify({ offer })})
     .then(response=>response);
 }
 
