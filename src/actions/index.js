@@ -94,3 +94,10 @@ export const postOfferSuccess = (response) => {
         payload: response
     }
 }
+
+export const postOfferError = (error) => {
+    return {
+        type: actions.POST_OFFER_ERROR,
+        payload: error
+    }
+}

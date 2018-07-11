@@ -17,3 +17,4 @@ export const FETCH_STOCK = "FETCH_STOCK";
 export const FETCH_STOCK_ERROR = "FETCH_STOCK_ERROR";
 
 export const POST_OFFER = "POST_OFFER";
+export const POST_OFFER_ERROR = "POST_OFFER_ERROR";
