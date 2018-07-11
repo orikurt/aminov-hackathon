@@ -23,7 +23,9 @@ class quickTrade extends Component {
         this.props.postOffer({
             type_ask,
             price: this.props.stock.price,
-            shares: this.state.shares
+            uid: this.props.stock.uid,
+            quantity: this.state.shares,
+            userId: "f1f9ec28-935e-4bf0-a530-7d09407bfbd3"
         });
     }
 
@@ -64,7 +66,7 @@ class quickTrade extends Component {
             <div style={lineStyle}>
                 <Button onClick={() => this.sendOffer(false)} style={{...buttonStyle, ...buyStyle}}>Buy</Button>
                 <MaterialIcon icon="import_export" color={colors.text} size={50}/>
-                <Button onClick={() => this.sendOffer(false)} style={{...buttonStyle, ...sellStyle}}>Sell</Button>
+                <Button onClick={() => this.sendOffer(true)} style={{...buttonStyle, ...sellStyle}}>Sell</Button>
             </div>
         </div>
         )
