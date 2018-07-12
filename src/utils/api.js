@@ -46,6 +46,10 @@ api.postOffer = (offer) => {
     return fetch_local(`/api/offers`, { method: 'POST', body: JSON.stringify({ offer })});
 }
 
+api.register = (userForm) => {
+    return fetch_local('/api/users/register', {method: 'POST', body: JSON.stringify(userForm)});    
+}
+
 api.getLogin = () => {
     return fetch_local('/api/users/login');
 }

@@ -1,7 +1,7 @@
 import Home from '../pages/Home';
 import Notifications from '../pages/Notifications';
 import Players from '../pages/Players';
-
+import SignIn from '../pages/SignIn'
 const routes = [
     {
         path: "/",
@@ -9,6 +9,12 @@ const routes = [
         navNo: true,
         component: Home
     },
+    {
+        path: "/signin",
+        exact: true,
+        navNo: true,
+        component: SignIn
+    },    
     {
         path: "/notifications",
         component: Notifications,

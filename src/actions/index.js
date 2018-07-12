@@ -101,3 +101,45 @@ export const postOfferError = (error) => {
         payload: error
     }
 }
+
+export const setUser = (user) => {
+    return {
+        type: actions.SET_USER,
+        payload: user
+    }
+}
+
+export const fetchUser = (credentials) => {
+    return {
+        type: actions.FETCH_USER,
+        payload: credentials
+    }
+}
+
+export const fetchUserError = (error) => {
+    return {
+        type: actions.FETCH_USER_ERROR,
+        payload: error
+    }
+}
+
+export const postRegistration = (userForm) => {
+    return {
+        type: actions.POST_REGISTRATION,
+        payload: userForm
+    }
+}
+
+export const registrationEroor = (error) => {
+    return {
+        type: actions.REGISTER_ERROR,
+        payload: error
+    }
+}
+
+export const registrationSuccess = (user) => {
+    return {
+        type: actions.REGISTER_SUCCESS,
+        payload: user
+    }
+}
