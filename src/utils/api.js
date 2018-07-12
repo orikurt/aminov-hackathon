@@ -46,4 +46,12 @@ api.postOffer = (offer) => {
     return fetch_local(`/api/offers`, { method: 'POST', body: JSON.stringify({ offer })});
 }
 
+api.getLogin = () => {
+    return fetch_local('/api/users/login');
+}
+
+api.login = (credentials) => {
+    return fetch_local('/api/users/login', {method: 'POST', body: JSON.stringify(credentials)});
+}
+
 export default api;
