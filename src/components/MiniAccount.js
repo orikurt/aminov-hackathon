@@ -14,14 +14,22 @@ class miniAccount extends Component {
     render(){
         return (<div style={miniStyle}>
             <div>
-                <MaterialIcon icon="account_balance" color={colors.textLowlight} size={18}/>
-                <div>{this.props.user.data.cash}$</div>
+                <img 
+                    src={ this.props.user.data.imageUrl }
+                    style={imageStyle} />
+                <label>{ this.props.user.data.username }</label>
             </div>
-            <div style={vl}></div>
             <div>
-                <MaterialIcon icon="golf_course" color={colors.textLowlight} size={18}/>
-                <div>42</div>
-            </div>        
+                <div>
+                    <MaterialIcon icon="account_balance" color={colors.textLowlight} size={18}/>
+                    <div>{this.props.user.data.cash}$</div>
+                </div>
+                <div style={vl}></div>
+                <div>
+                    <MaterialIcon icon="golf_course" color={colors.textLowlight} size={18}/>
+                    <div>42</div>
+                </div>        
+            </div>
         </div>
     )}
 }
@@ -35,10 +43,18 @@ const vl = {
 
 const miniStyle = {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-evenly',
     color: colors.green,
     width: '100px'
+}
+
+const imageStyle = {
+    width: '80px',
+    height: '80px',
+    border: `1px solid ${colors.third}`,
+    borderRadius: '5px'
 }
 
 const mapStateToProps = (state) => {
