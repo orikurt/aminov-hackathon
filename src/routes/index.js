@@ -10,11 +10,23 @@ const routes = [
         component: Home
     },
     {
-        path: "/signin",
+        path: "/login",
         exact: true,
         navNo: true,
         component: SignIn
     },    
+    {
+        path: "/register",
+        exact: true,
+        navNo: true,
+        component: SignIn
+    },
+    {
+        path: "/forgotpassword",
+        exact: true,
+        navNo: true,
+        component: SignIn
+    },        
     {
         path: "/notifications",
         component: Notifications,

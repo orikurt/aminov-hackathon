@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import { FormControl, FormGroup, ControlLabel, HelpBlock, Button } from 'react-bootstrap';
 import { register } from '../actions/userCommands';
 
@@ -70,7 +71,10 @@ class RegistrationForm extends React.Component {
             <Button 
                 type="submit" 
                 bsStyle="success"
-                onClick={ this.submit } >Register</Button>
+                onClick={ this.submit } >
+                Register
+            </Button>
+            <Link to="/login" style={{ float: 'right' }}>login</Link>
         </form>
       );
     }

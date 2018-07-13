@@ -164,3 +164,23 @@ export const loginSuccess = (user) => {
         payload: user
     }
 }
+
+export const postForgotPassword = (userForm) => {
+    return {
+        type: actions.POST_FORGOT_PASSWORD,
+        payload: userForm
+    }
+}
+
+export const forgotPasswordError = (error) => {
+    return {
+        type: actions.FORGOT_PASSWORD_ERROR,
+        payload: error
+    }
+}
+
+export const forgotPasswordSuccess = () => {
+    return {
+        type: actions.FORGOT_PASSWORD_SUCCESS,
+    }
+}

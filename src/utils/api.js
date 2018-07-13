@@ -58,4 +58,8 @@ api.postLogin = (credentials) => {
     return fetch_local('/api/users/login', {method: 'POST', body: JSON.stringify(credentials)});
 }
 
+api.postForgotPassword = (credentials) => {
+    return fetch_local('/api/users/forgotpassword', {method: 'POST', body: JSON.stringify(credentials)});
+}
+
 export default api;

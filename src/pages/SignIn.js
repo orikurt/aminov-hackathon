@@ -4,6 +4,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import RegistrationForm from '../components/RegistrationForm';
 import LoginForm from '../components/LoginForm';
 import Banner from '../components/Banner';
+import ForgotPasswordForm from '../components/ForgotPasswordForm';
 
 const headerStyle = {
     textAlign: 'center',
@@ -24,18 +25,24 @@ const formStyle = {
             <div>
                 <Banner />
                 <Switch>
-                    <Route path="" render={()=>(
+                    <Route path="/login" render={()=>(
                         <div>
-                            <h3 style={ headerStyle }>Sign In</h3>
+                            <h3 style={ headerStyle }>Log In</h3>
                             <LoginForm style={ formStyle }/>
                         </div>
                     )} />                    
-                    <Route path="" render={()=>(
+                    <Route path="/register" render={()=>(
                         <div>
                             <h3 style={ headerStyle }>Register</h3>
                             <RegistrationForm style={ formStyle }/>
                         </div>
-                    )} />                    
+                    )} />
+                    <Route path="/forgotpassword" render={()=>(
+                        <div>
+                            <h3 style={ headerStyle }>Reset Password</h3>
+                            <ForgotPasswordForm style={ formStyle }/>
+                        </div>
+                    )} />                                        
                 </Switch>
             </div>
         )

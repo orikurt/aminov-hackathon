@@ -33,3 +33,14 @@ export const login = (userForm) => (dispatch, _getState, api) => {
             dispatch(actions.loginError(error))
     );
 }
+
+export const sendForgotPassword = (userForm) => (dispatch, _getState, api) => {
+    dispatch(actions.postForgotPassword(userForm));
+    api.postForgotPassword(userForm)
+    .then(
+        _res=>{ 
+            dispatch(actions.forgotPasswordSuccess()) }, 
+        error=>
+            dispatch(actions.forgotPasswordError(error))
+    );
+}

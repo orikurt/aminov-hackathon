@@ -3,32 +3,21 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { FormControl, ControlLabel, Button } from 'react-bootstrap';
-import { login } from '../actions/userCommands';
+import { sendForgotPassword } from '../actions/userCommands';
 
 class LoginForm extends React.Component {
   
     state = {
-        user: '',
-        password: '',
+        email: '',
     };
-  
-    getValidationState = () => {
-      const length = this.state.password.length;
-      if (length > 10) return 'success';
-      else if (length > 5) return 'warning';
-      else if (length > 0) return 'error';
-      return null;
-    }
-  
-    handleChange = (e, key) => {
-        let newState = {};
-        newState[key] = e.target.value;
-        this.setState(newState);
+    
+    handleChange = (e) => {
+        this.setState({email: e.target.value});
     }
 
     submit = (e) => {
         e.preventDefault();
-        this.props.login(this.state);
+        this.props.sendForgotPassword(this.state);
     }
   
     render() {
@@ -42,22 +31,17 @@ class LoginForm extends React.Component {
               style={ controlStyle }
               onChange={(e)=>this.handleChange(e, 'user')}
             />
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-            type="password"
-            style={ controlStyle }
-            value={this.state.password}
-            autoComplete='current-password'
-            placeholder="Password..."
-            onChange={(e)=>this.handleChange(e, 'password')}
-            />                        
             <FormControl.Feedback />
             <Button 
                 type="submit" 
                 bsStyle="success"
-                onClick={ this.submit } >Login
+                onClick={ this.submit } >Submit
             </Button>
-            <Link to="/forgotpassword" style={{ float: 'right' }}>Forgot password?</Link>
+            <div style={{ float: 'right' }}>
+                <Link to="/login">login</Link>
+                <span> / </span>
+                <Link to="/register">register</Link>
+            </div>
         </form>
       );
     }
@@ -68,7 +52,7 @@ const controlStyle = {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ login }, dispatch);
+    return bindActionCreators({ sendForgotPassword }, dispatch);
 }
 
 export default connect(()=>({}), mapDispatchToProps)(LoginForm);
