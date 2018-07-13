@@ -7,6 +7,10 @@ import { colors } from '../utils/uiScheme';
 
 class miniAccount extends Component {
 
+    componentDidMount(){
+        this.props.getUser();
+    }
+    
     render(){
         return (<div style={miniStyle}>
             <div>

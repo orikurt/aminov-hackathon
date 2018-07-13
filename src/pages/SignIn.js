@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import RegistrationForm from '../components/RegistrationForm';
 import Banner from '../components/Banner';
 
@@ -12,12 +14,25 @@ const formStyle = {
     margin: '0 auto'
 }
 
-export default function (){
-    return (
-        <div>
-            <Banner />
-            <h3 style={ headerStyle }>Register</h3>
-            <RegistrationForm style={ formStyle }/>
-        </div>
-    )
+ class SignIn extends Component {
+     render(){
+        if (this.props.user.signedIn) {
+            return ( <Redirect to="/"/> )
+        }
+        return (
+            <div>
+                <Banner />
+                <h3 style={ headerStyle }>Register</h3>
+                <RegistrationForm style={ formStyle }/>
+            </div>
+        )
+    }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(SignIn);

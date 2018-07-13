@@ -3,6 +3,7 @@ import * as actions from '../actions/actionNames';
 const initialState = {
     isFetching: false,
     lastUpdated: null,
+    signedIn: null,
     data: {}
 }
 
@@ -17,8 +18,10 @@ export default function users(state=initialState, action){
             return { ...state, isFetching: false }
 
         case actions.SET_USER:
+            return { ...state, data: action.payload, lastUpdated: Date.now(), isFetching: false };
+        
         case actions.REGISTER_SUCCESS:
-            return { ...state, data: action.payload, lastUpdated: Date.now(), isFetching: false }
+            return { ...state, signedIn: Date.now() };
             
         default:
             return state;
