@@ -23,11 +23,11 @@ class LoginForm extends React.Component {
     render() {
       return (
         <form style={ this.props.style }>
-            <ControlLabel>Email / Username</ControlLabel>
+            <ControlLabel>Email</ControlLabel>
             <FormControl
               type="text"
               value={this.state.user}
-              placeholder="Email / Username..."
+              placeholder="Email..."
               style={ controlStyle }
               onChange={(e)=>this.handleChange(e, 'user')}
             />
