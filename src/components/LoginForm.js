@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { FormControl, FormGroup, ControlLabel, HelpBlock, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { FormControl, ControlLabel, Button } from 'react-bootstrap';
 import { login } from '../actions/userCommands';
 
 class LoginForm extends React.Component {
@@ -32,7 +33,7 @@ class LoginForm extends React.Component {
   
     render() {
       return (
-        <form style={this.props.style}>
+        <form style={ this.props.style }>
             <ControlLabel>Email / Username</ControlLabel>
             <FormControl
               type="text"
@@ -54,7 +55,9 @@ class LoginForm extends React.Component {
             <Button 
                 type="submit" 
                 bsStyle="success"
-                onClick={ this.submit } >Login</Button>
+                onClick={ this.submit } >Login
+            </Button>
+            <Link to="" style={{ float: 'right' }}>Forgot password?</Link>
         </form>
       );
     }
