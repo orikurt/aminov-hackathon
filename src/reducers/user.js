@@ -1,4 +1,5 @@
 import * as actions from '../actions/actionNames';
+import { toast } from 'react-toastify';
 
 const initialState = {
     isFetching: false,
@@ -11,6 +12,8 @@ export default function users(state=initialState, action){
     switch(action.type){
         case actions.FETCH_USER:
         case actions.POST_REGISTRATION:
+        case actions.POST_LOGIN:
+        case actions.POST_FORGOT_PASSWORD:
             return { ...state, isFetching: true }
         
         case actions.FETCH_USER_ERROR:
@@ -23,8 +26,16 @@ export default function users(state=initialState, action){
         
         case actions.REGISTER_SUCCESS:
         case actions.LOGIN_SUCCESS:
-            return { ...state, signedIn: Date.now() };
-            
+            return { ...state, signedIn: Date.now(), isFetching: false };
+
+        case actions.FORGOT_PASSWORD_SUCCESS:
+        case actions.FORGOT_PASSWORD_ERROR:
+            toast.success(`A reset password link has been sent to ${action.payload.email}`, {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 4000
+            });
+            return { ...state, isFetching: false }
+
         default:
             return state;
     }

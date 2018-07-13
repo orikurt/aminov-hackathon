@@ -35,7 +35,8 @@ class LoginForm extends React.Component {
             <Button 
                 type="submit" 
                 bsStyle="success"
-                onClick={ this.submit } >Submit
+                onClick={ this.submit }
+                disabled={ this.props.user.isFetching || !this.state.email } >Submit
             </Button>
             <div style={{ float: 'right' }}>
                 <Link to="/login">login</Link>
@@ -51,9 +52,15 @@ const controlStyle = {
     margin: '10px 0'
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ sendForgotPassword }, dispatch);
 }
 
-export default connect(()=>({}), mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
   

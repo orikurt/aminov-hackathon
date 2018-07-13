@@ -71,10 +71,14 @@ class RegistrationForm extends React.Component {
             <Button 
                 type="submit" 
                 bsStyle="success"
-                onClick={ this.submit } >
+                onClick={ this.submit }
+                disabled={ this.props.user.isFetching } >
                 Register
             </Button>
-            <Link to="/login" style={{ float: 'right' }}>login</Link>
+            <div style={{ float: 'right' }} >
+                <span>already have an account? </span>
+                <Link to="/login">login</Link>
+            </div>
         </form>
       );
     }
@@ -84,9 +88,15 @@ const controlStyle = {
     margin: '10px 0'
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ register }, dispatch);
 }
 
-export default connect(()=>({}), mapDispatchToProps)(RegistrationForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);
   

@@ -39,8 +39,8 @@ export const sendForgotPassword = (userForm) => (dispatch, _getState, api) => {
     api.postForgotPassword(userForm)
     .then(
         _res=>{ 
-            dispatch(actions.forgotPasswordSuccess()) }, 
-        error=>
-            dispatch(actions.forgotPasswordError(error))
+            dispatch(actions.forgotPasswordSuccess(userForm)) }, 
+        _error=>
+            dispatch(actions.forgotPasswordError(userForm))
     );
 }

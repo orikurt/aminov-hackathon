@@ -55,9 +55,16 @@ class LoginForm extends React.Component {
             <Button 
                 type="submit" 
                 bsStyle="success"
-                onClick={ this.submit } >Login
+                onClick={ this.submit }
+                disabled={ this.props.user.isFetching } >Login
             </Button>
-            <Link to="/forgotpassword" style={{ float: 'right' }}>Forgot password?</Link>
+            <div style={{ float: 'right' }}>
+                <Link to="/forgotpassword">Forgot password?</Link>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginTop: '15px'}}>
+                <ControlLabel>Don't have an account? </ControlLabel>
+                <Link to="/register"><Button bsStyle="info" > Sign up </Button></Link>
+            </div>
         </form>
       );
     }
@@ -67,9 +74,15 @@ const controlStyle = {
     margin: '10px 0'
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ login }, dispatch);
 }
 
-export default connect(()=>({}), mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
   
