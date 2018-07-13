@@ -54,7 +54,7 @@ api.getLogin = () => {
     return fetch_local('/api/users/login');
 }
 
-api.login = (credentials) => {
+api.postLogin = (credentials) => {
     return fetch_local('/api/users/login', {method: 'POST', body: JSON.stringify(credentials)});
 }
 

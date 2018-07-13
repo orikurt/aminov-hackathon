@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import RegistrationForm from '../components/RegistrationForm';
+import LoginForm from '../components/LoginForm';
 import Banner from '../components/Banner';
 
 const headerStyle = {
@@ -22,8 +23,20 @@ const formStyle = {
         return (
             <div>
                 <Banner />
-                <h3 style={ headerStyle }>Register</h3>
-                <RegistrationForm style={ formStyle }/>
+                <Switch>
+                    <Route path="" render={()=>(
+                        <div>
+                            <h3 style={ headerStyle }>Sign In</h3>
+                            <LoginForm style={ formStyle }/>
+                        </div>
+                    )} />                    
+                    <Route path="" render={()=>(
+                        <div>
+                            <h3 style={ headerStyle }>Register</h3>
+                            <RegistrationForm style={ formStyle }/>
+                        </div>
+                    )} />                    
+                </Switch>
             </div>
         )
     }

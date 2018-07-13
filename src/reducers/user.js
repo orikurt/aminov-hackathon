@@ -15,12 +15,14 @@ export default function users(state=initialState, action){
         
         case actions.FETCH_USER_ERROR:
         case actions.REGISTER_ERROR:
+        case actions.LOGIN_ERROR:
             return { ...state, isFetching: false }
 
         case actions.SET_USER:
             return { ...state, data: action.payload, lastUpdated: Date.now(), isFetching: false };
         
         case actions.REGISTER_SUCCESS:
+        case actions.LOGIN_SUCCESS:
             return { ...state, signedIn: Date.now() };
             
         default:

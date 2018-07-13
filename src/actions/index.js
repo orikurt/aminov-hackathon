@@ -130,7 +130,7 @@ export const postRegistration = (userForm) => {
     }
 }
 
-export const registrationEroor = (error) => {
+export const registrationError = (error) => {
     return {
         type: actions.REGISTER_ERROR,
         payload: error
@@ -140,6 +140,27 @@ export const registrationEroor = (error) => {
 export const registrationSuccess = (user) => {
     return {
         type: actions.REGISTER_SUCCESS,
+        payload: user
+    }
+}
+
+export const postLogin = (userForm) => {
+    return {
+        type: actions.POST_LOGIN,
+        payload: userForm
+    }
+}
+
+export const loginError = (error) => {
+    return {
+        type: actions.LOGIN_ERROR,
+        payload: error
+    }
+}
+
+export const loginSuccess = (user) => {
+    return {
+        type: actions.LOGIN_SUCCESS,
         payload: user
     }
 }

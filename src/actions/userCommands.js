@@ -18,6 +18,18 @@ export const register = (userForm) => (dispatch, _getState, api) => {
             dispatch(actions.setUser(user)); 
             dispatch(actions.registrationSuccess(user)) }, 
         error=>
-            dispatch(actions.registrationEroor(error))
+            dispatch(actions.registrationError(error))
+    );
+}
+
+export const login = (userForm) => (dispatch, _getState, api) => {
+    dispatch(actions.postLogin(userForm));
+    api.postLogin(userForm)
+    .then(
+        user=>{ 
+            dispatch(actions.setUser(user)); 
+            dispatch(actions.loginSuccess(user)) }, 
+        error=>
+            dispatch(actions.loginError(error))
     );
 }
