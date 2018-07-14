@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormControl, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import MaterialIcon from 'material-icons-react';
 import Tooltip from './Tooltip';
 import { colors } from '../utils/uiScheme';
@@ -62,11 +63,15 @@ class quickTrade extends Component {
                     type="number" 
                     value={this.state.shares} 
                     onChange={this.setShares}/>                
-            </div>            
+            </div>
             <div style={lineStyle}>
+            { this.props.user.signedIn ? (
                 <Button onClick={() => this.sendOffer(false)} style={{...buttonStyle, ...buyStyle}}>Buy</Button>
+            ) : (<Link to="/register"> <Button style={{...buttonStyle, ...buyStyle}}>Buy</Button> </Link>)}
                 <MaterialIcon icon="import_export" color={colors.text} size={50}/>
+            { this.props.user.signedIn ? (
                 <Button onClick={() => this.sendOffer(true)} style={{...buttonStyle, ...sellStyle}}>Sell</Button>
+            ) : (<Link to="/register"> <Button style={{...buttonStyle, ...sellStyle}}>Sell</Button> </Link>)}
             </div>
         </div>
         )
