@@ -50,6 +50,9 @@ export default function users(state=initialState, action){
             });
             return { ...state, isFetching: false }
 
+        case actions.SIGNIN_REDIRECT:
+            return { ...state, shouldRedirect: false };
+            
         default:
             return state;
     }

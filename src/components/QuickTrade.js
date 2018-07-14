@@ -10,7 +10,7 @@ import { postOffer } from '../actions/offerCommands';
 
 class quickTrade extends Component {
     state = {
-        shares: Math.floor(this.props.stock.shares/10) || 0
+        shares: Math.floor(this.props.stock.shares/1000) || 0
     }
 
     setShares = (e) => {
