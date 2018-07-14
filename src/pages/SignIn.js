@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import RegistrationForm from '../components/RegistrationForm';
 import LoginForm from '../components/LoginForm';
 import Banner from '../components/Banner';
 import ForgotPasswordForm from '../components/ForgotPasswordForm';
+import { signInRedirect } from '../actions';
 
 const headerStyle = {
     textAlign: 'center',
@@ -17,8 +19,14 @@ const formStyle = {
 }
 
  class SignIn extends Component {
+     componentWillUnmount(){
+        if ( this.props.user.shouldRedirect ) {
+            this.props.signInRedirect();
+        }
+     }
+
      render(){
-        if ( (Date.now() - this.props.user.signedIn) < 10000 ) {
+        if ( this.props.user.shouldRedirect ) {
             return ( <Redirect to="/"/> )
         }
         return (
@@ -56,4 +64,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(SignIn);
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        signInRedirect
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

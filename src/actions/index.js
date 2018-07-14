@@ -219,3 +219,10 @@ export const forgotPasswordSuccess = () => {
         type: actions.FORGOT_PASSWORD_SUCCESS,
     }
 }
+
+export const signInRedirect = (path) => {
+    return {
+        type: actions.SIGNIN_REDIRECT,
+        payload: path
+    }
+}

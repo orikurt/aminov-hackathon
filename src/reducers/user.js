@@ -6,6 +6,7 @@ const initialState = {
     lastUpdated: null,
     signedIn: null,
     signedOut: null,
+    shouldRedirect: false,
     data: {}
 }
 
@@ -35,9 +36,11 @@ export default function users(state=initialState, action){
             return { ...state, data: {}, signedOut: Date.now(), signedIn: null, isFetching: false};
 
         case actions.FETCH_USER_SUCCESS:
+            return { ...state, signedIn: Date.now(), isFetching: false };
+
         case actions.REGISTER_SUCCESS:
         case actions.LOGIN_SUCCESS:
-            return { ...state, signedIn: Date.now(), isFetching: false };
+            return { ...state, signedIn: Date.now(), isFetching: false, shouldRedirect: true };
 
         case actions.FORGOT_PASSWORD_SUCCESS:
         case actions.FORGOT_PASSWORD_ERROR:

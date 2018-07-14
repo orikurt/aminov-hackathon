@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import MaterialIcon from 'material-icons-react';
 import { Glyphicon } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 import { getUser } from '../actions/userCommands';

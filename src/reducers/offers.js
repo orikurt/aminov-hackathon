@@ -13,7 +13,8 @@ const offersReducer = (state=initialState, action) => {
             toast.success('Offer posted successfuly', {
                 position: toast.POSITION.TOP_CENTER,
                 autoClose: 5000
-            });                        
+            });
+            return {...state, isFetching: false};  
         case actions.POST_OFFER_ERROR:
             toast.error(action.payload, {
                 position: toast.POSITION.TOP_CENTER,
