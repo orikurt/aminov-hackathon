@@ -20,7 +20,9 @@ export const POST_OFFER = "POST_OFFER";
 export const POST_OFFER_ERROR = "POST_OFFER_ERROR";
 
 export const SET_USER = "SET_USER";
+
 export const FETCH_USER = "FETCH_USER";
+export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
 export const FETCH_USER_ERROR = "FETCH_USER_ERROR";
 
 export const POST_REGISTRATION = "POST_REGISTRATION";

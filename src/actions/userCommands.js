@@ -7,7 +7,12 @@ export const getUser = () => (dispatch, getState, api) => {
     }
     dispatch(actions.fetchUser());
     api.getLogin()
-    .then(user=>dispatch(actions.setUser(user)), error=>dispatch(actions.fetchUserError(error)));
+    .then(
+        user=>{
+            dispatch(actions.setUser(user))
+            dispatch(actions.fetchUserSuccess())},
+        error=>
+            dispatch(actions.fetchUserError(error)));
 }
 
 export const register = (userForm) => (dispatch, _getState, api) => {

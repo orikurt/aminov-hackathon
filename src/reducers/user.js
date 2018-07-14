@@ -29,11 +29,12 @@ export default function users(state=initialState, action){
             return { ...state, isFetching: false };
 
         case actions.SET_USER:
-            return { ...state, data: action.payload, lastUpdated: Date.now(), isFetching: false };
+            return { ...state, data: action.payload, lastUpdated: Date.now() };
         
         case actions.LOGOUT_SUCCESS:
             return { ...state, data: {}, signedOut: Date.now(), signedIn: null, isFetching: false};
 
+        case actions.FETCH_USER_SUCCESS:
         case actions.REGISTER_SUCCESS:
         case actions.LOGIN_SUCCESS:
             return { ...state, signedIn: Date.now(), isFetching: false };

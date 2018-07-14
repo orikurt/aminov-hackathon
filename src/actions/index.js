@@ -116,8 +116,14 @@ export const fetchUser = (credentials) => {
     }
 }
 
+export const fetchUserSuccess = (user) => {
+    return {
+        type: actions.FETCH_USER_SUCCESS,
+        payload: user
+    }
+}
+
 export const fetchUserError = (error) => {
-    console.warn("EEERRR", error);
     return {
         type: actions.FETCH_USER_ERROR,
         payload: error

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { FormControl, ControlLabel, Button } from 'react-bootstrap';
 import { login } from '../actions/userCommands';
+import SignUpButton from './SignUpButton';
 
 class LoginForm extends React.Component {
   
@@ -63,7 +64,7 @@ class LoginForm extends React.Component {
             </div>
             <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginTop: '15px'}}>
                 <ControlLabel>Don't have an account? </ControlLabel>
-                <Link to="/register"><Button bsStyle="info" > Sign up </Button></Link>
+                <SignUpButton />
             </div>
         </form>
       );

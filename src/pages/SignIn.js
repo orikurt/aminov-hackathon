@@ -18,7 +18,7 @@ const formStyle = {
 
  class SignIn extends Component {
      render(){
-        if (this.props.user.signedIn) {
+        if ( (Date.now() - this.props.user.signedIn) < 10000 ) {
             return ( <Redirect to="/"/> )
         }
         return (
@@ -27,6 +27,7 @@ const formStyle = {
                 <Switch>
                     <Route path="/login" render={()=>(
                         <div>
+
                             <h3 style={ headerStyle }>Log In</h3>
                             <LoginForm style={ formStyle }/>
                         </div>
