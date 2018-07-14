@@ -117,6 +117,7 @@ export const fetchUser = (credentials) => {
 }
 
 export const fetchUserError = (error) => {
+    console.warn("EEERRR", error);
     return {
         type: actions.FETCH_USER_ERROR,
         payload: error
@@ -161,6 +162,27 @@ export const loginError = (error) => {
 export const loginSuccess = (user) => {
     return {
         type: actions.LOGIN_SUCCESS,
+        payload: user
+    }
+}
+
+export const postLogout = (userForm) => {
+    return {
+        type: actions.POST_LOGOUT,
+        payload: userForm
+    }
+}
+
+export const logoutError = (error) => {
+    return {
+        type: actions.LOGOUT_ERROR,
+        payload: error
+    }
+}
+
+export const logoutSuccess = (user) => {
+    return {
+        type: actions.LOGOUT_SUCCESS,
         payload: user
     }
 }

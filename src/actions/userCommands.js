@@ -34,6 +34,17 @@ export const login = (userForm) => (dispatch, _getState, api) => {
     );
 }
 
+export const logout = () => (dispatch, _getState, api) => {
+    dispatch(actions.postLogout());
+    api.postLogout()
+    .then(
+        ()=>{ 
+            dispatch(actions.logoutSuccess()) }, 
+        error=>
+            dispatch(actions.logoutError(error))        
+    )
+}
+
 export const sendForgotPassword = (userForm) => (dispatch, _getState, api) => {
     dispatch(actions.postForgotPassword(userForm));
     api.postForgotPassword(userForm)

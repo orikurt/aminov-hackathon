@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MaterialIcon from 'material-icons-react';
+import { Glyphicon } from 'react-bootstrap';
 import { getUser } from '../actions/userCommands';
 import { colors } from '../utils/uiScheme';
+import LogoutButton  from './LogoutButton';
 
 class miniAccount extends Component {
 
@@ -31,6 +33,7 @@ class miniAccount extends Component {
                     <div>{ this.props.user.data.points }</div>
                 </div>        
             </div>
+            < LogoutButton />
         </div>
     )}
 }

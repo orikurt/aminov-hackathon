@@ -58,6 +58,10 @@ api.postLogin = (credentials) => {
     return fetch_local('/api/users/login', {method: 'POST', body: JSON.stringify(credentials)});
 }
 
+api.postLogout = () => {
+    return fetch_local('/api/users/logout', {method: 'POST'});
+}
+
 api.postForgotPassword = (credentials) => {
     return fetch_local('/api/users/forgotpassword', {method: 'POST', body: JSON.stringify(credentials)});
 }
