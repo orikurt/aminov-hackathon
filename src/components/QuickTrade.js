@@ -25,7 +25,7 @@ class quickTrade extends Component {
             price: this.props.stock.price,
             uid: this.props.stock.uid,
             quantity: this.state.shares,
-            userId: "f1f9ec28-935e-4bf0-a530-7d09407bfbd3"
+            userId: this.props.user.data.userId
         });
     }
 
@@ -105,7 +105,9 @@ const sellStyle = {
 const tooltipValue = "buy or sell at best avaiable price at any giver time";
 
 const mapStateToProps = (state) => {
-    return {};
+    return {
+        user: state.user
+    };
 }
 
 const mapDispathToProps = (dispatch) => {
