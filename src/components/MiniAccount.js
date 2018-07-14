@@ -12,22 +12,23 @@ class miniAccount extends Component {
     }
     
     render(){
-        return (<div style={miniStyle}>
+        return (
+        <div>
             <div>
                 <img 
                     src={ this.props.user.data.imageUrl }
                     style={imageStyle} />
                 <label>{ this.props.user.data.username }</label>
             </div>
-            <div>
+            <div style={balancesStyle}>
                 <div>
                     <MaterialIcon icon="account_balance" color={colors.textLowlight} size={18}/>
-                    <div>{this.props.user.data.cash}$</div>
+                    <div>{ this.props.user.data.cash }$</div>
                 </div>
                 <div style={vl}></div>
                 <div>
                     <MaterialIcon icon="golf_course" color={colors.textLowlight} size={18}/>
-                    <div>42</div>
+                    <div>{ this.props.user.data.points }</div>
                 </div>        
             </div>
         </div>
@@ -35,15 +36,14 @@ class miniAccount extends Component {
 }
 
 const vl = {
-    width: '1px',
+    width: '2px',
     height: '32px',
     color: 'rgba(149, 165, 166, 0.3)',
     borderRight: '1px solid'
 }
 
-const miniStyle = {
+const balancesStyle = {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-evenly',
     color: colors.green,
@@ -51,8 +51,8 @@ const miniStyle = {
 }
 
 const imageStyle = {
-    width: '80px',
-    height: '80px',
+    width: '60px',
+    height: '60px',
     border: `1px solid ${colors.third}`,
     borderRadius: '5px'
 }
