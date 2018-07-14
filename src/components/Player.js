@@ -1,6 +1,6 @@
 import React from 'react';
 import PlayerCard from './PlayerCard';
-import PlayerStats from './PlayerStats';
+import RealWorldStats from './RealWorldStats';
 import QuickTrade from './QuickTrade';
 
 const Player = (props) => {
@@ -11,7 +11,9 @@ const Player = (props) => {
         <div>
             <PlayerCard {...props} />
             {props.stock ? <QuickTrade stock={props.stock} /> : null}
-            <PlayerStats stats={props.player.stats} />
+            <div>
+                <RealWorldStats stats={props.player.stats} />
+            </div>
         </div>
     )}
 
