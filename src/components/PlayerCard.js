@@ -20,29 +20,34 @@ const infoStyle = {
     lineHeight: '30px'
 }
 
+const spanStyle = {
+    color: colors.textLowlight,
+    fontSize: '12px'
+}
+
 const playerCard = (props) => {
     return (
         <div style={playerCardStyle}>
             <img src={`/${props.player.image_url}`} alt={props.player.name} style={imageStyle} />
             <div style={ infoStyle }>
                 { props.player ? 
-                    <label style={{fontSize: '140%'}}>
+                    <label style={{fontSize: '16px'}}>
                         {props.player.name}
-                        { props.stock ? <span style={{color: colors.textLowlight}}> {props.stock.symbol} </span> : null }
+                        { props.stock ? <span style={{ color: colors.textLowlight }}> {props.stock.symbol} </span> : null }
                     </label> : null }
                 { props.player ? <label>{props.player.team}</label> : null }
                 { props.player ? <label>#{props.player.number} {props.player.height} {props.player.weight}</label> : null }
                 { props.player ? <label>
-                    <span style={{color: colors.textLowlight}}>Experience </span>
+                    <span style={ spanStyle }>Experience </span>
                     <span>{props.player.experience}</span>
                 </label> : null }
                 { props.stock ? <label >
-                    <span style={{color: colors.textLowlight}}>Last Price </span>
-                    <span style={{fontSize: '18px', color: colors.third}}>${numberFormat.format(props.stock.price)}</span>
+                    <span style={ spanStyle }>Last Price </span>
+                    <span style={{fontSize: '16px', color: colors.third}}>${numberFormat.format(props.stock.price)}</span>
                 </label> : null}
                 { props.stock ? <label>
-                    <span style={{color: colors.textLowlight}}>Total Shares </span>
-                    <span style={{fontSize: '18px'}}>{numberFormat.format(props.stock.shares)}</span>
+                    <span style={ spanStyle }>Total Shares </span>
+                    <span style={{fontSize: '16px'}}>{numberFormat.format(props.stock.shares)}</span>
                 </label> : null }
             </div>
         </div>

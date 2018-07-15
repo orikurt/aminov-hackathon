@@ -16,7 +16,7 @@
 
 .VLO .appHeader{
     float: left;
-    min-width: 100px;
+    min-width: 80px;
     height: 100%;
     overflow: auto;
     text-align: center;
@@ -38,6 +38,7 @@
     flex-direction: column;
     text-align: right;
     position: absolute;
+    z-index: 1;
     top: 5px;
     right: 5px;
     cursor: pointer;

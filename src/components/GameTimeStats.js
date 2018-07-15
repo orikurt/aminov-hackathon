@@ -14,7 +14,8 @@ const gameTimeStats = (props) => {
             defaultPageSize={gameTimeData.length}
             getTrProps={getTrProps}
             getTdProps={getTdProps}
-            getTheadProps={getThProps}        
+            getTheadProps={getThProps}
+            getTheadGroupProps={getTheadGroupProps}
             style={tableStyle} />
         <ReactTable
             data={marketData}
@@ -25,6 +26,7 @@ const gameTimeStats = (props) => {
             getTrProps={getTrProps}
             getTdProps={getTdProps}
             getTheadProps={getThProps}
+            getTheadGroupProps={getTheadGroupProps}
             style={tableStyle} />
     </div>);
 }
@@ -115,19 +117,33 @@ const getTrProps = ()=>({
         borderRadius: '3px',
         height: '50px',
         lineHeight: '40px',
+        backgroundColor: colors.black,
     }
 })
 
-const getTdProps = ()=>({
-    style: {
-        fontSize: '18px',
+const getTdProps = (state, rowInfo, column, instance) =>{
+    console.log(column);
+    return {
+        style: {
+            fontSize: '15px',
+            borderRight: `1px solid ${colors.darkGray}`
+        }
     }
-})
+}
 
 const getThProps = ()=>({
     style: {
         borderRadius: '3px',
+        fontSize: '12px',
         backgroundColor: colors.darkGray,
+    }
+})
+
+const getTheadGroupProps = () => ({
+    style: {
+        borderRadius: '3px',
+        fontSize: '14px',
+        // backgroundColor: colors.black,
     }
 })
 

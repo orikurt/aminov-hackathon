@@ -46,15 +46,15 @@ class quickTrade extends Component {
             </div>
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Best price</span>
-                <label style={{fontSize: '22px', color: colors.green}} >$ {numberFormat.format(this.props.stock.price)}</label>
+                <label style={{fontSize: '18px', color: colors.green}} >$ {numberFormat.format(this.props.stock.price)}</label>
             </div>
             <div style={lineStyle}>
                 <span style={{ color: colors.textLowlight }}>Equity worth</span>
-                <label style={{ fontSize: '18px' }} >{ percentFormat(this.state.shares / this.props.stock.shares) }%</label>
+                <label style={{ fontSize: '16px' }} >{ percentFormat(this.state.shares / this.props.stock.shares) }%</label>
             </div>
             <div style={lineStyle}>
                 <span style={{ color: colors.textLowlight }}>Estimated value</span>
-                <label style={{ fontSize: '18px', color: colors.third }}>$ {numberFormat.format(this.props.stock.price * this.state.shares)}</label>
+                <label style={{ fontSize: '16px', color: colors.third }}>$ {numberFormat.format(this.props.stock.price * this.state.shares)}</label>
             </div>
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Shares Quantity</span>
@@ -100,7 +100,7 @@ const inputStyle = {
 const buttonStyle = {
     width: '120px',
     height: '50px',
-    fontSize: '20px'
+    fontSize: '18px'
 }
 
 const buyStyle = {

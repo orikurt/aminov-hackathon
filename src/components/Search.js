@@ -90,7 +90,7 @@ const inputStyle = {
     borderRadius: '3px',
     height: '40px',
     padding: '5px',
-    fontSize: '16px',
+    fontSize: '14px',
     color: colors.secondary
 }
 

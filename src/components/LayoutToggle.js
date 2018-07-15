@@ -15,10 +15,6 @@ class layoutToggler extends Component {
         this.isVLO() ? this.props.setLayout("HLO") : this.props.setLayout("VLO")
     }
     
-    state = {
-        spanStyle
-    }
-
     render(){
         
         return(
@@ -49,15 +45,6 @@ const mapDispatchToProps = (dispath) => {
     return bindActionCreators({
         setLayout: setLayout
     }, dispath);
-}
-
-const spanStyle = {
-    position: 'absolute',
-    top: '30px',
-    right: '2px',
-    fontSize: '12px',
-    color: 'rgba(255,255,255, 0.7)',
-    display: 'none'
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(layoutToggler);

@@ -24,6 +24,7 @@ class RegistrationForm extends React.Component {
     handleChange = (e, key) => {
         let newState = {};
         newState[key] = e.target.value;
+        key === "email" ? newState.username = e.target.value.split("@")[0] : null;
         this.setState(newState);
     }
 
@@ -35,14 +36,6 @@ class RegistrationForm extends React.Component {
     render() {
       return (
         <form style={this.props.style}>
-            <ControlLabel>Select Username</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.username}
-              placeholder="Username..."
-              style={ controlStyle }
-              onChange={(e)=>this.handleChange(e, 'username')}
-            />
             <ControlLabel>Enter your Email</ControlLabel>
             <FormControl
               type="email"
@@ -68,6 +61,14 @@ class RegistrationForm extends React.Component {
                 <FormControl.Feedback />
                 <HelpBlock>Password should be at least 6 characters.</HelpBlock>
             </FormGroup>
+            <ControlLabel>Select Username (optional)</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.username}
+              placeholder="Username..."
+              style={ controlStyle }
+              onChange={(e)=>this.handleChange(e, 'username')}
+            />            
             <Button 
                 type="submit" 
                 bsStyle="success"

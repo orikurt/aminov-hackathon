@@ -30,7 +30,7 @@ class Player extends React.Component {
                     </div>
                 </div>
                 <div style={ rowStyle }>
-                    <div style={{ minWidth: '350px', fontSize: '100%'}}>
+                    <div style={{ minWidth: '350px' }}>
                         {this.props.stock ? <QuickTrade stock={this.props.stock} /> : null}
                     </div>
                 </div>
@@ -43,8 +43,7 @@ class Player extends React.Component {
 }
 
 const tableStyle = {
-    width: '1000px',
-    fontSize: '16px'
+    width: '800px',
 }
 
 const containerStyle = {
