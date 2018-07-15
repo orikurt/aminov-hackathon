@@ -42,7 +42,7 @@ const playerCard = (props) => {
                 </label> : null}
                 { props.stock ? <label>
                     <span style={{color: colors.textLowlight}}>Total Shares </span>
-                    <span style={{fontSize: '18px', color: colors.third}}>{numberFormat.format(props.stock.shares)}</span>
+                    <span style={{fontSize: '18px'}}>{numberFormat.format(props.stock.shares)}</span>
                 </label> : null }
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import { TextCell, PercentCell } from '../utils/tableCells';
+import { colors } from '../utils/uiScheme';
 
 const gameTimeStats = (props) => {
     return (
@@ -12,6 +13,8 @@ const gameTimeStats = (props) => {
         className="-striped"
         showPagination={false}
         defaultPageSize={testData.length}
+        getTdProps={getTdProps}
+        getTheadProps={getThProps}
         style={tableStyle} />
     </div>);
 }
@@ -57,6 +60,18 @@ const columns = [
         Cell: TextCell,
     },     
 ]
+
+const getTdProps = ()=>({
+    style: {
+        fontSize: '18px'
+    }
+})
+
+const getThProps = ()=>({
+    style: {
+        color: colors.textLowlight
+    }
+})
 
 const testData = [{
     priceRank: 5,

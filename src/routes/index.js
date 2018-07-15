@@ -1,6 +1,7 @@
 import Home from '../pages/Home';
 import Notifications from '../pages/Notifications';
 import Players from '../pages/Players';
+import Player from '../pages/Player';
 import SignIn from '../pages/SignIn'
 const routes = [
     {
@@ -42,9 +43,17 @@ const routes = [
     {
         path: "/players",
         component: Players,
+        exact: true,
         icon: "assignment_ind",
         title: "portfolio"
     },
+    {
+        path: "/players/:playerId",
+        component: Player,
+        navNo: true,
+        icon: "assignment_ind",
+        title: "portfolio"
+    },    
     {
         path: "/stats",
         component: Home,

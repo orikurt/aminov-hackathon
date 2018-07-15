@@ -59,7 +59,7 @@ class quickTrade extends Component {
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Shares</span>
                 <FormControl 
-                    style={{width:'180px'}} 
+                    style={inputStyle} 
                     type="number" 
                     value={this.state.shares} 
                     onChange={this.setShares}/>                
@@ -92,9 +92,15 @@ const lineStyle = {
     margin: '2px 0',  
 }
 
+const inputStyle = {
+    width: '180px',
+    fontSize: '18px'
+}
+
 const buttonStyle = {
     width: '120px',
-    height: '50px'
+    height: '50px',
+    fontSize: '20px'
 }
 
 const buyStyle = {

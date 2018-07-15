@@ -4,6 +4,8 @@ const initialState = {
     isFetching: false,
     data: {},
     stats: {},
+    list: [],
+    playersList: [],
     lastUpdated: null
 }
 
@@ -18,7 +20,7 @@ const playersReducer = (state=initialState, action) => {
             return {...state, isFetching: false};            
         
         case actions.SET_PLAYERS:
-            const newState = {...state, isFetching: false, lastUpdated: Date.now(), data: action.payload.reduce((players, player)=>{
+            const newState = {...state, isFetching: false, lastUpdated: Date.now(), list: action.payload, data: action.payload.reduce((players, player)=>{
                 players[player.uid] = players[player.uid] || player;
                 return players;
             }, {...state.data})}  

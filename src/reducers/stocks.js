@@ -3,7 +3,8 @@ import * as actions from '../actions/actionNames'
 const initialState = {
     isFetching: false,
     lastUpdated: null,
-    data: {}
+    data: {},
+    list: []
 };
 
 const stocks = (state=initialState, action) => {
@@ -19,7 +20,8 @@ const stocks = (state=initialState, action) => {
                 ...state,
                 isFetching: false, 
                 lastUpdated: Date.now(),
-                data
+                data,
+                list: action.payload
             }
         default:
             return state;

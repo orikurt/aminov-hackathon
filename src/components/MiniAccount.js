@@ -21,7 +21,7 @@ class miniAccount extends Component {
         }
         return (
         <div>
-            <div>
+            <div style={ userBoxStyle }>
                 <Image
                     src={ this.props.user.data.imageUrl }
                     style={imageStyle}
@@ -33,7 +33,7 @@ class miniAccount extends Component {
                     <Glyphicon glyph="piggy-bank" style={{color: colors.textLowlight}} size={18}/>
                     <div>{ this.props.user.data.cash }$</div>
                 </div>
-                <div style={vl}></div>
+                <div style={horizonatlLine}></div>
                 <div>
                 <Glyphicon glyph="tower" style={{color: colors.textLowlight}} size={18}/>
                     <div>{ this.props.user.data.points }</div>
@@ -43,7 +43,13 @@ class miniAccount extends Component {
     )}
 }
 
-const vl = {
+const userBoxStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+}
+
+const horizonatlLine = {
     height: '2px',
     width: '90%',
     color: 'rgba(149, 165, 166, 0.3)',
