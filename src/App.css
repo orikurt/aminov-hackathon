@@ -16,7 +16,7 @@
 
 .VLO .appHeader{
     float: left;
-    width: 100px;
+    min-width: 100px;
     height: 100%;
     overflow: auto;
     text-align: center;
@@ -24,7 +24,7 @@
 
 .HLO .appHeader{
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     overflow: hidden;
 }
 
