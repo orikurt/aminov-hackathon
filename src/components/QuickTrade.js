@@ -11,13 +11,19 @@ import { postOffer } from '../actions/offerCommands';
 
 class quickTrade extends Component {
     state = {
-        shares: Math.floor(this.props.stock.shares/1000) || 0
+        shares: Math.round(this.props.stock.shares/1000) || 0
     }
 
     setShares = (e) => {
         this.setState({
             shares: parseInt(e.target.value || 0, 10)
         });
+    }
+
+    setQuantity = (quantity) => {
+        this.setState({
+            shares: Math.round( (this.props.user.data.cash * quantity) / this.props.stock.price )
+        })
     }
 
     sendOffer = (type_ask) => {
@@ -40,7 +46,7 @@ class quickTrade extends Component {
                     id="quickTrade"
                     placement="left">
                     <div>
-                        <MaterialIcon icon="help_outline" color={colors.purple} size={24}/>
+                        <MaterialIcon icon="help_outline" color={colors.darkBlue} size={24}/>
                     </div>
                 </Tooltip>
             </div>
@@ -63,6 +69,15 @@ class quickTrade extends Component {
                     type="number" 
                     value={this.state.shares} 
                     onChange={this.setShares}/>                
+            </div>
+            <div style={lineStyle} >
+                <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.01)}>1%</label>
+                <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.05)}>5%</label>
+                <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.1)}>10%</label>
+                <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.25)}>25%</label>
+                <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.50)}>50%</label>
+                <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.75)}>75%</label>
+                <label style={quantitiesStyle} onClick={()=>this.setQuantity(1)}>100%</label>
             </div>
             <div style={lineStyle}>
             { this.props.user.signedIn ? (
@@ -111,6 +126,13 @@ const buyStyle = {
 const sellStyle = {
     background: colors.third,
     borderColor: colors.third,
+}
+
+const quantitiesStyle = {
+    cursor: 'pointer',
+    border: `1px  dashed ${colors.lightGray}`,
+    padding: '5px',
+    marginTop: '5px'
 }
 
 const tooltipValue = "buy or sell at best avaiable price at any giver time";

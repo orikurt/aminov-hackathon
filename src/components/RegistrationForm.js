@@ -24,7 +24,9 @@ class RegistrationForm extends React.Component {
     handleChange = (e, key) => {
         let newState = {};
         newState[key] = e.target.value;
-        key === "email" ? newState.username = e.target.value.split("@")[0] : null;
+        if (key === "email") {
+            newState.username = e.target.value.split("@")[0];
+        }
         this.setState(newState);
     }
 
@@ -36,10 +38,9 @@ class RegistrationForm extends React.Component {
     render() {
       return (
         <form style={this.props.style}>
-            <ControlLabel>Enter your Email</ControlLabel>
+            <ControlLabel style={ controlStyle }>Enter your Email</ControlLabel>
             <FormControl
               type="email"
-              style={ controlStyle }
               value={this.state.email}
               autoComplete='email'
               placeholder="Email..."
@@ -49,24 +50,23 @@ class RegistrationForm extends React.Component {
                 controlId="registrationForm"
                 validationState={this.getValidationState()}
             >
-                <ControlLabel>Select Password</ControlLabel>
+                <ControlLabel style={ controlStyle }>Select Password</ControlLabel>
+                <FormControl.Feedback style={{ top: '40px' }} />
                 <FormControl
                 type="password"
-                style={ controlStyle }
                 value={this.state.password}
                 autoComplete='new-password'
                 placeholder="Password..."
                 onChange={(e)=>this.handleChange(e, 'password')}
                 />                        
-                <FormControl.Feedback />
-                <HelpBlock>Password should be at least 6 characters.</HelpBlock>
+                <HelpBlock>Password should be at least 6-10 characters.</HelpBlock>
             </FormGroup>
-            <ControlLabel>Select Username (optional)</ControlLabel>
+            <ControlLabel style={ controlStyle }>Select Username (optional)</ControlLabel>
             <FormControl
               type="text"
               value={this.state.username}
+              style={{ marginBottom: '20px' }}
               placeholder="Username..."
-              style={ controlStyle }
               onChange={(e)=>this.handleChange(e, 'username')}
             />            
             <Button 

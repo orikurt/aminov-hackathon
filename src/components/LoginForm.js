@@ -40,6 +40,7 @@ class LoginForm extends React.Component {
               type="text"
               value={this.state.user}
               placeholder="Email / Username..."
+              autoComplete="username"
               style={ controlStyle }
               onChange={(e)=>this.handleChange(e, 'user')}
             />

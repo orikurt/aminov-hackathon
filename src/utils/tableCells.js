@@ -1,5 +1,6 @@
 import React from 'react';
 import { percentFormat } from './format';
+
 const textStyle = {
     textAlign: 'center',
     margin: '0 auto'
