@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import { TextCell, PercentCell } from '../utils/tableCells';
+import { TextCell, StockCell } from '../utils/tableCells';
 import { colors } from '../utils/uiScheme';
 
 const gameTimeStats = (props) => {
@@ -41,32 +41,33 @@ const gameTimeColumns = [{
     {
         Header: 'Points rank',
         accessor: 'pointsRank',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
     },    
     {
         Header: 'GT Points/game',
         accessor: 'pointsPerGame',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
     },
     {
         Header: 'Cost per point',
         accessor: 'pricePointRatio',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
     },
     {
         Header: 'Total Points - Season',
         accessor: 'pointsEarnedSeason',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
     },
     {
         Header: 'Season projection',
         accessor: 'seasonProjection',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
     },
     {
         Header: 'Career points',
         accessor: 'pointsEarnedCareer',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
+        last: true
     },
 ]
 }];
@@ -77,37 +78,38 @@ const marketColumns =[{
     {
         Header: 'Price rank',
         accessor: 'priceRank',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
     },    
     {
         Header: '1D Trend',
         accessor: 'trendDay',
-        Cell: PercentCell,
+        Cell: StockCell
     },
     {
         Header: '1W Trend',
         accessor: 'trendWeek',
-        Cell: PercentCell,
+        Cell: StockCell,
     },
     {
         Header: '1M Trend',
         accessor: 'trendMonth',
-        Cell: PercentCell,
+        Cell: StockCell
     },
     {
         Header: 'Season Trend',
         accessor: 'trendSeason',
-        Cell: PercentCell,
+        Cell: StockCell
     },    
     {
         Header: 'Season Dividends',
         accessor: 'seasonDividends',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
     },
     {
         Header: 'Lifetime Dividends',
         accessor: 'lifetimeDividends',
-        Cell: TextCell,
+        Cell: (props)=>(<TextCell {...props}/>),
+        last: true
     },     
 ]
 }];
@@ -121,12 +123,11 @@ const getTrProps = ()=>({
     }
 })
 
-const getTdProps = (state, rowInfo, column, instance) =>{
-    console.log(column);
+const getTdProps = (_state, _rowInfo, column) =>{
     return {
         style: {
             fontSize: '15px',
-            borderRight: `1px solid ${colors.darkGray}`
+            borderRight: `1px solid ${column.last ? colors.black : colors.darkGray}`
         }
     }
 }

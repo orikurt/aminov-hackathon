@@ -46,7 +46,7 @@ class quickTrade extends Component {
                     id="quickTrade"
                     placement="left">
                     <div>
-                        <MaterialIcon icon="help_outline" color={colors.darkBlue} size={24}/>
+                        <MaterialIcon icon="help_outline" color={colors.darkGray} size={24}/>
                     </div>
                 </Tooltip>
             </div>
@@ -132,7 +132,8 @@ const quantitiesStyle = {
     cursor: 'pointer',
     border: `1px  dashed ${colors.lightGray}`,
     padding: '5px',
-    marginTop: '5px'
+    marginTop: '5px',
+    backgroundColor: colors.black
 }
 
 const tooltipValue = "buy or sell at best avaiable price at any giver time";
