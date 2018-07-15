@@ -30,12 +30,12 @@ class miniAccount extends Component {
             </div>
             <div style={balancesStyle}>
                 <div>
-                    <Glyphicon glyph="piggy-bank" style={{color: colors.textLowlight}} size={18}/>
+                    <Glyphicon glyph="piggy-bank" style={{color: colors.textLowlight, fontSize: '22px'}} />
                     <div>{ this.props.user.data.cash }$</div>
                 </div>
                 <div style={horizonatlLine}></div>
                 <div>
-                <Glyphicon glyph="tower" style={{color: colors.textLowlight}} size={18}/>
+                <Glyphicon glyph="tower" style={{color: colors.textLowlight, fontSize: '22px'}} />
                     <div>{ this.props.user.data.points }</div>
                 </div>        
             </div>

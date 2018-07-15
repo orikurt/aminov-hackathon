@@ -5,7 +5,6 @@ import PlayerCard from '../components/PlayerCard';
 import RealWorldStats from '../components/RealWorldStats';
 import QuickTrade from '../components/QuickTrade';
 import GameTimeStats from '../components/GameTimeStats';
-import MarketStats from '../components/MarketStats';
 import { setSelectedStock } from '../actions/stockCommands';
 import { setSelectedPlayer } from '../actions/playerCommands';
 
@@ -28,7 +27,6 @@ class Player extends React.Component {
                     </div>
                     <div >
                         <GameTimeStats style={ tableStyle } />
-                        <MarketStats style={ tableStyle } />
                     </div>
                 </div>
                 <div style={ rowStyle }>
