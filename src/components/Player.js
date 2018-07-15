@@ -18,7 +18,7 @@ const Player = (props) => {
                 <GameTimeStats style={ tableStyle } />
                 <MarketStats style={ tableStyle } />
             </div>
-            <div style={{ minWidth: '350px', flexGrow: 0}}>
+            <div style={{ minWidth: '350px', fontSize: '100%'}}>
                 {props.stock ? <QuickTrade stock={props.stock} /> : null}
             </div>
             <div style={{ width: '100%' }}>

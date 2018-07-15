@@ -46,16 +46,16 @@ class quickTrade extends Component {
             </div>
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Best price</span>
-                <label style={{fontSize: '18px'}} >${numberFormat.format(this.props.stock.price)}</label>
-            </div>
-            <div style={lineStyle}>
-                <span style={{ color: colors.textLowlight }}>Estimated value</span>
-                <label>${numberFormat.format(this.props.stock.price * this.state.shares)}</label>
+                <label style={{fontSize: '22px', color: colors.green}} >$ {numberFormat.format(this.props.stock.price)}</label>
             </div>
             <div style={lineStyle}>
                 <span style={{ color: colors.textLowlight }}>Equity worth</span>
                 <label>{ percentFormat(this.state.shares / this.props.stock.shares) }%</label>
-            </div>                        
+            </div>
+            <div style={lineStyle}>
+                <span style={{ color: colors.textLowlight }}>Estimated value</span>
+                <label style={{fontSize: '18px', color: colors.third}}>$ {numberFormat.format(this.props.stock.price * this.state.shares)}</label>
+            </div>
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Shares</span>
                 <FormControl 

@@ -30,11 +30,20 @@ const playerCard = (props) => {
                         {props.player.name}
                         { props.stock ? <span style={{color: colors.textLowlight}}> {props.stock.symbol} </span> : null }
                     </label> : null }
-                { props.stock ? <label style={{fontSize: '120%'}}>${numberFormat.format(props.stock.price)}</label> : null}
                 { props.player ? <label>{props.player.team}</label> : null }
                 { props.player ? <label>#{props.player.number} {props.player.height} {props.player.weight}</label> : null }
-                { props.stock ? <label><span style={{color: colors.textLowlight}}>Total Shares </span>{numberFormat.format(props.stock.shares)}</label> : null }
-                { props.player ? <label><span style={{color: colors.textLowlight}}>Experience </span>{props.player.experience}</label> : null }
+                { props.player ? <label>
+                    <span style={{color: colors.textLowlight}}>Experience </span>
+                    <span>{props.player.experience}</span>
+                </label> : null }
+                { props.stock ? <label >
+                    <span style={{color: colors.textLowlight}}>Last Price </span>
+                    <span style={{fontSize: '18px', color: colors.third}}>${numberFormat.format(props.stock.price)}</span>
+                </label> : null}
+                { props.stock ? <label>
+                    <span style={{color: colors.textLowlight}}>Total Shares </span>
+                    <span style={{fontSize: '18px', color: colors.third}}>{numberFormat.format(props.stock.shares)}</span>
+                </label> : null }
             </div>
         </div>
     )
