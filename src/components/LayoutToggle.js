@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import MaterialIcon from 'material-icons-react';
+import { Glyphicon } from 'react-bootstrap';
 import { setLayout } from '../actions';
 import Tooltip from './Tooltip';
 
@@ -25,10 +25,12 @@ class layoutToggler extends Component {
                 <div 
                     className="toggler" 
                     onClick={this.toggler} >
-                    <MaterialIcon 
-                        icon={this.isVLO() ? "web" : "burst_mode"}
-                        size={30}
-                        color="rgba(149, 165, 166, 1)"/>
+                    <Glyphicon 
+                        glyph={this.isVLO() ? "object-align-vertical" : "object-align-horizontal"}
+                        style={{
+                            fontSize: '30px',
+                            color: "rgba(149, 165, 166, 1)"
+                        }} />
                 </div>
             </Tooltip>
         )

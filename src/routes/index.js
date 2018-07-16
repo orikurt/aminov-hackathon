@@ -11,6 +11,11 @@ const routes = [
         component: Home
     },
     {
+        path: "/account",
+        component: Home,
+        navNo: true
+    },    
+    {
         path: "/login",
         exact: true,
         navNo: true,
@@ -31,52 +36,51 @@ const routes = [
     {
         path: "/notifications",
         component: Notifications,
-        icon: "notifications",
-        title: "notifications"
+        icon: "bell",
+        title: "Notifications"
     },
     {
         path: "/exchange",
         component: Home,
-        icon: "import_export",
-        title: "exchange"
-    },            
+        icon: "transfer",
+        title: "Exchange"
+    },                
     {
         path: "/players",
         component: Players,
         exact: true,
-        icon: "assignment_ind",
-        title: "portfolio"
+        icon: "blackboard",
+        title: "Portfolio"
     },
     {
         path: "/players/:playerId",
         component: Player,
         navNo: true,
-        icon: "assignment_ind",
-        title: "portfolio"
+        exact: true
     },    
     {
         path: "/stats",
         component: Home,
-        icon: "bar_chart",
-        title: "stats"
+        icon: "stats",
+        title: "Stats"
     },    
     {
         path: "/rankings",
         component: Home,
-        icon: "grade",
-        title: "power ranking"
+        icon: "sort-by-attributes",
+        title: "Power Ranking"
+    },
+    {
+        path: "/board",
+        component: Home,
+        icon: "bullhorn",
+        title: "Bulletin Board"
     },        
     {
         path: "/friends",
         component: Home,
-        icon: "people",
-        title: "friends"
-    },    
-    {
-        path: "/account",
-        component: Home,
-        icon: "perm_identity",
-        title: "account"
+        icon: "user",
+        title: "Friends"
     },
 ]
 

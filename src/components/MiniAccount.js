@@ -35,7 +35,7 @@ class miniAccount extends Component {
                 </div>
                 <div style={horizonatlLine}></div>
                 <div>
-                <Glyphicon glyph="tower" style={{color: colors.textLowlight, fontSize: '20px'}} />
+                <Glyphicon glyph="equalizer" style={{color: colors.textLowlight, fontSize: '20px'}} />
                     <div>{ this.props.user.data.points }</div>
                 </div>        
             </div>

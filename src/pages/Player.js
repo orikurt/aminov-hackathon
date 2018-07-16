@@ -43,7 +43,6 @@ class Player extends React.Component {
 const searchStyle = { 
     width: '300px', 
     float: 'right',
-    marginRight: '30px',
     marginBottom: '10px'
 }
 

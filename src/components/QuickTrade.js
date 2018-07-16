@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { FormControl, Button } from 'react-bootstrap';
+import { FormControl, Button, Glyphicon } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import MaterialIcon from 'material-icons-react';
 import Tooltip from './Tooltip';
 import { colors } from '../utils/uiScheme';
 import { percentFormat, numberFormat } from '../utils/format';
@@ -46,7 +45,7 @@ class quickTrade extends Component {
                     id="quickTrade"
                     placement="left">
                     <div>
-                        <MaterialIcon icon="help_outline" color={colors.darkGray} size={24}/>
+                        <Glyphicon glyph="question-sign" style={{ color: colors.darkGray, fontSize: '24px'}}/>
                     </div>
                 </Tooltip>
             </div>
@@ -86,7 +85,7 @@ class quickTrade extends Component {
             { this.props.user.signedIn ? (
                 <Button onClick={() => this.sendOffer(false)} style={{...buttonStyle, ...buyStyle}}>Buy</Button>
             ) : (<Link to="/register"> <Button style={{...buttonStyle, ...buyStyle}}>Buy</Button> </Link>)}
-                <MaterialIcon icon="import_export" color={colors.text} size={50}/>
+                <Glyphicon glyph="transfer" style={{ color: colors.text, fontSize: '32px'}} />
             { this.props.user.signedIn ? (
                 <Button onClick={() => this.sendOffer(true)} style={{...buttonStyle, ...sellStyle}}>Sell</Button>
             ) : (<Link to="/register"> <Button style={{...buttonStyle, ...sellStyle}}>Sell</Button> </Link>)}
