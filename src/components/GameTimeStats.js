@@ -1,33 +1,36 @@
 import React from 'react';
 import ReactTable from 'react-table';
+import Collapsable from './Collapsable'
 import { TextCell, StockCell } from '../utils/tableCells';
 import { colors } from '../utils/uiScheme';
 
 const gameTimeStats = (props) => {
     return (
     <div style={ props.style }>
-        <ReactTable
-            data={gameTimeData}
-            columns={gameTimeColumns}
-            className="-striped"
-            showPagination={false}
-            defaultPageSize={gameTimeData.length}
-            getTrProps={getTrProps}
-            getTdProps={getTdProps}
-            getTheadProps={getThProps}
-            getTheadGroupProps={getTheadGroupProps}
-            style={tableStyle} />
-        <ReactTable
-            data={marketData}
-            columns={marketColumns}
-            className="-striped"
-            showPagination={false}
-            defaultPageSize={marketData.length}
-            getTrProps={getTrProps}
-            getTdProps={getTdProps}
-            getTheadProps={getThProps}
-            getTheadGroupProps={getTheadGroupProps}
-            style={tableStyle} />
+        <Collapsable  minHeight="26px" expanded={true} style={tableStyle} >
+            <ReactTable
+                data={gameTimeData}
+                columns={gameTimeColumns}
+                className="-striped"
+                showPagination={false}
+                defaultPageSize={gameTimeData.length}
+                getTrProps={getTrProps}
+                getTdProps={getTdProps}
+                getTheadProps={getThProps}
+                getTheadGroupProps={getTheadGroupProps} />
+        </Collapsable>
+        <Collapsable minHeight="26px" expanded={true} style={tableStyle} >
+            <ReactTable
+                data={marketData}
+                columns={marketColumns}
+                className="-striped"
+                showPagination={false}
+                defaultPageSize={marketData.length}
+                getTrProps={getTrProps}
+                getTdProps={getTdProps}
+                getTheadProps={getThProps}
+                getTheadGroupProps={getTheadGroupProps} />
+        </Collapsable>
     </div>);
 }
 

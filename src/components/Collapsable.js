@@ -16,6 +16,7 @@ class Collapsable extends Component {
             toggleStyle: {
                 cursor: 'pointer',
                 position: 'absolute',
+                zIndex: 1,
                 right: this.props.toggleRight || '15px',
                 top: this.props.toggleTop || midHeight(this.props.minHeight || this.minHeight)
             }                
@@ -38,7 +39,7 @@ class Collapsable extends Component {
 
     render(){
         return (
-            <div style={{ height: this.state.height, overflow: 'hidden', position: 'relative' }}>
+            <div style={{ ...this.props.style, height: this.state.height, overflow: 'hidden', position: 'relative' }}>
                 <Glyphicon 
                     glyph={ this.state.expanded ? "minus" : "plus" }
                     onClick={()=> this.state.expanded ? this.collapse() : this.expand() } 
