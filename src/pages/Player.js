@@ -7,6 +7,7 @@ import QuickTrade from '../components/QuickTrade';
 import GameTimeStats from '../components/GameTimeStats';
 import { setSelectedStock } from '../actions/stockCommands';
 import { setSelectedPlayer } from '../actions/playerCommands';
+import Search from '../components/Search';
 
 class Player extends React.Component {
 
@@ -22,16 +23,13 @@ class Player extends React.Component {
         return (
             <div style={containerStyle}>
                 <div style={ rowStyle }>
-                    <div style={{ minWidth: '350px' }}>
+                    <div style={{ ...columnStyle, width: '350px' }}>
                         <PlayerCard {...this.props} />
-                    </div>
-                    <div >
-                        <GameTimeStats style={ tableStyle } />
-                    </div>
-                </div>
-                <div style={ rowStyle }>
-                    <div style={{ minWidth: '350px' }}>
                         {this.props.stock ? <QuickTrade stock={this.props.stock} /> : null}
+                    </div>
+                    <div style={{ ...columnStyle, flexGrow: '1' }}>
+                        <Search style={ searchStyle } />
+                        <GameTimeStats />
                     </div>
                 </div>
                 <div style={ rowStyle }>
@@ -42,8 +40,11 @@ class Player extends React.Component {
     }
 }
 
-const tableStyle = {
-    width: '800px',
+const searchStyle = { 
+    width: '300px', 
+    float: 'right',
+    marginRight: '30px',
+    marginBottom: '10px'
 }
 
 const containerStyle = {
@@ -56,7 +57,13 @@ const containerStyle = {
 
 const rowStyle = {
     width: '100%',
-    display: 'flex'
+    display: 'flex',
+    justifyContent: 'space-evenly'
+}
+
+const columnStyle = {
+    displey: 'flex',
+    flexDirection: 'column',
 }
 
 const mapStateToProps = (state) => {

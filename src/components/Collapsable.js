@@ -5,7 +5,7 @@ class Collapsable extends Component {
     
     state = {}
 
-    minHeight = '64px';
+    minHeight = '55px';
     
     componentWillMount(){
         this.setState({

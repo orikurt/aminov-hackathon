@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DownShift from 'downshift';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Glyphicon, FormControl } from 'react-bootstrap';
 import { getPlayersList } from '../actions/playerCommands';
 import { Link } from 'react-router-dom';
 import { colors } from '../utils/uiScheme';
@@ -32,9 +33,13 @@ class Search extends Component{
                     return (
                     <div {...props}>
                         <div style={wrapperStyle}>
-                            <input 
-                                {...getInputProps({placeholder:'Find stocks / players...'})} 
-                                style={inputStyle} />
+                            <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+                                <FormControl 
+                                    {...getInputProps({placeholder:'Find stocks / players...'})} 
+                                    style={inputStyle} >
+                                </FormControl>
+                                <Glyphicon glyph="search" style={ glyphStyle }/>
+                            </div>
                             <ul {...getMenuProps({style: uListStyle})}>
                                 {isOpen
                                 ? Object.keys(this.props.items)
@@ -76,14 +81,16 @@ const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => 
         to: `players/${item.uid}`
       })}
     >
-        <img src={item.image_url} alt={item.number} style={imageStyle}/>
+        <img src={`/${item.image_url}`} alt={item.number} style={imageStyle}/>
       {item.name}
     </Link>
 )}
 
 const wrapperStyle = {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    position: 'relative',
+    color: colors.secondary
 }
 
 const inputStyle = {
@@ -91,11 +98,16 @@ const inputStyle = {
     height: '40px',
     padding: '5px',
     fontSize: '14px',
-    color: colors.secondary
+    flexGrow: '1',
 }
 
 const uListStyle = {
-    padding: 0
+    padding: 0,
+    position: 'absolute',
+    top: '42px',
+    zIndex: 1,
+    backgroundColor: colors.black,
+    width: '100%'
 }
 
 const imageStyle = {
@@ -104,6 +116,12 @@ const imageStyle = {
     borderRadius: '5px',
     border: `1px solid ${colors.third}`,
     marginRight: '10px'
+}
+
+const glyphStyle = {
+    position: 'absolute',
+    right: '15px',
+    top: '14px'
 }
 
 const mapStateToProps = (state) => {
