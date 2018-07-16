@@ -8,12 +8,20 @@ import GameTimeStats from '../components/GameTimeStats';
 import { setSelectedStock } from '../actions/stockCommands';
 import { setSelectedPlayer } from '../actions/playerCommands';
 import Search from '../components/Search';
+import { colors } from '../utils/uiScheme';
 
 class Player extends React.Component {
 
     componentDidMount(){
         this.props.setSelectedPlayer(this.props.match.params.playerId);
         this.props.setSelectedStock(this.props.match.params.playerId);
+    }
+
+    componentWillReceiveProps(props){
+        if(props.match.params.playerId !== this.props.match.params.playerId){
+            this.props.setSelectedPlayer(props.match.params.playerId);
+            this.props.setSelectedStock(props.match.params.playerId);
+        }
     }
 
     render(){
@@ -23,7 +31,7 @@ class Player extends React.Component {
         return (
             <div style={containerStyle}>
                 <div style={ rowStyle }>
-                    <div style={{ ...columnStyle, width: '350px' }}>
+                    <div style={{ ...columnStyle, width: '320px', borderRight: `1px solid ${colors.darkGray}` }}>
                         <PlayerCard {...this.props} />
                         {this.props.stock ? <QuickTrade stock={this.props.stock} /> : null}
                     </div>
@@ -63,6 +71,7 @@ const rowStyle = {
 const columnStyle = {
     displey: 'flex',
     flexDirection: 'column',
+    marginRight: '20px'
 }
 
 const mapStateToProps = (state) => {

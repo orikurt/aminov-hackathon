@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Glyphicon, FormControl } from 'react-bootstrap';
 import { getPlayersList } from '../actions/playerCommands';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { colors } from '../utils/uiScheme';
 
 class Search extends Component{
@@ -13,12 +13,17 @@ class Search extends Component{
         this.props.getPlayersList();
     }
 
+    navigateToSelected = (selected) => {
+        this.props.history.push(`/players/${selected.uid}`);
+    };    
+
     render(){
         return (
             <DownShift 
                 itemToString={item => (item ? item.name : '')}
                 defaultHighlightedIndex={0}
-                {... this.props} >
+                onChange={this.navigateToSelected}
+                style={this.props.style} >
             {({
                 getInputProps,
                 getItemProps,
@@ -29,7 +34,7 @@ class Search extends Component{
                 highlightedIndex,
                 selectedItem,
               }) => {
-                    const { getPlayersList, onChange, ...props} = this.props;
+                    const { staticContext, getPlayersList, onChange, ...props} = this.props;
                     return (
                     <div {...props}>
                         <div style={wrapperStyle}>
@@ -78,7 +83,7 @@ const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => 
         index,
         item,
         style: listItemStyle,
-        to: `players/${item.uid}`
+        to: `/players/${item.uid}`
       })}
     >
         <img src={`/${item.image_url}`} alt={item.number} style={imageStyle}/>
@@ -134,4 +139,4 @@ const mapDispathToprops = (dispatch) => {
     return bindActionCreators({ getPlayersList }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispathToprops)(Search);
+export default connect(mapStateToProps, mapDispathToprops)(withRouter(Search));

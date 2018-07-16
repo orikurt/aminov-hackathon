@@ -2,16 +2,11 @@ import React from 'react';
 import Search from '../components/Search';
 import Banner from '../components/Banner';
 
-const Home = (props) => { 
-    
-    const navigateToSelected = (selected) => {
-        props.history.push(`players/${selected.uid}`);
-    };
-
+const Home = () => { 
     return (
         <div style={homeStyle}>
             <Banner />
-            <Search style={searchStyle} onChange={navigateToSelected}/>
+            <Search style={searchStyle} />
         </div>
     )
 }
