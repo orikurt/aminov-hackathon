@@ -70,7 +70,8 @@ class quickTrade extends Component {
                     value={this.state.shares} 
                     onChange={this.setShares}/>                
             </div>
-            <div style={lineStyle} >
+            { this.props.user.signedIn 
+            ? (<div style={lineStyle} >
                 <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.01)}>1%</label>
                 <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.05)}>5%</label>
                 <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.1)}>10%</label>
@@ -78,7 +79,9 @@ class quickTrade extends Component {
                 <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.50)}>50%</label>
                 <label style={quantitiesStyle} onClick={()=>this.setQuantity(0.75)}>75%</label>
                 <label style={quantitiesStyle} onClick={()=>this.setQuantity(1)}>100%</label>
-            </div>
+            </div>) 
+            : (<div style={lineStyle} ></div> )
+            }
             <div style={lineStyle}>
             { this.props.user.signedIn ? (
                 <Button onClick={() => this.sendOffer(false)} style={{...buttonStyle, ...buyStyle}}>Buy</Button>
@@ -104,7 +107,8 @@ const lineStyle = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: '2px 0',  
+    margin: '2px 0',
+    minHeight: '30px'
 }
 
 const inputStyle = {

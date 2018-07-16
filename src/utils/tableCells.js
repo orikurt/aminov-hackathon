@@ -20,12 +20,11 @@ export const PercentCell = props => (<div style={ textStyle } >{ percentFormat(p
 export const StockCell = (props)=>(<DecoratedCell {...props}> <PercentCell {...props} /> </DecoratedCell>)
 
 export const DecoratedCell = props => {
-    console.log(props);
     return(
     <div style={{...decoratorStyle, ...props.style}} >
         { props.value >= ( props.threshold || 0 ) ? 
-            <Glyphicon glyph={ props.icon || "arrow-up" } style={{ color: (props.colorUp || colors.green), padding: '5px' }} />
-            : <Glyphicon glyph={ props.icon || "arrow-down" } style={{ color: (props.colorDown || colors.red), padding: '5px' }} /> }
+            <Glyphicon glyph={ props.iconUp || "arrow-up" } style={{ color: (props.colorUp || colors.green), padding: '5px' }} />
+            : <Glyphicon glyph={ props.iconDown || "arrow-down" } style={{ color: (props.colorDown || colors.red), padding: '5px' }} /> }
         { props.children }
     </div>)};
 
