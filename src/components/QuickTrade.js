@@ -14,7 +14,7 @@ class quickTrade extends Component {
     }
 
     componentWillReceiveProps( props ){
-        this.setQuantity(0.25);
+        this.setQuantity(0.25, props);
     }
 
     setShares = (e) => {
@@ -23,17 +23,17 @@ class quickTrade extends Component {
         });
     }
 
-    setQuantity = (quantity) => {
+    setQuantity = (quantity, props = this.props) => {
         this.setState({
-            shares: Math.round( (( this.props.user.data.cash || 1000000 ) * quantity) / this.props.stock.price )
+            shares: Math.round( (( props.user.data.cash || 1000000 ) * quantity) / props.stock.data.price ) || 100
         })
     }
 
     sendOffer = (type_ask) => {
         this.props.postOffer({
             type_ask,
-            price: this.props.stock.price,
-            uid: this.props.stock.uid,
+            price: this.props.stock.data.price,
+            uid: this.props.stock.data.uid,
             quantity: this.state.shares,
             userId: this.props.user.data.userId
         });
@@ -55,15 +55,15 @@ class quickTrade extends Component {
             </div>
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Best price</span>
-                <label style={{fontSize: '18px', color: colors.green}} >$ {numberFormat(this.props.stock.price)}</label>
+                <label style={{fontSize: '18px', color: colors.green}} >$ {numberFormat(this.props.stock.data.price)}</label>
             </div>
             <div style={lineStyle}>
                 <span style={{ color: colors.textLowlight }}>Equity worth</span>
-                <label style={{ fontSize: '16px' }} >{ percentFormat(this.state.shares / this.props.stock.shares) }%</label>
+                <label style={{ fontSize: '16px' }} >{ percentFormat(this.state.shares / this.props.stock.data.shares) }%</label>
             </div>
             <div style={lineStyle}>
                 <span style={{ color: colors.textLowlight }}>Estimated value</span>
-                <label style={{ fontSize: '16px', color: colors.third }}>$ {numberFormat(this.props.stock.price * this.state.shares)}</label>
+                <label style={{ fontSize: '16px', color: colors.third }}>$ {numberFormat(this.props.stock.data.price * this.state.shares)}</label>
             </div>
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Shares Quantity</span>
@@ -146,7 +146,8 @@ const tooltipValue = <label><strong>buy or sell</strong> at best avaiable price 
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        stock: state.selectedStock
     };
 }
 

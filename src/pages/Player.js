@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import PlayerCard from '../components/PlayerCard';
 import RealWorldStats from '../components/RealWorldStats';
 import QuickTrade from '../components/QuickTrade';
@@ -8,6 +9,7 @@ import GameTimeStats from '../components/GameTimeStats';
 import { setSelectedStock } from '../actions/stockCommands';
 import { setSelectedPlayer } from '../actions/playerCommands';
 import Search from '../components/Search';
+import SignUpButton from '../components/SignUpButton';
 import Position from '../components/Position';
 import { colors } from '../utils/uiScheme';
 
@@ -34,16 +36,30 @@ class Player extends React.Component {
                 <div style={ rowStyle }>
                     <div style={{ ...columnStyle, width: '400px' }}>
                         <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
-                        { this.props.stock.lastUpdated
+                        { this.props.user.lastUpdated
                             ? <Position 
-                                stock={this.props.stock.data}/>
-                            : null }
+                                stock={ this.props.stock.data }
+                                user={ this.props.user.data } />
+                            : (
+                                <div>
+                                    <h4>Portfolio Position</h4>
+                                    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: '10px' }}>
+                                        <SignUpButton />
+                                    </div>
+                                    <p>
+                                        to receive <span style={{ color: colors.third }}>FREE</span> startup bankroll and build your portfolio
+                                    </p>
+                                    <p>
+                                        If you already have an account, 
+                                        <Link to="/login"> Login</Link>              
+                                    </p>
+                                </div>) }
                     </div>
                     <div style={{width: '1px', minHeight: '480px', borderRight: `1px solid ${colors.secondary}`}}></div>
                     <div style={ columnStyle }>
                         <div style={ rowStyle }>
                             <div style={{ ...columnStyle, flexGrow: '1' }}>
-                                { this.props.stock.lastUpdated ? <QuickTrade stock={this.props.stock.data} /> : null }
+                                <QuickTrade />
                             </div>
                             <div style={{ ...columnStyle, flexGrow: '1' }}>
                                 <Search style={ searchStyle } />
@@ -93,13 +109,14 @@ const columnStyle = {
 const mapStateToProps = (state) => {
     return {
         player: state.selectedPlayer,
-        stock: state.selectedStock        
+        stock: state.selectedStock,
+        user: state.user
     }
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     setSelectedPlayer,
-    setSelectedStock
+    setSelectedStock,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

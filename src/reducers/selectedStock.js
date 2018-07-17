@@ -3,7 +3,7 @@ import * as actionNames from '../actions/actionNames';
 const initialState = {
     lastUpdated: null,
     isFetching: false,
-    data: null
+    data: {}
 }
 
 const selectedStock = (state=initialState, action) => {

@@ -1,7 +1,7 @@
 import * as actions from '../actions/actionNames'
 
 const initialState = {
-    data: null,
+    data: {},
     lastUpdated: null,
     isFetching: false
 }
