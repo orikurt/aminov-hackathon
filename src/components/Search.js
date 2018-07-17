@@ -49,7 +49,7 @@ class Search extends Component{
                                 {isOpen
                                 ? Object.keys(this.props.items)
                                     .filter(uid => !inputValue || this.props.items[uid].name.toLowerCase().includes(inputValue))
-                                    .slice(0, 7)
+                                    .slice(0, 5)
                                     .map((uid, index) => listItem(this.props.items[uid], index, highlightedIndex, selectedItem, getItemProps)) 
                                     : null}
                             </ul>

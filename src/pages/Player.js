@@ -8,6 +8,7 @@ import GameTimeStats from '../components/GameTimeStats';
 import { setSelectedStock } from '../actions/stockCommands';
 import { setSelectedPlayer } from '../actions/playerCommands';
 import Search from '../components/Search';
+import Position from '../components/Position';
 import { colors } from '../utils/uiScheme';
 
 class Player extends React.Component {
@@ -25,23 +26,36 @@ class Player extends React.Component {
     }
 
     render(){
-        if (this.props.player == null){
+        if (this.props.player.lastUpdated == null){
             return (<h3>No player selected</h3>)
         }
         return (
             <div style={containerStyle}>
                 <div style={ rowStyle }>
-                    <div style={{ ...columnStyle, width: '320px', borderRight: `1px solid ${colors.darkGray}` }}>
-                        <PlayerCard {...this.props} />
-                        {this.props.stock ? <QuickTrade stock={this.props.stock} /> : null}
+                    <div style={{ ...columnStyle, width: '400px' }}>
+                        <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
+                        { this.props.stock.lastUpdated
+                            ? <Position 
+                                stock={this.props.stock.data}/>
+                            : null }
                     </div>
-                    <div style={{ ...columnStyle, flexGrow: '1' }}>
-                        <Search style={ searchStyle } />
-                        <GameTimeStats />
+                    <div style={{width: '1px', minHeight: '480px', borderRight: `1px solid ${colors.secondary}`}}></div>
+                    <div style={ columnStyle }>
+                        <div style={ rowStyle }>
+                            <div style={{ ...columnStyle, flexGrow: '1' }}>
+                                { this.props.stock.lastUpdated ? <QuickTrade stock={this.props.stock.data} /> : null }
+                            </div>
+                            <div style={{ ...columnStyle, flexGrow: '1' }}>
+                                <Search style={ searchStyle } />
+                            </div>
+                        </div>
+                        <div style={ rowStyle }>
+                            <GameTimeStats />
+                        </div>
                     </div>
                 </div>
                 <div style={ rowStyle }>
-                    <RealWorldStats stats={this.props.player.stats} />
+                    { this.props.stock.lastUpdated ? <RealWorldStats stats={this.props.player.data.stats} /> : null }
                 </div>
             </div>
         )
@@ -65,19 +79,21 @@ const containerStyle = {
 const rowStyle = {
     width: '100%',
     display: 'flex',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+    marginBottom: '30px'
 }
 
 const columnStyle = {
     displey: 'flex',
     flexDirection: 'column',
-    marginRight: '20px'
+    justifyContent: 'space-evenly',
+    minWidth: '320px',
 }
 
 const mapStateToProps = (state) => {
     return {
-        player: state.selectedPlayer.data,
-        stock: state.selectedStock.data        
+        player: state.selectedPlayer,
+        stock: state.selectedStock        
     }
 }
 

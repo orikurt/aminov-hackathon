@@ -10,7 +10,11 @@ import { postOffer } from '../actions/offerCommands';
 
 class quickTrade extends Component {
     state = {
-        shares: Math.round(this.props.stock.shares/1000) || 0
+        shares: 0
+    }
+
+    componentWillReceiveProps( props ){
+        this.setQuantity(0.25);
     }
 
     setShares = (e) => {
@@ -21,7 +25,7 @@ class quickTrade extends Component {
 
     setQuantity = (quantity) => {
         this.setState({
-            shares: Math.round( (this.props.user.data.cash * quantity) / this.props.stock.price )
+            shares: Math.round( (( this.props.user.data.cash || 1000000 ) * quantity) / this.props.stock.price )
         })
     }
 
@@ -98,8 +102,7 @@ class quickTrade extends Component {
 const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '300px',
-    margin: '10px 0',  
+    minWidth: '300px',
 }
 
 const lineStyle = {
