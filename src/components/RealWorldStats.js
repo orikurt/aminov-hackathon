@@ -26,6 +26,7 @@ class RealWorldStats extends Component{
         return(<div>
                 <Collapsable>
                     <div style={{display: 'flex', alignItems: 'flex-end', marginBottom: '15px'}}>
+                    <h4 style={{ marginRight: '15px' }} >Real world stats</h4>
                         <DropdownButton 
                             title={this.state.statsType.replace(/_/g, ' ')}
                             bsStyle="default"
@@ -39,7 +40,6 @@ class RealWorldStats extends Component{
                                     {type.replace(/_/g, ' ')}
                                 </MenuItem>)) }
                         </DropdownButton>
-                        <h4 style={{ marginLeft: '15px' }} >Real world stats</h4>
                     </div>
                     <StatsTable data={this.state.data} type={this.state.statsType}/>
                 </Collapsable>
@@ -49,7 +49,7 @@ class RealWorldStats extends Component{
 }
 
 const dropdownStyle = {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.darkGray,
     color: colors.text,
     borderColor: colors.main,
     width: '300px',

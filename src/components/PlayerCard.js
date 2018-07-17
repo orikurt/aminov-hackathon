@@ -43,11 +43,11 @@ const playerCard = (props) => {
                 </label> : null }
                 { props.stock ? <label >
                     <span style={ spanStyle }>Last Price </span>
-                    <span style={{fontSize: '16px', color: colors.third}}>${numberFormat.format(props.stock.price)}</span>
+                    <span style={{fontSize: '16px', color: colors.third}}>${numberFormat(props.stock.price)}</span>
                 </label> : null}
                 { props.stock ? <label>
                     <span style={ spanStyle }>Total Shares </span>
-                    <span style={{fontSize: '16px'}}>{numberFormat.format(props.stock.shares)}</span>
+                    <span style={{fontSize: '16px'}}>{numberFormat(props.stock.shares)}</span>
                 </label> : null }
             </div>
         </div>

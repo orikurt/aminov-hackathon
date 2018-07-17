@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import Collapsable from './Collapsable'
-import { TextCell, StockCell } from '../utils/tableCells';
+import { NumberCell, StockCell, RankCell } from '../utils/tableCells';
 import { colors } from '../utils/uiScheme';
 
 const gameTimeStats = (props) => {
@@ -44,32 +44,32 @@ const gameTimeColumns = [{
     {
         Header: 'Points rank',
         accessor: 'pointsRank',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: RankCell,
     },    
     {
         Header: 'GT Points/game',
         accessor: 'pointsPerGame',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: NumberCell,
     },
     {
         Header: 'Cost per point',
         accessor: 'pricePointRatio',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: NumberCell,
     },
     {
         Header: 'Total Points - Season',
         accessor: 'pointsEarnedSeason',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: NumberCell,
     },
     {
         Header: 'Season projection',
         accessor: 'seasonProjection',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: NumberCell,
     },
     {
         Header: 'Career points',
         accessor: 'pointsEarnedCareer',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: NumberCell,
         last: true
     },
 ]
@@ -81,7 +81,7 @@ const marketColumns =[{
     {
         Header: 'Price rank',
         accessor: 'priceRank',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: (props) => (<RankCell {...props} threshold={6}/>),
     },    
     {
         Header: '1D Trend',
@@ -106,12 +106,12 @@ const marketColumns =[{
     {
         Header: 'Season Dividends',
         accessor: 'seasonDividends',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: NumberCell,
     },
     {
         Header: 'Lifetime Dividends',
         accessor: 'lifetimeDividends',
-        Cell: (props)=>(<TextCell {...props}/>),
+        Cell: NumberCell,
         last: true
     },     
 ]

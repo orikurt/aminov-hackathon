@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ReactTable from 'react-table';
 import { colors } from '../utils/uiScheme';
-import { numberFormat, percentFormat, rankFormat } from '../utils/format';
-import { TextCell } from '../utils/tableCells';
+import { DashboardNumberItem, DashboardSharesItem, DashboardEquityItem, DashboardCostItem } from '../elements/DashboradItems';
 import SignUpButton from './SignUpButton';
 
 class Position extends Component {
@@ -42,20 +40,42 @@ class Position extends Component {
         else {
             return (
             <div>
-                <h4>Position</h4>
-                <div style={ rowStyle }>
-                    <label >
-                        <span style={{ fontSize: '14px', color: colors.textLowlight }}>Team Rank </span>
-                        <span style={{ fontSize: '16px', color: colors.third }}>{ rankFormat( positionData[0].rank ) }</span>
-                    </label>
+                <div style={{ ...rowStyle, justifyContent: 'space-between' }}>
+                    <h4>Position</h4>
                     <label >
                         <span style={{ fontSize: '14px', color: colors.textLowlight }}>Role </span>
                         <span style={{ fontSize: '16px', color: colors.third }}>{ positionData[0].role }</span>
-                    </label>                
+                    </label>
                 </div>
-                <PositionTable columns={columnsA} />
-                <PositionTable columns={columnsB} />
-                <PositionTable columns={columnsC} />
+                <div style={ rowStyle }>
+                    <DashboardSharesItem 
+                        name="Shares" 
+                        value={ positionData[0].shares } 
+                        secondary={ positionData[0].shares *  this.props.stock.data.price }
+                         />
+                    <DashboardEquityItem 
+                        name="Equity" 
+                        value={ positionData[0].equity /100 }
+                        secondary={ positionData[0].holdingRank } />
+                    <DashboardCostItem 
+                        name="AVG Cost" 
+                        value={ (positionData[0].avgBuyPrice ) }
+                        secondary={ (  this.props.stock.data.price / positionData[0].avgBuyPrice) -1} />
+                </div>
+                <div style={ rowStyle }>
+                    <div style={ columnStyle }>
+                        <h5>Productivity</h5>
+                        <DashboardNumberItem name="Per Game" value={ positionData[0].points.perGame }  />
+                        <DashboardNumberItem name="Season" value={ positionData[0].points.season } />
+                        <DashboardNumberItem name="Lifetime" value={ (positionData[0].points.lifetime ) }  />
+                    </div>
+                    <div style={ columnStyle }>
+                        <h5>Dividends</h5>
+                        <DashboardNumberItem name="Per Day" value={ positionData[0].dividends.perDay }  />
+                        <DashboardNumberItem name="Season" value={ positionData[0].dividends.season } /> 
+                        <DashboardNumberItem name="Lifetime" value={ (positionData[0].dividends.lifetime ) }  />
+                    </div>                    
+                </div>
                                 
             </div>
             );
@@ -63,97 +83,19 @@ class Position extends Component {
     }
 }
 
-const PositionTable = (props) => (
-    <ReactTable
-        data={positionData}
-        columns={props.columns}
-        getTheadProps={getTxProps}
-        getTableProps={getTxProps}
-        getTdProps={getTxProps}
-        getTrGroupProps={getTxProps}
-        getTheadThProps={getTheadProps}
-        defaultPageSize={positionData.length}
-        showPagination={false}
-        style={{ border: 'none' }} />
-    );
-
-const columnsA = [
-    {
-        Header: 'Shares',
-        accessor: 'shares',
-        Cell: TextCell,
-    },
-    {
-        Header: 'Equity',
-        accessor: 'equity',
-        Cell: TextCell,
-    },    
-    {
-        Header: 'Avg. Cost',
-        accessor: 'avgBuyPrice',
-        Cell: TextCell,
-    },
-];
-
-const columnsB = [
-    {
-        Header: 'Point Production',
-        accessor: 'points.perGame',
-        Cell: TextCell,
-    },
-    {
-        Header: 'Season Points',
-        accessor: 'points.season',
-        Cell: TextCell,
-    },
-    {
-        Header: 'Lifetime Points',
-        accessor: 'points.lifetime',
-        Cell: TextCell,
-    },
-];
-
-const columnsC = [
-    {
-        Header: 'Dividend Rate',
-        accessor: 'dividends.perDay',
-        Cell: TextCell,
-    },    
-    {
-        Header: 'Season Dividends',
-        accessor: 'dividends.season',
-        Cell: TextCell,
-    },
-    {
-        Header: 'Lifetime Dividends',
-        accessor: 'dividends.lifetime',
-        Cell: TextCell,
-    },
-]
-
-const getTxProps = () => ({
-    style: {
-        border: 'none',
-        boxShadow: 'none'
-    }
-})
-
-const getTheadProps = () => ({
-    style: {
-        color: colors.textLowlight,
-        fontSize: '14px',
-        border: 'none',
-        boxShadow: 'none'
-    }
-})
-
 const rowStyle = { 
     display: 'flex', 
-    justifyContent: 'space-evenly' 
+    justifyContent: 'space-evenly',
+    alignItems: 'baseline',
+}
+
+const columnStyle = { 
+    ...rowStyle,
+    flexDirection: 'column',
 }
 
 const positionData = [{
-    rank: 2, 
+    holdingRank: 42, 
     role: 'Starter',
     shares: 420000,
     equity: 1.72,
@@ -163,7 +105,8 @@ const positionData = [{
 }]
 
 const mapStateToProps = (state) => ({
-    user: state.user
+    user: state.user,
+    stock: state.selectedStock
 })
 
 export default connect(mapStateToProps)(Position);

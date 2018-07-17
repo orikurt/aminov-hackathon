@@ -1,5 +1,5 @@
 import React from 'react';
-import { percentFormat } from './format';
+import { percentFormat, rankFormat, numberFormat } from './format';
 import { Glyphicon } from 'react-bootstrap';
 import { colors } from './uiScheme';
 
@@ -13,11 +13,11 @@ const decoratorStyle = {
     display: 'flex'
 }
 
-export const TextCell = props => (<div style={ textStyle } >{props.value}</div>);
+export const TextCell = props => (<div style={ textStyle } >{ props.value }</div>);
+
+export const NumberCell = props => (<div style={ textStyle } >{ numberFormat(props.value)}</div>);
 
 export const PercentCell = props => (<div style={ textStyle } >{ percentFormat(props.value) }%</div>);
-
-export const StockCell = (props)=>(<DecoratedCell {...props}> <PercentCell {...props} /> </DecoratedCell>)
 
 export const DecoratedCell = props => {
     return(
@@ -28,3 +28,9 @@ export const DecoratedCell = props => {
         { props.children }
     </div>)};
 
+export const StockCell = (props)=>(<DecoratedCell {...props}> <PercentCell {...props} /> </DecoratedCell>)
+
+export const RankCell = props => (
+    <DecoratedCell {...props}>
+        <div style={ textStyle } >{ rankFormat(props.value) }</div>
+    </DecoratedCell>);
