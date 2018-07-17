@@ -1,12 +1,23 @@
 import React from 'react';
 import { OverlayTrigger } from 'react-bootstrap';
 import { Tooltip } from 'react-bootstrap';
+import { colors } from '../utils/uiScheme';
+
+const tooltipStyle = {
+    backgroundColor: colors.darkGray
+}
 
 const tooltip = (props) => {
-    const internal_tooltip = (<Tooltip id={props.id || props.value}>{props.value}</Tooltip>);
+    const internal_tooltip = (
+        <Tooltip 
+            id={props.id || props.value}
+            style={tooltipStyle} >
+            {props.value}
+        </Tooltip>);
     return ( <OverlayTrigger 
             overlay={internal_tooltip}
-            placement={props.placement}>
+            placement={props.placement}
+            style={tooltipStyle} >
             {props.children}
         </OverlayTrigger>);
 }

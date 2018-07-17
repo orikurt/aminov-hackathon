@@ -40,7 +40,7 @@ class Search extends Component{
                         <div style={wrapperStyle}>
                             <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
                                 <FormControl 
-                                    {...getInputProps({placeholder:'Find stocks / players...'})} 
+                                    {...getInputProps({placeholder:'Search...'})} 
                                     style={inputStyle} >
                                 </FormControl>
                                 <Glyphicon glyph="search" style={ glyphStyle }/>
@@ -65,7 +65,7 @@ class Search extends Component{
 const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => {
     const listItemStyle = {
         cursor: 'pointer',
-        backgroundColor: highlightedIndex === index ? colors.secondary : '',
+        backgroundColor: highlightedIndex === index ? colors.darkGray : '',
         fontWeight: selectedItem === item ? 'bold' : 'normal',
         listStyle: 'none',
         height: '50px',

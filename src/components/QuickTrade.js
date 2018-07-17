@@ -138,11 +138,11 @@ const quantitiesStyle = {
     cursor: 'pointer',
     border: `1px  dashed ${colors.lightGray}`,
     padding: '5px',
-    marginTop: '5px',
+    margin: '10px 0',
     backgroundColor: colors.black
 }
 
-const tooltipValue = <label><strong>buy or sell</strong> at best avaiable price at any giver time</label>;
+const tooltipValue = <label><strong>buy or sell</strong> as quickly as possible at best avaiable price</label>;
 
 const mapStateToProps = (state) => {
     return {

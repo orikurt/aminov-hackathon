@@ -12,6 +12,7 @@ import Search from '../components/Search';
 import SignUpButton from '../components/SignUpButton';
 import Position from '../components/Position';
 import { colors } from '../utils/uiScheme';
+import PlayerSchedule from '../components/PlayerSchedule';
 
 class Player extends React.Component {
 
@@ -63,6 +64,7 @@ class Player extends React.Component {
                             </div>
                             <div style={{ ...columnStyle, flexGrow: '1' }}>
                                 <Search style={ searchStyle } />
+                                <PlayerSchedule player={ this.props.player.data } style={{ width: '100%' }} />
                             </div>
                         </div>
                         <div style={ rowStyle }>
@@ -80,12 +82,13 @@ class Player extends React.Component {
 
 const searchStyle = { 
     width: '300px', 
-    float: 'right',
+    margin: '0 auto',
     marginBottom: '10px'
 }
 
 const containerStyle = {
     display: 'flex',
+    flexWrap: 'wrap',
     width: '100%',
     flexWrap: 'wrap',
     justifyContent: 'start',

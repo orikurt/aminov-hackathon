@@ -64,7 +64,7 @@ const balancesStyle = {
     alignItems: 'center',
     justifyContent: 'space-evenly',
     color: colors.green,
-    width: '80px',
+    width: '100%',
     marginBottom: '10px'
 }
 

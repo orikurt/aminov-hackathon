@@ -17,7 +17,7 @@ const infoStyle = {
     padding: '0 15px', 
     display: 'flex',
     flexDirection: 'column',
-    lineHeight: '30px'
+    lineHeight: '26px'
 }
 
 const spanStyle = {

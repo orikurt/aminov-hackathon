@@ -1,5 +1,7 @@
 export const numberFormat = new Intl.NumberFormat().format;
 
+export const dateFormat = new Intl.DateTimeFormat('en-US').format;
+
 export const percentFormat = (value) => Math.round( parseFloat(value) * 10000 ) / 100;
 
 export const rankFormat = (value) => {
