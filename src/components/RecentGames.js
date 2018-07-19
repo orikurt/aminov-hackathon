@@ -30,7 +30,7 @@ scheduleData.reduce( (scores, game) => {
 const UpcomingGames = (props) => {    
     return(
     <div>
-        <h4 style={{ color: colors.text, textAlign: 'center' }} >Recent Games</h4>
+        <h5 style={{ color: colors.darkGray, textAlign: 'center' }} >Recent Games</h5>
         <PlayerSchedule { ...props } schedule={scheduleData} performance={scores}/>
     </div>
 )};

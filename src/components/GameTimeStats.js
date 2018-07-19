@@ -23,7 +23,7 @@ const GameTimeStats = (props) => {
 }
 
 const tableStyle = {
-    width: '100%',
+    width: '740px',
 }
 
 const gameTimeColumns = [{
@@ -65,7 +65,7 @@ const gameTimeColumns = [{
 
 const getTrProps = ()=>({
     style: {
-        borderRadius: '3px',
+        borderRadius: '1px',
         height: '50px',
         lineHeight: '40px',
         backgroundColor: colors.black,
@@ -83,17 +83,17 @@ const getTdProps = (_state, _rowInfo, column) =>{
 
 const getThProps = ()=>({
     style: {
-        borderRadius: '3px',
+        borderRadius: '1px',
         fontSize: '12px',
         backgroundColor: colors.darkGray,
+        color: colors.main,
     }
 })
 
 const getTheadGroupProps = () => ({
     style: {
-        borderRadius: '3px',
+        borderRadius: '1px',
         fontSize: '14px',
-        // backgroundColor: colors.black,
     }
 })
 

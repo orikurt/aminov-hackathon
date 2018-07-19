@@ -30,7 +30,7 @@ class Position extends Component {
                         style={{ color: colors.third, fontSize: '18px' }} />
                 </Tooltip>
                 <label >
-                    <span style={{ fontSize: '14px', color: colors.textLowlight }}>Role </span>
+                    <span style={{ fontSize: '14px', color: colors.darkGray }}>Role </span>
                     <span style={{ fontSize: '16px', color: colors.third }}>{ positionData[0].role }</span>
                 </label>
             </div>

@@ -36,7 +36,7 @@ class Player extends React.Component {
         return (
             <div style={containerStyle}>
                 <div style={ rowStyle }>
-                    <div style={{ ...columnStyle, width: '400px' }}>
+                    <div style={{ ...columnStyle, width: '330px' }}>
                         <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
                         <QuickTrade />
                     </div>
@@ -46,7 +46,7 @@ class Player extends React.Component {
                             <Search style={ searchStyle } />
                         </div>
                         <div style={ rowStyle }>
-                            <div style={{ ...columnStyle, flexGrow: '1' }}>
+                            <div style={{ ...columnStyle, width: '420px', padding: '0 10px' }}>
                             { this.props.user.lastUpdated
                             ? <Position 
                                 stock={ this.props.stock.data }
@@ -67,7 +67,7 @@ class Player extends React.Component {
                                 </div>) }
                             </div>
                             <div style={ columnStyle }>
-                                <UpcomingGames player={ this.props.player.data } style={{ width: '100%' }} />
+                                <UpcomingGames player={ this.props.player.data } style={{ width: '100%', paddingBottom: '5px', borderBottom: `1px solid ${ colors.secondary }` }} />
                                 <RecentGames player={ this.props.player.data } style={{ width: '100%' }} />
                             </div>
                         </div>

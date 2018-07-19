@@ -3,8 +3,8 @@ import PlayerSchedule from './PlayerSchedule';
 import { colors } from '../utils/uiScheme';
 
 const UpcomingGames = (props) => (
-    <div>
-        <h4 style={{ color: colors.text, textAlign: 'center' }} >Upcoming Games</h4>
+    <div style={props.style}>
+        <h5 style={{ color: colors.darkGray, textAlign: 'center' }} >Upcoming Games</h5>
         <PlayerSchedule { ...props } schedule={scheduleData}/>
     </div>
 )

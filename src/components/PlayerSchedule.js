@@ -4,7 +4,7 @@ import { colors } from '../utils/uiScheme';
 
 const PlayerSchedule = (props) => {
     return (
-        <div { ...props } style={{ ...containerStyle, ...props.style }}>
+        <div { ...props } style={ containerStyle }>
             <div style={ wrapperStyle }>
                 { props.schedule.map((game, i)=>(
                     <div style={ gameStyle } key={i}>
@@ -15,7 +15,7 @@ const PlayerSchedule = (props) => {
                         }</label>
                         {( props.performance && props.performance[game.date] )
                             ? ( <div>
-                                <span>score</span>
+                                <span style={{ fontSize: '12px', color: colors.textLowlight }}>score </span>
                                 <label style={{ fontSize: '16px', color: colors.green }}> { props.performance[game.date] } </label>
                             </div>)
                             : null
