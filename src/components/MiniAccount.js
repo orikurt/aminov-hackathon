@@ -6,6 +6,7 @@ import { Image } from 'react-bootstrap';
 import { getUser } from '../actions/userCommands';
 import { colors } from '../utils/uiScheme';
 import SignUpButton  from './SignUpButton';
+import { numberFormat } from '../utils/format';
 
 class miniAccount extends Component {
 
@@ -31,7 +32,7 @@ class miniAccount extends Component {
             <div style={balancesStyle}>
                 <div>
                     <Glyphicon glyph="piggy-bank" style={{color: colors.textLowlight, fontSize: '20px'}} />
-                    <div>{ this.props.user.data.cash }$</div>
+                    <div>{ numberFormat(this.props.user.data.cash) }$</div>
                 </div>
                 <div style={horizonatlLine}></div>
                 <div>

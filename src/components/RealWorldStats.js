@@ -24,7 +24,7 @@ class RealWorldStats extends Component{
     
     render(){
         return(<div>
-                <Collapsable>
+                <Collapsable expanded={true}>
                     <div style={{display: 'flex', alignItems: 'flex-end', marginBottom: '15px'}}>
                     <h4 style={{ marginRight: '15px' }} >Real world stats</h4>
                         <DropdownButton 

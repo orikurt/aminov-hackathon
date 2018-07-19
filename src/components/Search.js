@@ -86,7 +86,7 @@ const listItem = (item, index, highlightedIndex, selectedItem, getItemProps) => 
         to: `/players/${item.uid}`
       })}
     >
-        <img src={`/${item.image_url}`} alt={item.number} style={imageStyle}/>
+        <img src={`/${item.image_url}`} alt={item.name} style={imageStyle}/>
       {item.name}
     </Link>
 )}

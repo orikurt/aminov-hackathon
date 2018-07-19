@@ -12,7 +12,8 @@ import Search from '../components/Search';
 import SignUpButton from '../components/SignUpButton';
 import Position from '../components/Position';
 import { colors } from '../utils/uiScheme';
-import PlayerSchedule from '../components/PlayerSchedule';
+import UpcomingGames from '../components/UpcomingGames';
+import RecentGames from '../components/RecentGames';
 
 class Player extends React.Component {
 
@@ -37,7 +38,16 @@ class Player extends React.Component {
                 <div style={ rowStyle }>
                     <div style={{ ...columnStyle, width: '400px' }}>
                         <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
-                        { this.props.user.lastUpdated
+                        <QuickTrade />
+                    </div>
+                    <div style={{width: '1px', minHeight: '480px', borderRight: `1px solid ${colors.secondary}`}}></div>
+                    <div style={ columnStyle }>
+                        <div style={{ ...rowStyle, justifyContent: 'flex-end', marginBottom: '0px' }}>
+                            <Search style={ searchStyle } />
+                        </div>
+                        <div style={ rowStyle }>
+                            <div style={{ ...columnStyle, flexGrow: '1' }}>
+                            { this.props.user.lastUpdated
                             ? <Position 
                                 stock={ this.props.stock.data }
                                 user={ this.props.user.data } />
@@ -54,17 +64,11 @@ class Player extends React.Component {
                                         If you already have an account, 
                                         <Link to="/login"> Login</Link>              
                                     </p>
-                                </div>) }
-                    </div>
-                    <div style={{width: '1px', minHeight: '480px', borderRight: `1px solid ${colors.secondary}`}}></div>
-                    <div style={ columnStyle }>
-                        <div style={ rowStyle }>
-                            <div style={{ ...columnStyle, flexGrow: '1' }}>
-                                <QuickTrade />
+                                </div>) }                                
                             </div>
-                            <div style={{ ...columnStyle, flexGrow: '1' }}>
-                                <Search style={ searchStyle } />
-                                <PlayerSchedule player={ this.props.player.data } style={{ width: '100%' }} />
+                            <div style={ columnStyle }>
+                                <UpcomingGames player={ this.props.player.data } style={{ width: '100%' }} />
+                                <RecentGames player={ this.props.player.data } style={{ width: '100%' }} />
                             </div>
                         </div>
                         <div style={ rowStyle }>
@@ -82,7 +86,6 @@ class Player extends React.Component {
 
 const searchStyle = { 
     width: '300px', 
-    margin: '0 auto',
     marginBottom: '10px'
 }
 
@@ -90,9 +93,9 @@ const containerStyle = {
     display: 'flex',
     flexWrap: 'wrap',
     width: '100%',
-    flexWrap: 'wrap',
     justifyContent: 'start',
-    alignItems: 'center'
+    alignItems: 'center',
+    maxWidth: '1300px'
 }
 
 const rowStyle = {
