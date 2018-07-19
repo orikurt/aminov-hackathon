@@ -14,6 +14,7 @@ import Position from '../components/Position';
 import { colors } from '../utils/uiScheme';
 import UpcomingGames from '../components/UpcomingGames';
 import RecentGames from '../components/RecentGames';
+import SimilarPlayers from '../components/SimilarPlayers';
 
 class Player extends React.Component {
 
@@ -69,6 +70,7 @@ class Player extends React.Component {
                             <div style={ columnStyle }>
                                 <UpcomingGames player={ this.props.player.data } style={{ width: '100%', paddingBottom: '5px', borderBottom: `1px solid ${ colors.secondary }` }} />
                                 <RecentGames player={ this.props.player.data } style={{ width: '100%' }} />
+                                <SimilarPlayers />
                             </div>
                         </div>
                         <div style={ rowStyle }>

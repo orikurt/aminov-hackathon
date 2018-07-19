@@ -22,17 +22,19 @@ class Position extends Component {
     render(){
         return (
         <div>
-            <div style={{ ...rowStyle, justifyContent: 'space-between' }}>
+            <div style={{ ...rowStyle, justifyContent: 'space-around' }}>
                 <h4>Portfolio Position</h4>
                 <Tooltip value={ positionData[0].shares ? "Player is on your team" : "Player is not on your team" }>
-                    <Glyphicon 
-                        glyph={positionData[0].shares ? "star" : "star-empty"}
-                        style={{ color: colors.third, fontSize: '18px' }} />
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Glyphicon 
+                            glyph={positionData[0].shares ? "star" : "star-empty"}
+                            style={{ color: colors.third, fontSize: '18px' }} />
+                        <label >
+                            <span style={{ fontSize: '10px', color: colors.darkGray }}>Role </span>
+                            <span style={{ fontSize: '12px', color: colors.third }}>{ positionData[0].role }</span>
+                        </label>
+                    </div>
                 </Tooltip>
-                <label >
-                    <span style={{ fontSize: '14px', color: colors.darkGray }}>Role </span>
-                    <span style={{ fontSize: '16px', color: colors.third }}>{ positionData[0].role }</span>
-                </label>
             </div>
             <div style={ rowStyle }>
                 <DashboardSharesItem 

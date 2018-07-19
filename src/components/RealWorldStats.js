@@ -49,10 +49,11 @@ class RealWorldStats extends Component{
 }
 
 const dropdownStyle = {
-    backgroundColor: colors.darkGray,
-    color: colors.text,
-    borderColor: colors.main,
-    width: '300px',
+    backgroundColor: colors.black,
+    borderRadius: '1px',
+    color: colors.darkGray,
+    borderColor: colors.darkGray,
+    width: '200px',
     height: '40px',
     marginTop: '15px',
     display: 'flex',
