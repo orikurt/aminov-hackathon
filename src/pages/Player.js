@@ -64,7 +64,7 @@ class Player extends React.Component {
                                         If you already have an account, 
                                         <Link to="/login"> Login</Link>              
                                     </p>
-                                </div>) }                                
+                                </div>) }
                             </div>
                             <div style={ columnStyle }>
                                 <UpcomingGames player={ this.props.player.data } style={{ width: '100%' }} />
