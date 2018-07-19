@@ -37,7 +37,13 @@ class Player extends React.Component {
                 <div style={ rowStyle }>
                     <div style={{ ...columnStyle, width: '400px' }}>
                         <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
-                        { this.props.user.lastUpdated
+                        <QuickTrade />
+                    </div>
+                    <div style={{width: '1px', minHeight: '480px', borderRight: `1px solid ${colors.secondary}`}}></div>
+                    <div style={ columnStyle }>
+                        <div style={ rowStyle }>
+                            <div style={{ ...columnStyle, flexGrow: '1' }}>
+                            { this.props.user.lastUpdated
                             ? <Position 
                                 stock={ this.props.stock.data }
                                 user={ this.props.user.data } />
@@ -55,12 +61,6 @@ class Player extends React.Component {
                                         <Link to="/login"> Login</Link>              
                                     </p>
                                 </div>) }
-                    </div>
-                    <div style={{width: '1px', minHeight: '480px', borderRight: `1px solid ${colors.secondary}`}}></div>
-                    <div style={ columnStyle }>
-                        <div style={ rowStyle }>
-                            <div style={{ ...columnStyle, flexGrow: '1' }}>
-                                <QuickTrade />
                             </div>
                             <div style={{ ...columnStyle, flexGrow: '1' }}>
                                 <Search style={ searchStyle } />
