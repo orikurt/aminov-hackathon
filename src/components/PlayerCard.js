@@ -4,6 +4,7 @@ import { colors } from '../utils/uiScheme';
 
 const playerCardStyle = {
     display: 'flex',
+    minWidth: '300px'
 }
 
 const imageStyle = {

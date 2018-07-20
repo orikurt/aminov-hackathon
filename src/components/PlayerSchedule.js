@@ -30,7 +30,8 @@ const PlayerSchedule = (props) => {
 const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    minWidth: '280px'
 }
 
 const wrapperStyle = { 

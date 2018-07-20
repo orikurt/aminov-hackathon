@@ -7,7 +7,7 @@ import { colors } from '../utils/uiScheme';
 const GameTimeStats = (props) => {
     return (
     <div style={ props.style }>
-        <Collapsable  minHeight="26px" expanded={true} style={tableStyle} >
+        <Collapsable  minHeight="26px" expanded={true} >
             <ReactTable
                 data={gameTimeData}
                 columns={gameTimeColumns}
@@ -17,13 +17,14 @@ const GameTimeStats = (props) => {
                 getTrProps={getTrProps}
                 getTdProps={getTdProps}
                 getTheadProps={getThProps}
-                getTheadGroupProps={getTheadGroupProps} />
+                getTheadGroupProps={getTheadGroupProps}
+                style={tableStyle} />
         </Collapsable>
     </div>);
 }
 
 const tableStyle = {
-    width: '740px',
+    // minWidth: '740px',
 }
 
 const gameTimeColumns = [{

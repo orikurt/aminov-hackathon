@@ -21,7 +21,7 @@ class Position extends Component {
     }
     render(){
         return (
-        <div>
+        <div style={{ minWidth: '420px' }}>
             <div style={{ ...rowStyle, justifyContent: 'space-around' }}>
                 <h4>Portfolio Position</h4>
                 <Tooltip value={ positionData[0].shares ? "Player is on your team" : "Player is not on your team" }>
@@ -53,7 +53,7 @@ class Position extends Component {
             </div>
             <div style={ rowStyle }>
                 <div style={ columnStyle }>
-                    <h5>Productivity</h5>
+                    <h5 style={{}}>Productivity</h5>
                     <DashboardNumberItem name="Per Game" value={ positionData[0].points.perGame }  />
                     <DashboardNumberItem name="Season" value={ positionData[0].points.season } />
                     <DashboardNumberItem name="Lifetime" value={ (positionData[0].points.lifetime ) }  />
@@ -74,7 +74,7 @@ class Position extends Component {
 const rowStyle = { 
     display: 'flex', 
     justifyContent: 'space-evenly',
-    alignItems: 'baseline',
+    alignItems: 'center',
 }
 
 const columnStyle = { 

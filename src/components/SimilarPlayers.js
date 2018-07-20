@@ -5,15 +5,14 @@ import { colors } from '../utils/uiScheme';
 
 const similarPlayers = (props) => {
     let data = [];
-    for (let i =0; i < 5; i++){
+    for (let i =0; i < 7; i++){
         const player = props.players[Math.floor( Math.random() * props.players.length )];
         if (player) {
             data.push( player );
         }
-        console.log(data, props.stocks);
     }
-    return (<div>
-        <h5 style={{ color:  colors.darkGray, textAlign: 'center' }}>Similar Players</h5>
+    return (<div style={{ minWidth: '350px' }}>
+        <h5 style={{ color:  colors.darkGray, textAlign: 'center' }}>People also interested in...</h5>
         <div style={containerStyle}>
             {
                 data.map((player) => (

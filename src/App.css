@@ -60,7 +60,7 @@
 
 .appContent{
     background-color: #2d3436;
-    padding: 15px;
+    padding: 15px 0;
 }
 
 .VLO .appContent{
@@ -71,6 +71,7 @@
 
 .HLO .appContent{
     width: 100%;
+    overflow: hidden;
     height: 100%;
     flex-grow: 1;
 }

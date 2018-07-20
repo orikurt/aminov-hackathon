@@ -36,49 +36,48 @@ class Player extends React.Component {
         }
         return (
             <div style={containerStyle}>
-                <div style={ rowStyle }>
-                    <div style={{ ...columnStyle, width: '330px' }}>
-                        <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
-                        <QuickTrade />
-                    </div>
-                    <div style={{width: '1px', minHeight: '480px', borderRight: `1px solid ${colors.secondary}`}}></div>
-                    <div style={ columnStyle }>
-                        <div style={{ ...rowStyle, justifyContent: 'flex-end', marginBottom: '0px' }}>
-                            <Search style={ searchStyle } />
-                        </div>
-                        <div style={ rowStyle }>
-                            <div style={{ ...columnStyle, width: '420px', padding: '0 10px' }}>
+                <div style={ columnStyle }>
+                    <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
+                    <QuickTrade />
+                </div>
+                <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>                                
+                <div style={ columnStyle }>
+                    <div style={rowStyle}>
+                        <div >
                             { this.props.user.lastUpdated
                             ? <Position 
                                 stock={ this.props.stock.data }
                                 user={ this.props.user.data } />
-                            : (
-                                <div>
-                                    <h4>Portfolio Position</h4>
-                                    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: '10px' }}>
-                                        <SignUpButton />
-                                    </div>
-                                    <p>
-                                        to receive <span style={{ color: colors.third }}>FREE</span> startup bankroll and build your portfolio
-                                    </p>
-                                    <p>
-                                        If you already have an account, 
-                                        <Link to="/login"> Login</Link>              
-                                    </p>
-                                </div>) }
-                            </div>
-                            <div style={ columnStyle }>
-                                <UpcomingGames player={ this.props.player.data } style={{ width: '100%', paddingBottom: '5px', borderBottom: `1px solid ${ colors.secondary }` }} />
-                                <RecentGames player={ this.props.player.data } style={{ width: '100%' }} />
-                                <SimilarPlayers />
-                            </div>
+                            : (<div>
+                                <h4>Portfolio Position</h4>
+                                <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: '10px' }}>
+                                    <SignUpButton />
+                                </div>
+                                <p>
+                                    to receive <span style={{ color: colors.third }}>FREE</span> startup bankroll and build your portfolio
+                                </p>
+                                <p>
+                                    If you already have an account, 
+                                    <Link to="/login"> Login</Link>              
+                                </p>
+                            </div>) }
                         </div>
-                        <div style={ rowStyle }>
-                            <GameTimeStats />
+                        <div style={ columnStyle }>
+                            <Search style={ searchStyle } />
+                            <div style={{ ...columnStyle, height: '100%' }}>
+                                <UpcomingGames player={ this.props.player.data } style={{ paddingBottom: '5px', borderBottom: `1px solid ${ colors.secondary }` }} />
+                                <RecentGames player={ this.props.player.data } />
+                            </div>
                         </div>
                     </div>
+                    <div>
+                        <SimilarPlayers />
+                    </div>
                 </div>
-                <div style={ rowStyle }>
+                <div style={rowStyle}>
+                    <GameTimeStats />
+                </div>                        
+                <div style={rowStyle}>
                     { this.props.stock.lastUpdated ? <RealWorldStats stats={this.props.player.data.stats} /> : null }
                 </div>
             </div>
@@ -86,32 +85,30 @@ class Player extends React.Component {
     }
 }
 
-const searchStyle = { 
-    width: '300px', 
-    marginBottom: '10px'
-}
-
 const containerStyle = {
     display: 'flex',
     flexWrap: 'wrap',
-    width: '100%',
-    justifyContent: 'start',
-    alignItems: 'center',
-    maxWidth: '1300px'
+    maxWidth: '1200px',
+    justifyContent: 'space-around',
 }
 
 const rowStyle = {
-    width: '100%',
     display: 'flex',
-    justifyContent: 'space-evenly',
-    marginBottom: '30px'
+    flexWrap: 'wrap',
+    marginBottom: '15px'
 }
 
 const columnStyle = {
-    displey: 'flex',
+    display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
-    minWidth: '320px',
+    padding: '0 10px'
+}
+
+const searchStyle = { 
+    width: '300px', 
+    margin: '0 auto',
+    marginBottom: '10px'
 }
 
 const mapStateToProps = (state) => {
