@@ -15,6 +15,7 @@ import { colors } from '../utils/uiScheme';
 import UpcomingGames from '../components/UpcomingGames';
 import RecentGames from '../components/RecentGames';
 import SimilarPlayers from '../components/SimilarPlayers';
+import OffersBar from '../components/OffersBar';
 
 class Player extends React.Component {
 
@@ -39,6 +40,7 @@ class Player extends React.Component {
                 <div style={ columnStyle }>
                     <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
                     <QuickTrade />
+                    <OffersBar offers={ this.props.offers } />
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>                                
                 <div style={ columnStyle }>
@@ -115,7 +117,8 @@ const mapStateToProps = (state) => {
     return {
         player: state.selectedPlayer,
         stock: state.selectedStock,
-        user: state.user
+        user: state.user,
+        offers: mockOffers
     }
 }
 
@@ -123,5 +126,11 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     setSelectedPlayer,
     setSelectedStock,
 }, dispatch);
+
+const mockOffers = [
+    {price: 42, quantity: 13, type_ask: true}, 
+    {price: 33, quantity: 313, type_ask: false}, 
+    {price: 12, quantity: 23, type_ask: false}
+]
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);
