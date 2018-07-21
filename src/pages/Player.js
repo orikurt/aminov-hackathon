@@ -73,7 +73,7 @@ class Player extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <SimilarPlayers />
+                        <SimilarPlayers players={this.props.playersList}/>
                     </div>
                 </div>
                 <div style={rowStyle}>
@@ -115,6 +115,7 @@ const searchStyle = {
 
 const mapStateToProps = (state) => {
     return {
+        playersList: state.players.list,
         player: { ...state.selectedPlayer, data: state.players.data[state.selectedPlayer.id] || {} },
         stock: { ...state.selectedStock, data: state.stocks.data[state.selectedStock.id] || {} },
         playerStats: state.players.stats[state.selectedPlayer.id],

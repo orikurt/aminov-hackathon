@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Image } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import { colors } from '../utils/uiScheme';
 
 const similarPlayers = (props) => {
@@ -16,10 +16,10 @@ const similarPlayers = (props) => {
         <div style={containerStyle}>
             {
                 data.map((player) => (
-                    <div style={{ width: '60px' }}>
+                    <Link to={`/players/${player.uid}`} style={{ width: '60px' }}>
                         <Image style={imageStyle} src={`/${player.image_url}`} alt={player.name} />
                         <label style={{ fontSize: '12px', width: '60px', textAlign: 'center', color: colors.textLowlight }}>{player.name}</label>
-                    </div>
+                    </Link>
                 ))
             }
         </div>
@@ -37,8 +37,4 @@ const imageStyle = {
     borderRadius: '2px'
 }
 
-const mapStateToProps = (state)=>({
-    players: state.players.list,
-})
-
-export default connect(mapStateToProps)(similarPlayers);
+export default similarPlayers;
