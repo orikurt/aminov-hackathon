@@ -3,9 +3,7 @@ import { OverlayTrigger } from 'react-bootstrap';
 import { Tooltip } from 'react-bootstrap';
 import { colors } from '../utils/uiScheme';
 
-const tooltipStyle = {
-    backgroundColor: colors.darkGray
-}
+const tooltipStyle = {}
 
 const tooltip = (props) => {
     const internal_tooltip = (

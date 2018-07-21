@@ -11,12 +11,12 @@ const similarPlayers = (props) => {
             data.push( player );
         }
     }
-    return (<div style={{ minWidth: '350px' }}>
+    return (<div style={{ width: '100%', minWidth: '350px', ...props.style }}>
         <h5 style={{ color:  colors.darkGray, textAlign: 'center' }}>People also interested in...</h5>
         <div style={containerStyle}>
             {
                 data.map((player) => (
-                    <Link to={`/players/${player.uid}`} style={{ width: '60px' }}>
+                    <Link to={`/players/${player.uid}`} style={{ width: '70px', margin: '0 10px' }}>
                         <Image style={imageStyle} src={`/${player.image_url}`} alt={player.name} />
                         <label style={{ fontSize: '12px', width: '60px', textAlign: 'center', color: colors.textLowlight }}>{player.name}</label>
                     </Link>
@@ -32,7 +32,7 @@ const containerStyle = {
 }
 
 const imageStyle = {
-    width: '60px',
+    width: '100%',
     border: `1px solid ${colors.third}`,
     borderRadius: '2px'
 }

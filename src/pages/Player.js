@@ -16,18 +16,21 @@ import UpcomingGames from '../components/UpcomingGames';
 import RecentGames from '../components/RecentGames';
 import SimilarPlayers from '../components/SimilarPlayers';
 import OffersBar from '../components/OffersBar';
+import { pageContainerStyle, pageColumnStyle } from '../Styles';
+import PlayerNav from '../components/PlayerNav';
+import { mockOffers } from '../utils/mockData';
 
 class Player extends React.Component {
 
     componentDidMount(){
-        this.props.setSelectedPlayer(this.props.match.params.playerId);
-        this.props.setSelectedStock(this.props.match.params.playerId);
+        this.props.setSelectedPlayer(this.props.match.params.uid);
+        this.props.setSelectedStock(this.props.match.params.uid);
     }
 
     componentWillReceiveProps(props){
-        if(props.match.params.playerId !== this.props.match.params.playerId){
-            this.props.setSelectedPlayer(props.match.params.playerId);
-            this.props.setSelectedStock(props.match.params.playerId);
+        if(props.match.params.uid !== this.props.match.params.uid){
+            this.props.setSelectedPlayer(props.match.params.uid);
+            this.props.setSelectedStock(props.match.params.uid);
         }
     }
 
@@ -36,22 +39,23 @@ class Player extends React.Component {
             return (<h3>No player selected</h3>)
         }
         return (
-            <div style={containerStyle}>
-                <div style={ columnStyle }>
+            <div style={ pageContainerStyle }>
+                <div style={ pageColumnStyle }>
+                    <PlayerNav />
                     <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
                     <QuickTrade user={ this.props.user } stock={ this.props.stock } />
                     <OffersBar offers={ this.props.offers } />
                 </div>
-                <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>                                
-                <div style={ columnStyle }>
+                <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>
+                <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
                     <div style={rowStyle}>
                         <div >
+                            <h4 style={{ textAlign: 'center' }}>Portfolio Position</h4>
                             { this.props.user.lastUpdated && this.props.stock.lastUpdated
                             ? <Position 
                                 stock={ this.props.stock.data }
                                 user={ this.props.user.data } />
                             : (<div>
-                                <h4>Portfolio Position</h4>
                                 <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: '10px' }}>
                                     <SignUpButton />
                                 </div>
@@ -64,20 +68,20 @@ class Player extends React.Component {
                                 </p>
                             </div>) }
                         </div>
-                        <div style={ columnStyle }>
+                        <div style={ pageColumnStyle }>
                             <Search style={ searchStyle } />
-                            <div style={{ ...columnStyle, height: '100%' }}>
+                            <div style={{ ...pageColumnStyle, height: '100%' }}>
                                 <UpcomingGames player={ this.props.player.data } style={{ paddingBottom: '5px', borderBottom: `1px solid ${ colors.secondary }` }} />
                                 <RecentGames player={ this.props.player.data } />
                             </div>
                         </div>
                     </div>
                     <div>
-                        <SimilarPlayers players={this.props.playersList}/>
+                        <GameTimeStats />
                     </div>
                 </div>
-                <div style={rowStyle}>
-                    <GameTimeStats />
+                <div style={{ ...rowStyle, width: '70%', marginBottom: '0'}}>
+                    <SimilarPlayers players={this.props.playersList} />
                 </div>                        
                 <div style={rowStyle}>
                     <RealWorldStats stats={ this.props.playerStats } />
@@ -87,24 +91,10 @@ class Player extends React.Component {
     }
 }
 
-const containerStyle = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    maxWidth: '1200px',
-    justifyContent: 'space-around',
-}
-
 const rowStyle = {
     display: 'flex',
     flexWrap: 'wrap',
     marginBottom: '15px'
-}
-
-const columnStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    padding: '0 10px'
 }
 
 const searchStyle = { 
@@ -128,11 +118,5 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     setSelectedPlayer,
     setSelectedStock,
 }, dispatch);
-
-const mockOffers = [
-    {price: 42, quantity: 13, type_ask: true}, 
-    {price: 33, quantity: 313, type_ask: false}, 
-    {price: 12, quantity: 23, type_ask: false}
-]
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

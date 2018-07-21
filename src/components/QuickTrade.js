@@ -13,6 +13,10 @@ class quickTrade extends Component {
         shares: 0
     }
 
+    componentWillMount(){
+        this.setQuantity(0.25);
+    }
+
     componentWillReceiveProps( props ){
         this.setQuantity(0.25, props);
     }
@@ -43,7 +47,7 @@ class quickTrade extends Component {
         return(
         <div style={containerStyle}>
             <div style={lineStyle} >
-                <h4>Quick Trade </h4>
+                <h4>Trade </h4>
                 <Tooltip
                     value={tooltipValue}
                     id="quickTrade"
@@ -61,10 +65,6 @@ class quickTrade extends Component {
                 <span style={{ color: colors.textLowlight }}>Equity worth</span>
                 <label style={{ fontSize: '16px' }} >{ percentFormat(this.state.shares / this.props.stock.data.shares) }%</label>
             </div>
-            <div style={lineStyle}>
-                <span style={{ color: colors.textLowlight }}>Estimated value</span>
-                <label style={{ fontSize: '16px', color: colors.third }}>$ {numberFormat(this.props.stock.data.price * this.state.shares)}</label>
-            </div>
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Shares Quantity</span>
                 <FormControl 
@@ -72,6 +72,10 @@ class quickTrade extends Component {
                     type="number" 
                     value={this.state.shares} 
                     onChange={this.setShares}/>                
+            </div>
+            <div style={lineStyle}>
+                <span style={{ color: colors.textLowlight }}>Total</span>
+                <label style={{ fontSize: '16px', color: colors.third }}>$ {numberFormat(this.props.stock.data.price * this.state.shares)}</label>
             </div>
             { this.props.user.signedIn 
             ? (<div style={lineStyle} >

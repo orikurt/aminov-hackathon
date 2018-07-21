@@ -3,6 +3,7 @@ import Notifications from '../pages/Notifications';
 import Players from '../pages/Players';
 import Player from '../pages/Player';
 import SignIn from '../pages/SignIn'
+import Exchange from '../pages/Exchange';
 const routes = [
     {
         path: "/",
@@ -42,9 +43,16 @@ const routes = [
     {
         path: "/exchange",
         component: Home,
+        exact: true,
         icon: "transfer",
         title: "Exchange"
-    },                
+    },
+    {
+        path: "/exchange/:uid",
+        component: Exchange,
+        exact: true,
+        navNo: true
+    },    
     {
         path: "/players",
         component: Players,
@@ -53,7 +61,7 @@ const routes = [
         title: "Portfolio"
     },
     {
-        path: "/players/:playerId",
+        path: "/players/:uid",
         component: Player,
         navNo: true,
         exact: true

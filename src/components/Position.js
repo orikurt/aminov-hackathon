@@ -23,7 +23,6 @@ class Position extends Component {
         return (
         <div style={{ minWidth: '420px' }}>
             <div style={{ ...rowStyle, justifyContent: 'space-around' }}>
-                <h4>Portfolio Position</h4>
                 <Tooltip value={ positionData[0].shares ? "Player is on your team" : "Player is not on your team" }>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Glyphicon 
