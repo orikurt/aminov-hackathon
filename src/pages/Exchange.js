@@ -10,6 +10,7 @@ import { setSelectedPlayer } from "../actions/playerCommands";
 import { setSelectedStock } from "../actions/stockCommands";
 import PlayerNav from '../components/PlayerNav';
 import { colors } from '../utils/uiScheme';
+import PriceTrend from '../components/PriceTrend';
 
 class Exchange extends Component {
 
@@ -36,6 +37,7 @@ class Exchange extends Component {
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${ colors.secondary}`}}></div>
                 <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
+                    <PriceTrend />
                 </div>
             </div>
         )

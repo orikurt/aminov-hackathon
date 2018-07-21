@@ -18,7 +18,7 @@ const infoStyle = {
     padding: '0 15px', 
     display: 'flex',
     flexDirection: 'column',
-    lineHeight: '26px'
+    lineHeight: '22px'
 }
 
 const spanStyle = {
@@ -44,7 +44,7 @@ const playerCard = (props) => {
                 </label> : null }
                 { props.stock ? <label >
                     <span style={ spanStyle }>Last Price </span>
-                    <span style={{fontSize: '16px', color: colors.third}}>${numberFormat(props.stock.price)}</span>
+                    <span style={{fontSize: '16px', color: colors.green}}>${numberFormat(props.stock.price)}</span>
                 </label> : null}
                 { props.stock ? <label>
                     <span style={ spanStyle }>Total Shares </span>

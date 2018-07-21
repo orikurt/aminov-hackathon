@@ -6,6 +6,7 @@ import Content from './Content';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import '../node_modules/react-vis/dist/style.css';
 
 class App extends Component{
   
