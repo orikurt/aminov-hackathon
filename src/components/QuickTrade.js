@@ -144,12 +144,7 @@ const quantitiesStyle = {
 
 const tooltipValue = <label><strong>buy or sell</strong> as quickly as possible at best avaiable price</label>;
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.user,
-        stock: state.selectedStock
-    };
-}
+const mapStateToProps = (_state) => ({})
 
 const mapDispathToProps = (dispatch) => {
     return bindActionCreators({ postOffer }, dispatch)

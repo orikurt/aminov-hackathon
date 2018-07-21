@@ -39,14 +39,14 @@ class Player extends React.Component {
             <div style={containerStyle}>
                 <div style={ columnStyle }>
                     <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
-                    <QuickTrade />
+                    <QuickTrade user={ this.props.user } stock={ this.props.stock } />
                     <OffersBar offers={ this.props.offers } />
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>                                
                 <div style={ columnStyle }>
                     <div style={rowStyle}>
                         <div >
-                            { this.props.user.lastUpdated
+                            { this.props.user.lastUpdated && this.props.stock.lastUpdated
                             ? <Position 
                                 stock={ this.props.stock.data }
                                 user={ this.props.user.data } />
@@ -80,7 +80,7 @@ class Player extends React.Component {
                     <GameTimeStats />
                 </div>                        
                 <div style={rowStyle}>
-                    { this.props.stock.lastUpdated ? <RealWorldStats stats={this.props.player.data.stats} /> : null }
+                    <RealWorldStats stats={ this.props.playerStats } />
                 </div>
             </div>
         )
@@ -115,8 +115,9 @@ const searchStyle = {
 
 const mapStateToProps = (state) => {
     return {
-        player: state.selectedPlayer,
-        stock: state.selectedStock,
+        player: { ...state.selectedPlayer, data: state.players.data[state.selectedPlayer.id] || {} },
+        stock: { ...state.selectedStock, data: state.stocks.data[state.selectedStock.id] || {} },
+        playerStats: state.players.stats[state.selectedPlayer.id],
         user: state.user,
         offers: mockOffers
     }

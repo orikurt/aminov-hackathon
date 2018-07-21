@@ -13,7 +13,7 @@ export const getStocksList = () => (dispatch, getState, api) => {
 
 export const setSelectedStock = (stockId) => (dispatch, getState, api) => {
     const { selectedStock } = getState();
-    if ( selectedStock.isFetching || (selectedStock.lastUpdated && selectedStock.data.uid === stockId) ){
+    if ( selectedStock.isFetching || (selectedStock.lastUpdated && selectedStock.id === stockId) ){
         return;
     }
     else {

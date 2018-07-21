@@ -21,6 +21,10 @@ class RealWorldStats extends Component{
     componentWillMount(){
         this.handleSelect();
     }
+
+    componentWillReceiveProps(){
+        this.handleSelect();
+    }    
     
     render(){
         return(<div>

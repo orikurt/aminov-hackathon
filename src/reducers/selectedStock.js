@@ -1,9 +1,9 @@
 import * as actionNames from '../actions/actionNames';
 
 const initialState = {
+    id: null,
     lastUpdated: null,
     isFetching: false,
-    data: {}
 }
 
 const selectedStock = (state=initialState, action) => {
@@ -16,7 +16,7 @@ const selectedStock = (state=initialState, action) => {
             return {...state, isFetching: false}
         
         case actionNames.SET_STOCK:
-            return {...state, isFetching: false, lastUpdated: Date.now(), data: action.payload}
+            return {...state, isFetching: false, lastUpdated: Date.now(), id: action.payload.uid }
         default:
             return state;
     }
