@@ -6,8 +6,8 @@ import Tooltip from './Tooltip';
 const offersBar = (props) => (
     <div>
         {
-            props.offers.map((offer) => (
-                <Tooltip value={`Price: ${offer.price} Shares: ${offer.quantity}`} >
+            props.offers.map((offer, i) => (
+                <Tooltip value={`Price: ${offer.price} Shares: ${offer.quantity}`} key={i}>
                     <Glyphicon 
                         glyph="bookmark" 
                         style={{ 

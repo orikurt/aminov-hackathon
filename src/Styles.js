@@ -1,9 +1,7 @@
-import { colors } from "./utils/uiScheme";
-
 export const pageContainerStyle = {
     display: 'flex',
     flexWrap: 'wrap',
-    maxWidth: '1200px',
+    maxWidth: '1600px',
     justifyContent: 'space-around',
 }
 
@@ -13,6 +11,14 @@ export const pageColumnStyle = {
     justifyContent: 'space-evenly',
     padding: '0 10px'
 }
+
+export const pageRowStyle = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    marginBottom: '15px',
+    minWidth: '800px'
+}
+
 
 export const linkStyle = {
     textDecoration: 'none',

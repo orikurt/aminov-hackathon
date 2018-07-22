@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { pageContainerStyle, pageColumnStyle } from '../Styles';
+import { pageContainerStyle, pageColumnStyle, pageRowStyle } from '../Styles';
 import PlayerCard from '../components/PlayerCard';
 import QuickTrade from '../components/QuickTrade';
 import OffersBar from '../components/OffersBar';
@@ -36,8 +36,8 @@ class Exchange extends Component {
                     <OffersBar offers={ this.props.offers } />
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${ colors.secondary}`}}></div>
-                <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
-                    <PriceTrend />
+                <div style={ pageColumnStyle }>
+                    <PriceTrend style={ pageRowStyle }/>
                 </div>
             </div>
         )

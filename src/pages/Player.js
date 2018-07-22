@@ -16,7 +16,7 @@ import UpcomingGames from '../components/UpcomingGames';
 import RecentGames from '../components/RecentGames';
 import SimilarPlayers from '../components/SimilarPlayers';
 import OffersBar from '../components/OffersBar';
-import { pageContainerStyle, pageColumnStyle } from '../Styles';
+import { pageContainerStyle, pageColumnStyle, pageRowStyle } from '../Styles';
 import PlayerNav from '../components/PlayerNav';
 import { mockOffers } from '../utils/mockData';
 
@@ -47,8 +47,8 @@ class Player extends React.Component {
                     <OffersBar offers={ this.props.offers } />
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>
-                <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
-                    <div style={rowStyle}>
+                <div style={ pageColumnStyle }>
+                    <div style={ pageRowStyle }>
                         <div >
                             <h4 style={{ textAlign: 'center' }}>Portfolio Position</h4>
                             { this.props.user.lastUpdated && this.props.stock.lastUpdated
@@ -80,21 +80,15 @@ class Player extends React.Component {
                         <GameTimeStats />
                     </div>
                 </div>
-                <div style={{ ...rowStyle, width: '70%', marginBottom: '0'}}>
+                <div style={{ ...pageRowStyle, width: '70%', marginBottom: '0'}}>
                     <SimilarPlayers players={this.props.playersList} />
                 </div>                        
-                <div style={rowStyle}>
+                <div style={ pageRowStyle }>
                     <RealWorldStats stats={ this.props.playerStats } />
                 </div>
             </div>
         )
     }
-}
-
-const rowStyle = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    marginBottom: '15px'
 }
 
 const searchStyle = { 
