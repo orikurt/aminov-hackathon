@@ -16,7 +16,7 @@ const similarPlayers = (props) => {
         <div style={containerStyle}>
             {
                 data.map((player) => (
-                    <Link to={`/players/${player.uid}`} style={{ width: '70px', margin: '0 10px' }}>
+                    <Link to={`/players/${player.uid}`} style={{ width: '70px', margin: '0 10px' }} key={player.uid}>
                         <Image style={imageStyle} src={`/${player.image_url}`} alt={player.name} />
                         <label style={{ fontSize: '12px', width: '60px', textAlign: 'center', color: colors.textLowlight }}>{player.name}</label>
                     </Link>

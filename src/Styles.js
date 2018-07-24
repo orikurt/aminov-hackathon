@@ -1,9 +1,7 @@
-import { colors } from "./utils/uiScheme";
-
 export const pageContainerStyle = {
     display: 'flex',
     flexWrap: 'wrap',
-    maxWidth: '1200px',
+    maxWidth: '1600px',
     justifyContent: 'space-around',
 }
 
