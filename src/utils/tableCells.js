@@ -1,5 +1,5 @@
 import React from 'react';
-import { percentFormat, rankFormat, numberFormat } from './format';
+import { percentFormat, rankFormat, numberFormat, dateFormat } from './format';
 import { Glyphicon } from 'react-bootstrap';
 import { colors } from './uiScheme';
 
@@ -16,6 +16,8 @@ const decoratorStyle = {
 export const TextCell = props => (<div style={ textStyle } >{ props.value }</div>);
 
 export const NumberCell = props => (<div style={ textStyle } >{ numberFormat(props.value)}</div>);
+
+export const DateCell = props => (<div style={ textStyle } >{ dateFormat(props.value)}</div>);
 
 export const PercentCell = props => (<div style={ textStyle } >{ percentFormat(props.value) }%</div>);
 

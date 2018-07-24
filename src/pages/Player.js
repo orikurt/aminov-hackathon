@@ -16,7 +16,7 @@ import UpcomingGames from '../components/UpcomingGames';
 import RecentGames from '../components/RecentGames';
 import SimilarPlayers from '../components/SimilarPlayers';
 import OffersBar from '../components/OffersBar';
-import { pageContainerStyle, pageColumnStyle } from '../Styles';
+import { pageContainerStyle, pageColumnStyle, pageRowStyle, searchStyle } from '../Styles';
 import PlayerNav from '../components/PlayerNav';
 import { mockOffers } from '../utils/mockData';
 
@@ -40,6 +40,7 @@ class Player extends React.Component {
         }
         return (
             <div style={ pageContainerStyle }>
+                <Search style={ searchStyle } />
                 <div style={ pageColumnStyle }>
                     <PlayerNav />
                     <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
@@ -48,7 +49,7 @@ class Player extends React.Component {
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>
                 <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
-                    <div style={rowStyle}>
+                    <div style={ pageRowStyle }>
                         <div >
                             <h4 style={{ textAlign: 'center' }}>Portfolio Position</h4>
                             { this.props.user.lastUpdated && this.props.stock.lastUpdated
@@ -69,8 +70,7 @@ class Player extends React.Component {
                             </div>) }
                         </div>
                         <div style={ pageColumnStyle }>
-                            <Search style={ searchStyle } />
-                            <div style={{ ...pageColumnStyle, height: '100%' }}>
+                            <div style={{ ...pageColumnStyle, height: '100%', justifyContent: 'space-evenly' }}>
                                 <UpcomingGames player={ this.props.player.data } style={{ paddingBottom: '5px', borderBottom: `1px solid ${ colors.secondary }` }} />
                                 <RecentGames player={ this.props.player.data } />
                             </div>
@@ -80,27 +80,15 @@ class Player extends React.Component {
                         <GameTimeStats />
                     </div>
                 </div>
-                <div style={{ ...rowStyle, width: '70%', marginBottom: '0'}}>
+                <div style={{ ...pageRowStyle, width: '70%', marginBottom: '0'}}>
                     <SimilarPlayers players={this.props.playersList} />
                 </div>                        
-                <div style={rowStyle}>
+                <div style={ pageRowStyle }>
                     <RealWorldStats stats={ this.props.playerStats } />
                 </div>
             </div>
         )
     }
-}
-
-const rowStyle = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    marginBottom: '15px'
-}
-
-const searchStyle = { 
-    width: '300px', 
-    margin: '0 auto',
-    marginBottom: '10px'
 }
 
 const mapStateToProps = (state) => {

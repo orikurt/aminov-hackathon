@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { pageContainerStyle, pageColumnStyle } from '../Styles';
+import { pageContainerStyle, pageColumnStyle, pageRowStyle, searchStyle } from '../Styles';
 import PlayerCard from '../components/PlayerCard';
 import QuickTrade from '../components/QuickTrade';
 import OffersBar from '../components/OffersBar';
-import { mockOffers } from '../utils/mockData';
+import { mockOffers, mockTrades, chartData, mockTrend } from '../utils/mockData';
 import { setSelectedPlayer } from "../actions/playerCommands";
 import { setSelectedStock } from "../actions/stockCommands";
 import PlayerNav from '../components/PlayerNav';
 import { colors } from '../utils/uiScheme';
 import PriceTrend from '../components/PriceTrend';
+import OrderBook from '../components/OrderBook';
+import Search from '../components/Search';
+import TradesList from '../components/TradesList';
 
 class Exchange extends Component {
 
@@ -29,6 +32,7 @@ class Exchange extends Component {
     render(){
         return (
             <div style={ pageContainerStyle }>
+                <Search style={ searchStyle } />
                 <div style={ pageColumnStyle }>
                     <PlayerNav />
                     <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
@@ -37,12 +41,48 @@ class Exchange extends Component {
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${ colors.secondary}`}}></div>
                 <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
-                    <PriceTrend />
+                    <div style={{ display: 'flex', padding: '10px 0' }}>
+                        <Tab value="Day" style={{ backgroundColor: colors.darkGray }} />
+                        <Tab value="Week" />
+                        <Tab value="Month" />
+                        <Tab value="Season" />
+                        <Tab value="Lifetime" />
+                    </div>                
+                    <div style={ pageRowStyle }>
+                        <PriceTrend data={ chartData() } trend={ mockTrend } />
+                    </div>
+                    <div style={ pageRowStyle }>
+                        <OrderBook offers={ mockOffers.filter(offer => !offer.type_ask) } style={ orderBookStyle } />
+                        <OrderBook offers={ mockOffers.filter(offer => offer.type_ask) } style={ orderBookStyle } />
+                        <TradesList trades={ mockTrades } style={{ ...orderBookStyle, width: '270px' }} />
+                    </div>
                 </div>
             </div>
         )
     }
 }
+
+const orderBookStyle = {
+    width: '250px',
+    minHeight: '300px',
+    fontSize: '12px'
+}
+
+const Tab = (props) => (
+    <label style={{ 
+        fontSize: '10px',
+        cursor: 'pointer',
+        width: '60px', 
+        height: '30px', 
+        border: `1px solid ${colors.darkGray}` ,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        ...props.style
+    }}>
+        { props.value }
+    </label>
+)
 
 const mapStateToProps = (state) => ({
     playersList: state.players.list,

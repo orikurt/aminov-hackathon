@@ -8,8 +8,8 @@ const playerCardStyle = {
 }
 
 const imageStyle = {
-    widht: '120px',
-    height: '180px',
+    widht: '100px',
+    height: '150px',
     borderRadius: '3px',
     border: `1px solid ${colors.third}`
 }
