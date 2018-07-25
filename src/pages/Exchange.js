@@ -14,6 +14,7 @@ import PriceTrend from '../components/PriceTrend';
 import OrderBook from '../components/OrderBook';
 import Search from '../components/Search';
 import TradesList from '../components/TradesList';
+import HoldingCard from '../components/HoldingCard';
 
 class Exchange extends Component {
 
@@ -35,7 +36,7 @@ class Exchange extends Component {
                 <Search style={ searchStyle } />
                 <div style={ pageColumnStyle }>
                     <PlayerNav />
-                    <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
+                    <HoldingCard player={ this.props.player.data } stock={ this.props.stock.data } />
                     <QuickTrade user={ this.props.user } stock={ this.props.stock } />
                     <OffersBar offers={ this.props.offers } />
                 </div>
