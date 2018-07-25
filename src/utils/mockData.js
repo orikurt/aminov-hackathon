@@ -1,7 +1,13 @@
 export const mockOffers = [
     {price: 42, quantity: 13, type_ask: true}, 
+    {price: 33.2, quantity: 313, type_ask: false}, 
+    {price: 12.3, quantity: 23, type_ask: false},
+    {price: 43.34, quantity: 313, type_ask: true}, 
+    {price: 12.56, quantity: 23, type_ask: false},
+    {price: 33.9, quantity: 313, type_ask: false}, 
+    {price: 35, quantity: 23, type_ask: true},
     {price: 33, quantity: 313, type_ask: false}, 
-    {price: 12, quantity: 23, type_ask: false}
+    {price: 54, quantity: 23, type_ask: true},
 ]
 
 export const mockTrades = [
