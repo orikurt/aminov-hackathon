@@ -1,6 +1,5 @@
 import React from "react";
 import { XYPlot, LineSeries, HorizontalGridLines, XAxis, YAxis, AreaSeries, Hint } from "react-vis";
-import ReactTable from 'react-table';
 import { colors } from "../utils/uiScheme";
 import TrendData from "./TrendData";
 
