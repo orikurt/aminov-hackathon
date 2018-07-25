@@ -42,7 +42,9 @@ export const DashboardEquityItem = (props) => (
 export const DashboardCostItem = (props) => (
     <DashboardItem {...props } style={{ ...mainStyle, ...props.style }}>
         <span style={{ fontSize: '16px' }}>${ numberFormat(props.value) }</span>
-        <span style={{ fontSize: '12px', color: (props.secondary >= 0) ? colors.green : colors.red }}>{ percentFormat(props.secondary) }%</span>
+        <span style={{ fontSize: '12px', color: (props.secondary >= 0) ? colors.green : colors.red }}>
+            { props.secondary > 0 ? '+' : null }{ percentFormat(props.secondary) }%
+        </span>
     </DashboardItem>)    
 
 const mainStyle = { 

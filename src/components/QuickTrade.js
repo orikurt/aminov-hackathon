@@ -46,8 +46,11 @@ class quickTrade extends Component {
     render(){ 
         return(
         <div style={containerStyle}>
-            <div style={lineStyle} >
-                <h4>Trade </h4>
+            <div style={{ ...lineStyle, justifyContent: 'space-between' }} >
+                <div style={{ display: 'flex' }}>
+                    <div style={{ ...tabStyle, ...tabSelected }} >Market</div>
+                    <div style={ tabStyle } >Limit</div>
+                </div>
                 <Tooltip
                     value={tooltipValue}
                     id="quickTrade"
@@ -120,6 +123,18 @@ const lineStyle = {
 const inputStyle = {
     width: '120px',
     fontSize: '18px'
+}
+
+const tabStyle = {
+    border: `1px solid ${ colors.darkGray }`,
+    color: colors.darkGray,
+    padding: '5px 15px',
+    cursor: 'pointer'
+}
+
+const tabSelected = {
+    borderBottom: 'none',
+    color: colors.text,
 }
 
 const buttonStyle = {
