@@ -1,8 +1,8 @@
 export const pageContainerStyle = {
     display: 'flex',
     flexWrap: 'wrap',
-    maxWidth: '1600px',
     justifyContent: 'space-around',
+    width: '100%'
 }
 
 export const pageColumnStyle = {

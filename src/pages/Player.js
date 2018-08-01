@@ -80,7 +80,7 @@ class Player extends React.Component {
                         <GameTimeStats />
                     </div>
                 </div>
-                <div style={{ ...pageRowStyle, width: '70%', marginBottom: '0'}}>
+                <div style={{ ...pageRowStyle, width: '70%', margin: '40px 0'}}>
                     <SimilarPlayers players={this.props.playersList} />
                 </div>                        
                 <div style={ pageRowStyle }>

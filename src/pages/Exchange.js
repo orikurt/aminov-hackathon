@@ -15,6 +15,7 @@ import OrderBook from '../components/OrderBook';
 import Search from '../components/Search';
 import TradesList from '../components/TradesList';
 import HoldingCard from '../components/HoldingCard';
+import Collapsable from '../components/Collapsable';
 
 class Exchange extends Component {
 
@@ -42,21 +43,26 @@ class Exchange extends Component {
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${ colors.secondary}`}}></div>
                 <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
-                    <div style={{ display: 'flex', padding: '10px 0' }}>
-                        <Tab value="Day" style={{ backgroundColor: colors.darkGray }} />
-                        <Tab value="Week" />
-                        <Tab value="Month" />
-                        <Tab value="Season" />
-                        <Tab value="Lifetime" />
-                    </div>                
-                    <div style={ pageRowStyle }>
-                        <PriceTrend data={ chartData() } trend={ mockTrend } />
-                    </div>
-                    <div style={ pageRowStyle }>
-                        <OrderBook offers={ mockOffers.filter(offer => !offer.type_ask) } style={ orderBookStyle } />
-                        <OrderBook offers={ mockOffers.filter(offer => offer.type_ask) } style={ orderBookStyle } />
-                        <TradesList trades={ mockTrades } style={{ ...orderBookStyle, width: '270px' }} />
-                    </div>
+                    <Collapsable minHeight="90px"  toggleTop="64px" expanded={true} >
+                        <div style={{ display: 'flex', padding: '10px 0' }}>
+                            <Tab value="Day" style={{ backgroundColor: colors.darkGray }} />
+                            <Tab value="Week" />
+                            <Tab value="Month" />
+                            <Tab value="Season" />
+                            <Tab value="Lifetime" />
+                        </div>
+                        <h4>Price Trend</h4>
+                        <div style={ pageRowStyle }>
+                            <PriceTrend data={ chartData() } trend={ mockTrend } />
+                        </div>
+                    </Collapsable>
+                    <Collapsable style={{ marginTop: '15px' }} toggleTop="5px" expanded={true} >
+                        <div style={ pageRowStyle }>
+                            <OrderBook offers={ mockOffers.filter(offer => !offer.type_ask) } style={ orderBookStyle } />
+                            <OrderBook offers={ mockOffers.filter(offer => offer.type_ask) } style={ orderBookStyle } />
+                            <TradesList trades={ mockTrades } style={{ ...orderBookStyle, width: '270px' }} />
+                        </div>
+                    </Collapsable>
                 </div>
             </div>
         )
