@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { pageContainerStyle, pageColumnStyle, pageRowStyle, searchStyle } from '../Styles';
-import PlayerCard from '../components/PlayerCard';
 import QuickTrade from '../components/QuickTrade';
 import OffersBar from '../components/OffersBar';
 import { mockOffers, mockTrades, chartData, mockTrend } from '../utils/mockData';
@@ -56,10 +55,30 @@ class Exchange extends Component {
                             <PriceTrend data={ chartData() } trend={ mockTrend } />
                         </div>
                     </Collapsable>
+
+                    <Collapsable style={ yourSectionStyle } toggleTop="5px" expanded={true} >
+                        <div style={ pageRowStyle }>
+                            <OrderBook 
+                            offers={ mockOffers.slice(0, 2) }
+                            header="Open Orders"
+                            rows={3} />
+                            <TradesList 
+                            trades={ mockTrades } 
+                            header="Trade History"
+                            rows={3} />
+                        </div>
+                    </Collapsable>
+
                     <Collapsable style={{ marginTop: '15px' }} toggleTop="5px" expanded={true} >
                         <div style={ pageRowStyle }>
-                            <OrderBook offers={ mockOffers.filter(offer => !offer.type_ask) } style={ orderBookStyle } />
-                            <OrderBook offers={ mockOffers.filter(offer => offer.type_ask) } style={ orderBookStyle } />
+                            <OrderBook 
+                            offers={ mockOffers.filter(offer => !offer.type_ask) }
+                            header="Buy Offers"
+                            style={ orderBookStyle } />
+                            <OrderBook 
+                            offers={ mockOffers.filter(offer => offer.type_ask) } 
+                            header="Sell Offers"
+                            style={ orderBookStyle } />
                             <TradesList trades={ mockTrades } style={{ ...orderBookStyle, width: '270px' }} />
                         </div>
                     </Collapsable>
@@ -73,6 +92,13 @@ const orderBookStyle = {
     width: '250px',
     minHeight: '300px',
     fontSize: '12px'
+}
+
+const yourSectionStyle = { 
+    backgroundColor: colors.secondary, 
+    padding: '10px', 
+    marginTop: '15px',
+    width: '100%'
 }
 
 const Tab = (props) => (

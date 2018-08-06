@@ -8,12 +8,12 @@ const TradesList = (props) => {
     <div>
         <ReactTable 
             data={ props.trades }
-            columns={[{ Header: "Trades", columns: columns }]}
+            columns={[{ Header: props.header || "Trades", columns: columns }]}
             showPagination={ false }
             getTheadGroupProps={ getTheadGroupProps }
             className="-striped"
             pageSize={ props.trades.length }
-            minRows={7}
+            minRows={ props.rows || 7 }
             style={ props.style }
         />
     </div>)
