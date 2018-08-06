@@ -24,19 +24,19 @@ const columns = [
         Header: "Price",
         accessor: "price",
         Cell: NumberCell,
-        width: 90
+        
     },
     {
         Header: "Shares",
         accessor: "quantity",
         Cell: NumberCell,
-        width: 90
+        
     },
     {
         Header: "Time",
         accessor: "date",
         Cell: DateCell,
-        width: 90
+        
     },
 ];
 

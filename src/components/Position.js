@@ -50,19 +50,17 @@ class Position extends Component {
                     value={ (positionData[0].avgBuyPrice ) }
                     secondary={ (  this.props.stock.price / positionData[0].avgBuyPrice) -1} />
             </div>
+            <h5>Points</h5>
             <div style={ rowStyle }>
-                <div style={ columnStyle }>
-                    <h5 style={{}}>Productivity</h5>
-                    <DashboardNumberItem name="Per Game" value={ positionData[0].points.perGame }  />
-                    <DashboardNumberItem name="Season" value={ positionData[0].points.season } />
-                    <DashboardNumberItem name="Lifetime" value={ (positionData[0].points.lifetime ) }  />
-                </div>
-                <div style={ columnStyle }>
+                <DashboardNumberItem name="Per Game" value={ positionData[0].points.perGame }  />
+                <DashboardNumberItem name="Season" value={ positionData[0].points.season } />
+                <DashboardNumberItem name="Lifetime" value={ (positionData[0].points.lifetime ) }  />
+                {/* <div style={ columnStyle }>
                     <h5>Dividends</h5>
                     <DashboardNumberItem name="Per Day" value={ positionData[0].dividends.perDay }  />
                     <DashboardNumberItem name="Season" value={ positionData[0].dividends.season } /> 
                     <DashboardNumberItem name="Lifetime" value={ (positionData[0].dividends.lifetime ) }  />
-                </div>                    
+                </div>                     */}
             </div>
                             
         </div>

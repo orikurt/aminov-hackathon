@@ -9,7 +9,7 @@ export const pageColumnStyle = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    padding: '0 10px'
+    padding: '0 8px'
 }
 
 export const pageRowStyle = {

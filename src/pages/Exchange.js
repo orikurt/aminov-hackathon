@@ -15,6 +15,7 @@ import Search from '../components/Search';
 import TradesList from '../components/TradesList';
 import HoldingCard from '../components/HoldingCard';
 import Collapsable from '../components/Collapsable';
+import OpenOrders from '../components/OpenOrders';
 
 class Exchange extends Component {
 
@@ -39,6 +40,7 @@ class Exchange extends Component {
                     <HoldingCard player={ this.props.player.data } stock={ this.props.stock.data } />
                     <QuickTrade user={ this.props.user } stock={ this.props.stock } />
                     <OffersBar offers={ this.props.offers } />
+                    <OpenOrders orders={ mockOffers.slice(0, 2) } />
                 </div>
                 <div style={{ minHeight: '300px', borderRight: `1px solid ${ colors.secondary}`}}></div>
                 <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
@@ -56,19 +58,6 @@ class Exchange extends Component {
                         </div>
                     </Collapsable>
 
-                    <Collapsable style={ yourSectionStyle } toggleTop="5px" expanded={true} >
-                        <div style={ pageRowStyle }>
-                            <OrderBook 
-                            offers={ mockOffers.slice(0, 2) }
-                            header="Open Orders"
-                            rows={3} />
-                            <TradesList 
-                            trades={ mockTrades } 
-                            header="Trade History"
-                            rows={3} />
-                        </div>
-                    </Collapsable>
-
                     <Collapsable style={{ marginTop: '15px' }} toggleTop="5px" expanded={true} >
                         <div style={ pageRowStyle }>
                             <OrderBook 
@@ -82,6 +71,17 @@ class Exchange extends Component {
                             <TradesList trades={ mockTrades } style={{ ...orderBookStyle, width: '270px' }} />
                         </div>
                     </Collapsable>
+                    
+                    <Collapsable style={ yourSectionStyle } toggleTop="5px" expanded={true} >
+                        <div style={ pageRowStyle }>
+                            <TradesList 
+                            trades={ mockTrades } 
+                            header="Trade History"
+                            rows={3}
+                            style={{ width: '400px' }} />
+                        </div>
+                    </Collapsable>
+
                 </div>
             </div>
         )
@@ -95,7 +95,7 @@ const orderBookStyle = {
 }
 
 const yourSectionStyle = { 
-    backgroundColor: colors.secondary, 
+    backgroundColor: colors.section, 
     padding: '10px', 
     marginTop: '15px',
     width: '100%'

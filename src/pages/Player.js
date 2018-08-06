@@ -70,8 +70,8 @@ class Player extends React.Component {
                             </div>) }
                         </div>
                         <div style={ pageColumnStyle }>
-                            <div style={{ ...pageColumnStyle, height: '100%', justifyContent: 'space-evenly' }}>
-                                <UpcomingGames player={ this.props.player.data } style={{ paddingBottom: '5px', borderBottom: `1px solid ${ colors.secondary }` }} />
+                            <div style={{ ...pageColumnStyle, height: '400px', justifyContent: 'space-evenly' }}>
+                                <UpcomingGames player={ this.props.player.data } style={{ paddingBottom: '15px', borderBottom: `1px solid ${ colors.secondary }` }} />
                                 <RecentGames player={ this.props.player.data } />
                             </div>
                         </div>
