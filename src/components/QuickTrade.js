@@ -44,7 +44,7 @@ class quickTrade extends Component {
     sendOffer = (type_ask) => {
         this.props.postOffer({
             type_ask,
-            price: this.state.limit,
+            price: this.state.limit || this.props.stock.data.price,
             uid: this.props.stock.data.uid,
             quantity: this.state.shares,
             userId: this.props.user.data.userId

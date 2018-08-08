@@ -13,8 +13,8 @@ const openOrders = (props) => {
                     <span style={ spanStyle} >Total</span>
                     <span style={ spanStyle} >Remove</span>
                 </li>            
-                { props.orders.map( order => (
-                    <li style={ liStyle }>
+                { props.orders.map( (order, i) => (
+                    <li style={ liStyle } key={i}>
                         <span style={ spanStyle} >{ numberFormat(order.price) }</span>
                         <span style={ spanStyle} >{ numberFormat(order.quantity) }</span>
                         <span style={ spanStyle} >{ numberFormat(order.quantity * order.quantity) }</span>
