@@ -10,7 +10,13 @@ import { postOffer } from '../actions/offerCommands';
 
 class quickTrade extends Component {
     state = {
-        shares: 0
+        shares: 0,
+        mode: 'market',
+        limit: this.props.stock.data.price
+    }
+
+    componentWillMount(){
+        this.setQuantity(0.25);
     }
 
     componentWillReceiveProps( props ){
@@ -23,16 +29,22 @@ class quickTrade extends Component {
         });
     }
 
+    setLimit = (e) => {
+        this.setState({
+            limit: parseFloat(e.target.value || this.props.stocks.data.price, 10)
+        });
+    }    
+
     setQuantity = (quantity, props = this.props) => {
         this.setState({
             shares: Math.round( (( props.user.data.cash || 1000000 ) * quantity) / props.stock.data.price ) || 100
         })
     }
-
+        
     sendOffer = (type_ask) => {
         this.props.postOffer({
             type_ask,
-            price: this.props.stock.data.price,
+            price: this.state.limit || this.props.stock.data.price,
             uid: this.props.stock.data.uid,
             quantity: this.state.shares,
             userId: this.props.user.data.userId
@@ -42,8 +54,25 @@ class quickTrade extends Component {
     render(){ 
         return(
         <div style={containerStyle}>
-            <div style={lineStyle} >
-                <h4>Quick Trade </h4>
+            <div style={{ ...lineStyle, padding: '0' }} >
+                <div style={{ display: 'flex' }}>
+                    <div 
+                    style={ this.state.mode === "market" ? { ...tabStyle, ...tabSelected } : tabStyle }
+                    onClick={()=>this.setState({
+                        mode: "market",
+                        limit: this.props.stock.data.price
+                    })} >
+                        Market
+                    </div>
+                    <div 
+                    style={ this.state.mode === "limit" ? { ...tabStyle, ...tabSelected } : tabStyle }
+                    onClick={()=>this.setState({
+                        mode: "limit",
+                        limit: this.state.limit || this.props.stock.data.price
+                    })} >
+                        Limit
+                    </div>
+                </div>
                 <Tooltip
                     value={tooltipValue}
                     id="quickTrade"
@@ -53,17 +82,22 @@ class quickTrade extends Component {
                     </div>
                 </Tooltip>
             </div>
-            <div style={lineStyle} >
+            { this.state.mode === "market" 
+            ? (<div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Best price</span>
                 <label style={{fontSize: '18px', color: colors.green}} >$ {numberFormat(this.props.stock.data.price)}</label>
-            </div>
+            </div>)
+            : (<div style={lineStyle} >
+                <span style={{ color: colors.textLowlight }}>Price</span>
+                <FormControl 
+                type="number" 
+                style={inputStyle}
+                value={this.state.limit}
+                onChange={this.setLimit} />
+            </div>) }
             <div style={lineStyle}>
                 <span style={{ color: colors.textLowlight }}>Equity worth</span>
                 <label style={{ fontSize: '16px' }} >{ percentFormat(this.state.shares / this.props.stock.data.shares) }%</label>
-            </div>
-            <div style={lineStyle}>
-                <span style={{ color: colors.textLowlight }}>Estimated value</span>
-                <label style={{ fontSize: '16px', color: colors.third }}>$ {numberFormat(this.props.stock.data.price * this.state.shares)}</label>
             </div>
             <div style={lineStyle} >
                 <span style={{ color: colors.textLowlight }}>Shares Quantity</span>
@@ -72,6 +106,10 @@ class quickTrade extends Component {
                     type="number" 
                     value={this.state.shares} 
                     onChange={this.setShares}/>                
+            </div>
+            <div style={lineStyle}>
+                <span style={{ color: colors.textLowlight }}>Total</span>
+                <label style={{ fontSize: '16px', color: colors.third }}>$ {numberFormat((this.state.limit || this.props.stock.data.price)* this.state.shares)}</label>
             </div>
             { this.props.user.signedIn 
             ? (<div style={lineStyle} >
@@ -85,7 +123,7 @@ class quickTrade extends Component {
             </div>) 
             : (<div style={lineStyle} ></div> )
             }
-            <div style={lineStyle}>
+            <div style={{ ...lineStyle, padding: 0 }}>
             { this.props.user.signedIn ? (
                 <Button onClick={() => this.sendOffer(false)} style={{...buttonStyle, ...buyStyle}}>Buy</Button>
             ) : (<Link to="/register"> <Button style={{...buttonStyle, ...buyStyle}}>Buy</Button> </Link>)}
@@ -110,12 +148,28 @@ const lineStyle = {
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: '2px 0',
-    minHeight: '30px'
+    minHeight: '30px',
+    padding: '0 5px',
 }
 
 const inputStyle = {
     width: '120px',
-    fontSize: '18px'
+    fontSize: '16px',
+    height: '30px',
+    textAlign: 'right'
+}
+
+const tabStyle = {
+    border: `1px solid ${ colors.darkGray }`,
+    borderBottom: `1px solid ${ colors.darkGray }`,
+    color: colors.darkGray,
+    padding: '5px 15px',
+    cursor: 'pointer',
+}
+
+const tabSelected = {
+    borderBottom: 'none',
+    color: colors.text,
 }
 
 const buttonStyle = {
@@ -144,12 +198,7 @@ const quantitiesStyle = {
 
 const tooltipValue = <label><strong>buy or sell</strong> as quickly as possible at best avaiable price</label>;
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.user,
-        stock: state.selectedStock
-    };
-}
+const mapStateToProps = (_state) => ({})
 
 const mapDispathToProps = (dispatch) => {
     return bindActionCreators({ postOffer }, dispatch)

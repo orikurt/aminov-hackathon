@@ -5,7 +5,6 @@ const initialState = {
     data: {},
     stats: {},
     list: [],
-    playersList: [],
     lastUpdated: null
 }
 

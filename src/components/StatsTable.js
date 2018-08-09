@@ -14,7 +14,7 @@ const StatsTable = (props) => {
             columns={ getColumnsByType( props.type ) }
             className="-striped"
             showPagination={false}
-            defaultPageSize={props.data.length}
+            pageSize={props.data.length}
             style={{ fontSize: '12px' }}
         />
     );

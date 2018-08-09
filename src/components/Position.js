@@ -21,18 +21,19 @@ class Position extends Component {
     }
     render(){
         return (
-        <div>
-            <div style={{ ...rowStyle, justifyContent: 'space-between' }}>
-                <h4>Portfolio Position</h4>
+        <div style={{ minWidth: '420px' }}>
+            <div style={{ ...rowStyle, justifyContent: 'space-around' }}>
                 <Tooltip value={ positionData[0].shares ? "Player is on your team" : "Player is not on your team" }>
-                    <Glyphicon 
-                        glyph={positionData[0].shares ? "star" : "star-empty"}
-                        style={{ color: colors.third, fontSize: '18px' }} />
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <Glyphicon 
+                            glyph={positionData[0].shares ? "star" : "star-empty"}
+                            style={{ color: colors.third, fontSize: '18px' }} />
+                        <label >
+                            <span style={{ fontSize: '10px', color: colors.darkGray }}>Role </span>
+                            <span style={{ fontSize: '12px', color: colors.third }}>{ positionData[0].role }</span>
+                        </label>
+                    </div>
                 </Tooltip>
-                <label >
-                    <span style={{ fontSize: '14px', color: colors.textLowlight }}>Role </span>
-                    <span style={{ fontSize: '16px', color: colors.third }}>{ positionData[0].role }</span>
-                </label>
             </div>
             <div style={ rowStyle }>
                 <DashboardSharesItem 
@@ -49,19 +50,17 @@ class Position extends Component {
                     value={ (positionData[0].avgBuyPrice ) }
                     secondary={ (  this.props.stock.price / positionData[0].avgBuyPrice) -1} />
             </div>
+            <h5>Points</h5>
             <div style={ rowStyle }>
-                <div style={ columnStyle }>
-                    <h5>Productivity</h5>
-                    <DashboardNumberItem name="Per Game" value={ positionData[0].points.perGame }  />
-                    <DashboardNumberItem name="Season" value={ positionData[0].points.season } />
-                    <DashboardNumberItem name="Lifetime" value={ (positionData[0].points.lifetime ) }  />
-                </div>
-                <div style={ columnStyle }>
+                <DashboardNumberItem name="Per Game" value={ positionData[0].points.perGame }  />
+                <DashboardNumberItem name="Season" value={ positionData[0].points.season } />
+                <DashboardNumberItem name="Lifetime" value={ (positionData[0].points.lifetime ) }  />
+                {/* <div style={ columnStyle }>
                     <h5>Dividends</h5>
                     <DashboardNumberItem name="Per Day" value={ positionData[0].dividends.perDay }  />
                     <DashboardNumberItem name="Season" value={ positionData[0].dividends.season } /> 
                     <DashboardNumberItem name="Lifetime" value={ (positionData[0].dividends.lifetime ) }  />
-                </div>                    
+                </div>                     */}
             </div>
                             
         </div>
@@ -72,7 +71,7 @@ class Position extends Component {
 const rowStyle = { 
     display: 'flex', 
     justifyContent: 'space-evenly',
-    alignItems: 'baseline',
+    alignItems: 'center',
 }
 
 const columnStyle = { 

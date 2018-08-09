@@ -9,8 +9,10 @@ const initialState = {
 
 const stocks = (state=initialState, action) => {
     switch (action.type){
+ 
         case actions.FETCH_STOCKS:
             return {...state, isFetching: true}
+ 
         case actions.SET_STOCKS:
             const data = action.payload.reduce((stocks, stock)=>{
                 stocks[stock.uid] = stock;
@@ -23,6 +25,11 @@ const stocks = (state=initialState, action) => {
                 data,
                 list: action.payload
             }
+        
+        case actions.SET_STOCK:
+            state.data[action.payload.uid] = action.payload;
+            return state;
+
         default:
             return state;
     }

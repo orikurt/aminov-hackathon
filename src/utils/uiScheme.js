@@ -16,5 +16,6 @@ export const colors = {
     blue: '#2980b9',
     darkBlue: '#192a56',
     black: '#2d3436',
-    blackOpaque: (opacity = 1) => (`rgba(45, 52, 54, ${opacity})`)
+    blackOpaque: (opacity = 1) => (`rgba(45, 52, 54, ${opacity})`),
+    section: '#3a3e3d'
 }

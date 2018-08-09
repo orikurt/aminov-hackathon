@@ -2,29 +2,6 @@ import React from 'react';
 import { numberFormat } from '../utils/format';
 import { colors } from '../utils/uiScheme';
 
-const playerCardStyle = {
-    display: 'flex',
-}
-
-const imageStyle = {
-    widht: '120px',
-    height: '180px',
-    borderRadius: '3px',
-    border: `1px solid ${colors.third}`
-}
-
-const infoStyle = {
-    padding: '0 15px', 
-    display: 'flex',
-    flexDirection: 'column',
-    lineHeight: '26px'
-}
-
-const spanStyle = {
-    color: colors.textLowlight,
-    fontSize: '12px'
-}
-
 const playerCard = (props) => {
     return (
         <div style={playerCardStyle}>
@@ -41,10 +18,10 @@ const playerCard = (props) => {
                     <span style={ spanStyle }>Experience </span>
                     <span>{props.player.experience}</span>
                 </label> : null }
-                { props.stock ? <label >
+                {/* { props.stock ? <label >
                     <span style={ spanStyle }>Last Price </span>
-                    <span style={{fontSize: '16px', color: colors.third}}>${numberFormat(props.stock.price)}</span>
-                </label> : null}
+                    <span style={{fontSize: '16px', color: colors.green}}>${numberFormat(props.stock.price)}</span>
+                </label> : null} */}
                 { props.stock ? <label>
                     <span style={ spanStyle }>Total Shares </span>
                     <span style={{fontSize: '16px'}}>{numberFormat(props.stock.shares)}</span>
@@ -53,5 +30,31 @@ const playerCard = (props) => {
         </div>
     )
 }
+
+const playerCardStyle = {
+    display: 'flex',
+    minWidth: '300px',
+    padding: '10px 0'
+}
+
+const imageStyle = {
+    widht: '100px',
+    height: '150px',
+    borderRadius: '3px',
+    border: `1px solid ${colors.third}`
+}
+
+const infoStyle = {
+    padding: '0 15px', 
+    display: 'flex',
+    flexDirection: 'column',
+    lineHeight: '22px'
+}
+
+const spanStyle = {
+    color: colors.textLowlight,
+    fontSize: '12px'
+}
+
 
 export default playerCard;

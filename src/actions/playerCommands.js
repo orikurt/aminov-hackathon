@@ -3,7 +3,7 @@ import * as actions from './index';
 export const setSelectedPlayer = (playerId) => (dispatch, getState, api) => {
     const { selectedPlayer, players } = getState();
     //Already fetched and selected
-    if ( selectedPlayer.isFetching || (selectedPlayer.lastUpdated && selectedPlayer.data.uid === playerId)){
+    if ( selectedPlayer.isFetching || (selectedPlayer.lastUpdated && selectedPlayer.id === playerId)){
         return;
     }
     // We fetched players

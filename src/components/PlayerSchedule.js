@@ -4,16 +4,22 @@ import { colors } from '../utils/uiScheme';
 
 const PlayerSchedule = (props) => {
     return (
-        <div { ...props } style={{ ...containerStyle, ...props.style }}>
-            <h5 style={{ color: colors.textLowlight }} >Upcoming Games</h5>
+        <div { ...props } style={ containerStyle }>
             <div style={ wrapperStyle }>
-                { scheduleData.map((game, i)=>(
+                { props.schedule.map((game, i)=>(
                     <div style={ gameStyle } key={i}>
                         <label style={{ color: colors.third }}>{  dateFormat(game.date) }</label>
                         <label>{ game.home === props.player.team 
                             ? `vs ${ game.away.split(" ").reverse()[0] }` 
                             : `@ ${ game.home.split(" ").reverse()[0] }`
                         }</label>
+                        {( props.performance && props.performance[game.date] )
+                            ? ( <div>
+                                <span style={{ fontSize: '12px', color: colors.textLowlight }}>score </span>
+                                <label style={{ fontSize: '16px', color: colors.green }}> { props.performance[game.date] } </label>
+                            </div>)
+                            : null
+                        }
                     </div>
                 )) }
             </div>
@@ -24,7 +30,8 @@ const PlayerSchedule = (props) => {
 const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    minWidth: '280px'
 }
 
 const wrapperStyle = { 
@@ -38,23 +45,5 @@ const gameStyle = {
     flexDirection: 'column',
     alignItems: 'center',
 }
-
-const scheduleData = [
-    {
-        date: Date.now(),
-        home: "Cleveland Cavaliers",
-        away: "Boston Celtics"
-    },
-    {
-        date: Date.now(),
-        home: "LA Lakers",
-        away: "Boston Celtics"
-    },
-    {
-        date: Date.now(),
-        home: "Golden State Warriors",
-        away: "LA Lakers"
-    },    
-]
 
 export default PlayerSchedule;

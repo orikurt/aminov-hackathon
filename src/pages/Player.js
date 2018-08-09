@@ -12,19 +12,25 @@ import Search from '../components/Search';
 import SignUpButton from '../components/SignUpButton';
 import Position from '../components/Position';
 import { colors } from '../utils/uiScheme';
-import PlayerSchedule from '../components/PlayerSchedule';
+import UpcomingGames from '../components/UpcomingGames';
+import RecentGames from '../components/RecentGames';
+import SimilarPlayers from '../components/SimilarPlayers';
+import OffersBar from '../components/OffersBar';
+import { pageContainerStyle, pageColumnStyle, pageRowStyle, searchStyle } from '../Styles';
+import PlayerNav from '../components/PlayerNav';
+import { mockOffers } from '../utils/mockData';
 
 class Player extends React.Component {
 
     componentDidMount(){
-        this.props.setSelectedPlayer(this.props.match.params.playerId);
-        this.props.setSelectedStock(this.props.match.params.playerId);
+        this.props.setSelectedPlayer(this.props.match.params.uid);
+        this.props.setSelectedStock(this.props.match.params.uid);
     }
 
     componentWillReceiveProps(props){
-        if(props.match.params.playerId !== this.props.match.params.playerId){
-            this.props.setSelectedPlayer(props.match.params.playerId);
-            this.props.setSelectedStock(props.match.params.playerId);
+        if(props.match.params.uid !== this.props.match.params.uid){
+            this.props.setSelectedPlayer(props.match.params.uid);
+            this.props.setSelectedStock(props.match.params.uid);
         }
     }
 
@@ -33,87 +39,66 @@ class Player extends React.Component {
             return (<h3>No player selected</h3>)
         }
         return (
-            <div style={containerStyle}>
-                <div style={ rowStyle }>
-                    <div style={{ ...columnStyle, width: '400px' }}>
-                        <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
-                        <QuickTrade />
-                    </div>
-                    <div style={{width: '1px', minHeight: '480px', borderRight: `1px solid ${colors.secondary}`}}></div>
-                    <div style={ columnStyle }>
-                        <div style={ rowStyle }>
-                            <div style={{ ...columnStyle, flexGrow: '1' }}>
-                            { this.props.user.lastUpdated
+            <div style={ pageContainerStyle }>
+                <Search style={ searchStyle } />
+                <div style={ pageColumnStyle }>
+                    <PlayerNav />
+                    <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
+                    <QuickTrade user={ this.props.user } stock={ this.props.stock } />
+                    <OffersBar offers={ this.props.offers } />
+                </div>
+                <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>
+                <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
+                    <div style={ pageRowStyle }>
+                        <div >
+                            <h4 style={{ textAlign: 'center' }}>Portfolio Position</h4>
+                            { this.props.user.lastUpdated && this.props.stock.lastUpdated
                             ? <Position 
                                 stock={ this.props.stock.data }
                                 user={ this.props.user.data } />
-                            : (
-                                <div>
-                                    <h4>Portfolio Position</h4>
-                                    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: '10px' }}>
-                                        <SignUpButton />
-                                    </div>
-                                    <p>
-                                        to receive <span style={{ color: colors.third }}>FREE</span> startup bankroll and build your portfolio
-                                    </p>
-                                    <p>
-                                        If you already have an account, 
-                                        <Link to="/login"> Login</Link>              
-                                    </p>
-                                </div>) }
-                            </div>
-                            <div style={{ ...columnStyle, flexGrow: '1' }}>
-                                <Search style={ searchStyle } />
-                                <PlayerSchedule player={ this.props.player.data } style={{ width: '100%' }} />
-                            </div>
+                            : (<div>
+                                <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: '10px' }}>
+                                    <SignUpButton />
+                                </div>
+                                <p>
+                                    to receive <span style={{ color: colors.third }}>FREE</span> startup bankroll and build your portfolio
+                                </p>
+                                <p>
+                                    If you already have an account, 
+                                    <Link to="/login"> Login</Link>              
+                                </p>
+                            </div>) }
                         </div>
-                        <div style={ rowStyle }>
-                            <GameTimeStats />
+                        <div style={ pageColumnStyle }>
+                            <div style={{ ...pageColumnStyle, height: '400px', justifyContent: 'space-evenly' }}>
+                                <UpcomingGames player={ this.props.player.data } style={{ paddingBottom: '15px', borderBottom: `1px solid ${ colors.secondary }` }} />
+                                <RecentGames player={ this.props.player.data } />
+                            </div>
                         </div>
                     </div>
+                    <div>
+                        <GameTimeStats />
+                    </div>
                 </div>
-                <div style={ rowStyle }>
-                    { this.props.stock.lastUpdated ? <RealWorldStats stats={this.props.player.data.stats} /> : null }
+                <div style={{ ...pageRowStyle, width: '70%', margin: '40px 0'}}>
+                    <SimilarPlayers players={this.props.playersList} />
+                </div>                        
+                <div style={ pageRowStyle }>
+                    <RealWorldStats stats={ this.props.playerStats } />
                 </div>
             </div>
         )
     }
 }
 
-const searchStyle = { 
-    width: '300px', 
-    margin: '0 auto',
-    marginBottom: '10px'
-}
-
-const containerStyle = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    width: '100%',
-    flexWrap: 'wrap',
-    justifyContent: 'start',
-    alignItems: 'center'
-}
-
-const rowStyle = {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    marginBottom: '30px'
-}
-
-const columnStyle = {
-    displey: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    minWidth: '320px',
-}
-
 const mapStateToProps = (state) => {
     return {
-        player: state.selectedPlayer,
-        stock: state.selectedStock,
-        user: state.user
+        playersList: state.players.list,
+        player: { ...state.selectedPlayer, data: state.players.data[state.selectedPlayer.id] || {} },
+        stock: { ...state.selectedStock, data: state.stocks.data[state.selectedStock.id] || {} },
+        playerStats: state.players.stats[state.selectedPlayer.id],
+        user: state.user,
+        offers: mockOffers
     }
 }
 
