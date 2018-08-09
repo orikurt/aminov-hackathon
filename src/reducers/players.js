@@ -15,7 +15,6 @@ const playersReducer = (state=initialState, action) => {
             return {...state, isFetching: true};
         
         case actions.FETCH_PLAYERS_ERROR:
-            console.warn(action.payload)
             return {...state, isFetching: false};            
         
         case actions.SET_PLAYERS:

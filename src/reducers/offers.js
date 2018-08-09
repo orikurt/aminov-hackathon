@@ -9,6 +9,9 @@ const initialState = {
 
 const offersReducer = (state=initialState, action) => {
     switch (action.type) {
+        case actions.POST_OFFER:
+            return {...state, isFetching: true};
+            
         case actions.POST_OFFER_SUCCESS:
             toast.success('Offer posted successfuly', {
                 position: toast.POSITION.TOP_CENTER,
