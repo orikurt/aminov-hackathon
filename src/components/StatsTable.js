@@ -25,6 +25,7 @@ const columns_regular = [
         Header: 'Season',
         accessor: 'season',
         Cell: TextCell,
+        width: 100
     },
     {
         Header: 'Team',

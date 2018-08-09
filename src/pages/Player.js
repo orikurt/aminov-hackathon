@@ -16,9 +16,10 @@ import UpcomingGames from '../components/UpcomingGames';
 import RecentGames from '../components/RecentGames';
 import SimilarPlayers from '../components/SimilarPlayers';
 import OffersBar from '../components/OffersBar';
-import { pageContainerStyle, pageColumnStyle, pageRowStyle, searchStyle } from '../Styles';
+import { searchStyle } from '../Styles';
 import PlayerNav from '../components/PlayerNav';
 import { mockOffers } from '../utils/mockData';
+import '../Layout.css';
 
 class Player extends React.Component {
 
@@ -39,51 +40,46 @@ class Player extends React.Component {
             return (<h3>No player selected</h3>)
         }
         return (
-            <div style={ pageContainerStyle }>
+            <div className="pageContainerStyle">
                 <Search style={ searchStyle } />
-                <div style={ pageColumnStyle }>
+                <div className="playerCard">
                     <PlayerNav />
-                    <PlayerCard player={ this.props.player.data } stock={ this.props.stock.data } />
+                    <PlayerCard  player={ this.props.player.data } stock={ this.props.stock.data } />
+                </div>
+                <div className="quickTrade">
                     <QuickTrade user={ this.props.user } stock={ this.props.stock } />
                     <OffersBar offers={ this.props.offers } />
                 </div>
-                <div style={{ minHeight: '300px', borderRight: `1px solid ${colors.secondary}`}}></div>
-                <div style={{ ...pageColumnStyle, minWidth: '800px' }}>
-                    <div style={ pageRowStyle }>
-                        <div >
-                            <h4 style={{ textAlign: 'center' }}>Portfolio Position</h4>
-                            { this.props.user.lastUpdated && this.props.stock.lastUpdated
-                            ? <Position 
-                                stock={ this.props.stock.data }
-                                user={ this.props.user.data } />
-                            : (<div>
-                                <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: '10px' }}>
-                                    <SignUpButton />
-                                </div>
-                                <p>
-                                    to receive <span style={{ color: colors.third }}>FREE</span> startup bankroll and build your portfolio
-                                </p>
-                                <p>
-                                    If you already have an account, 
-                                    <Link to="/login"> Login</Link>              
-                                </p>
-                            </div>) }
-                        </div>
-                        <div style={ pageColumnStyle }>
-                            <div style={{ ...pageColumnStyle, height: '400px', justifyContent: 'space-evenly' }}>
-                                <UpcomingGames player={ this.props.player.data } style={{ paddingBottom: '15px', borderBottom: `1px solid ${ colors.secondary }` }} />
-                                <RecentGames player={ this.props.player.data } />
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <GameTimeStats />
-                    </div>
+                <h4 className="positionTitle" style={{ textAlign: 'center' }}>Portfolio Position</h4>
+                { this.props.user.lastUpdated && this.props.stock.lastUpdated
+                ? <div className="position">
+                    <Position 
+                    stock={ this.props.stock.data }
+                    user={ this.props.user.data } />
                 </div>
-                <div style={{ ...pageRowStyle, width: '70%', margin: '40px 0'}}>
+                : (<div className="signupSection">
+                    <SignUpButton />
+                    <p>
+                        to receive <span style={{ color: colors.third }}>FREE</span> startup bankroll and build your portfolio
+                    </p>
+                    <p>
+                        If you already have an account, 
+                        <Link to="/login"> Login</Link>              
+                    </p>
+                </div>) }
+                <div className="upcoming">
+                    <UpcomingGames player={ this.props.player.data } style={{ paddingBottom: '15px', borderBottom: `1px solid ${ colors.secondary }` }} />
+                </div>
+                <div className="recent">
+                    <RecentGames player={ this.props.player.data } />
+                </div>
+                <div className="gametimeStats">
+                    <GameTimeStats/>
+                </div>
+                <div className="similar">
                     <SimilarPlayers players={this.props.playersList} />
-                </div>                        
-                <div style={ pageRowStyle }>
+                </div>
+                <div className="realWorld">
                     <RealWorldStats stats={ this.props.playerStats } />
                 </div>
             </div>

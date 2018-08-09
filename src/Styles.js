@@ -1,8 +1,8 @@
 export const pageContainerStyle = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    width: '100%'
+    display: 'grid',
+    gridTemplateColumns: '1fr 2fr 1fr',
+    gridTemplateRows: '2fr 2fr 1fr auto',
+
 }
 
 export const pageColumnStyle = {

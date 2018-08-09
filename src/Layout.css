@@ -1,0 +1,51 @@
+.pageContainerStyle{
+    display: grid;
+    grid-gap: 15px;
+    padding: 15px;
+    grid-template-columns: 300px 1fr 2fr;
+    grid-template-rows: 300px 300px 200px auto;
+    grid-template-areas: "a b c"
+                         "d e f"
+                         "bottom bottom bottom"
+                         "bottom bottom bottom"
+}
+
+.playerCard{
+    grid-area: a;
+}
+
+.quickTrade{
+    grid-area: d;
+}
+
+.positionTitle{
+    grid-area: b;
+}
+
+.position{
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.signupSection{
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.upcoming{
+    grid-area: c;
+}
+
+.recent{
+    grid-area: c;
+}
+
+.gametimeStats {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.similar{
+    grid-area: 3 / 1 / 4 / 4;
+}
+
+.realWorld{
+    grid-area: 4 / 1 / 5 / 4;
+}

@@ -1,33 +1,21 @@
 .App{
-    display: flex;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 100px auto;
+    grid-template-areas: "header content"
 }
-
-.HLO{
-    flex-direction: column;    
-}
-
-.VLO{}
 
 .appHeader{
+    grid-area: header;
     background-color: #2d3436;
-    display: flex;
     padding-bottom: 15px;
-}
-
-.VLO .appHeader{
-    float: left;
-    min-width: 100px;
-    height: 100%;
-    overflow: auto;
-    text-align: center;
     border-right: 1px solid rgba(149, 165, 166, 0.3);
 }
 
-.HLO .appHeader{
-    width: 100%;
-    min-height: 100px;
-    overflow: hidden;
+.appContent{
+    grid-area: content;
+    background-color: #2d3436;
+    padding: 15px 0;
+    height: 100%;    
 }
 
 .appHeader h3{
@@ -52,27 +40,7 @@
 
 .appHeader .headerContainer{
     width: 100%;
-}
-
-.HLO .appHeader .headerContainer{
     display: flex;
+    flex-direction: column;
     align-items: center;
-}
-
-.appContent{
-    background-color: #2d3436;
-    padding: 15px 0;
-}
-
-.VLO .appContent{
-    float: left;
-    height: 100%;
-    flex-grow: 1;
-}
-
-.HLO .appContent{
-    width: 100%;
-    overflow: hidden;
-    height: 100%;
-    flex-grow: 1;
 }
